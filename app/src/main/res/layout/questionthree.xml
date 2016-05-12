@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/colorPrimary">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="720dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        >
+
+        <TextView
+            android:id="@+id/textView11"
+            android:textColor="@color/textColorPrimary"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="11)If you get funded how much equity are you willing to provide to the investor? What is the first phase of funding require to take idea to life? (less than 200 words)."
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <EditText
+            android:id="@+id/question11"
+            android:background="@drawable/edittextstyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView11"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:maxLength="200"
+            android:lines="3"
+            android:scrollbars="vertical"
+            android:inputType="textMultiLine" >
+        </EditText>
+
+        <TextView
+            android:id="@+id/textView12"
+            android:textColor="@color/textColorPrimary"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/question11"
+            android:text="12)let us imagine you built your product how do you plan to sell it to the customer? (250 words or less)."
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <EditText
+            android:id="@+id/question12"
+            android:background="@drawable/edittextstyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView12"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:maxLength="250"
+            android:lines="3"
+            android:scrollbars="vertical"
+            android:inputType="textMultiLine" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:textColor="@color/textColorPrimary"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/question12"
+            android:layout_alignParentLeft="true"
+            android:text="13)Define your customer? Tell us why he would be willing to buy your product or subscribe to your service? (1000 words or less)"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <EditText
+            android:id="@+id/question13"
+            android:background="@drawable/edittextstyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView13"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:maxLength="1000"
+            android:lines="3"
+            android:scrollbars="vertical"
+            android:inputType="textMultiLine" >
+        </EditText>
+
+        <TextView
+            android:id="@+id/textView14"
+            android:textColor="@color/textColorPrimary"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/question13"
+            android:layout_alignParentLeft="true"
+            android:text="14)Have you done market research on your idea? If so please explain the conclusions? (500 words or less)"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <EditText
+            android:id="@+id/question14"
+            android:background="@drawable/edittextstyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView14"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:maxLength="500"
+            android:lines="3"
+            android:scrollbars="vertical"
+            android:inputType="textMultiLine" >
+        </EditText>
+
+        <TextView
+            android:id="@+id/textView15"
+            android:textColor="@color/textColorPrimary"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/question14"
+            android:layout_alignParentLeft="true"
+            android:text="15)If required are you willing to change your business model? If so why?(200 words)"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        <EditText
+            android:id="@+id/question15"
+            android:background="@drawable/edittextstyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView15"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:maxLength="200"
+            android:lines="3"
+            android:scrollbars="vertical"
+            android:inputType="textMultiLine" >
+        </EditText>
+    </RelativeLayout>
+</ScrollView>

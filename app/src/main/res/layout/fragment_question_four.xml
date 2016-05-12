@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/colorPrimary">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="760dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        >
+
+        <TextView
+            android:id="@+id/textView16"
+            android:textColor="@color/textColorPrimary"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="16)Explain three reasons why we should invest in your idea? (less than 100 words)"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <EditText
+            android:id="@+id/question16"
+            android:background="@drawable/edittextstyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView16"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:maxLength="100"
+            android:lines="3"
+            android:scrollbars="vertical"
+            android:inputType="textMultiLine" >
+        </EditText>
+
+        <TextView
+            android:id="@+id/textView17"
+            android:textColor="@color/textColorPrimary"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/question16"
+            android:text="17)What makes you so unique to build this idea? (100 words or less)"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <EditText
+            android:id="@+id/question17"
+            android:background="@drawable/edittextstyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView17"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:maxLength="100"
+            android:lines="3"
+            android:scrollbars="vertical"
+            android:inputType="textMultiLine" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:textColor="@color/textColorPrimary"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/question17"
+            android:layout_alignParentLeft="true"
+            android:text="18)Provide us with detailed tasks involved in executing the idea? When explaining please share us the time frame? (please use excel sheets if needed)"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <EditText
+            android:id="@+id/question18"
+            android:background="@drawable/edittextstyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView18"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:maxLength="500"
+            android:lines="3"
+            android:scrollbars="vertical"
+            android:inputType="textMultiLine" >
+        </EditText>
+
+        <TextView
+            android:id="@+id/textView19"
+            android:textColor="@color/textColorPrimary"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/question18"
+            android:layout_alignParentLeft="true"
+            android:text="19)When will your idea become profitable? Please justify your answer? (200 words or less)."
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <EditText
+            android:id="@+id/question19"
+            android:background="@drawable/edittextstyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView19"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:maxLength="200"
+            android:lines="3"
+            android:scrollbars="vertical"
+            android:inputType="textMultiLine" >
+        </EditText>
+
+        <TextView
+            android:id="@+id/textView20"
+            android:textColor="@color/textColorPrimary"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/question19"
+            android:layout_alignParentLeft="true"
+            android:text="20)Are you willing to partner with some companies that enhance your growth? If you which are those companies and why do you want to partner? (500 words or less)."
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        <EditText
+            android:id="@+id/question20"
+            android:background="@drawable/edittextstyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView20"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:maxLength="500"
+            android:lines="3"
+            android:scrollbars="vertical"
+            android:inputType="textMultiLine" >
+        </EditText>
+    </RelativeLayout>
+</ScrollView>

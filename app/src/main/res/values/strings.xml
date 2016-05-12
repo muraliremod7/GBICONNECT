@@ -1,0 +1,119 @@
+<resources>
+    <string name="action_settings">Settings</string>
+    <string name="AppName">GBI Connect</string>
+    <string name="homeactivity"><c><b>GBI Connect</b></c></string>
+    <string name="registeractivity">GBI Connect</string>
+    <string name="loginactivity">GBI Connect</string>
+    <string name="splashactivity">GBI Connect</string>
+    <string-array name="listview">
+        <item>Suresh Venkata Amara</item>
+        <item>Murali Raghavendra</item>
+        <item>Manikanta Santosh</item>
+        <item>Arjun Kumar</item>
+        <item>Abhilash</item>
+        <item>Karthik</item>
+        <item>Raghuveer</item>
+        <item>Rajesh</item>
+        <item>Vasundara</item>
+        <item>Gowthami</item>
+        <item>Nandini</item>
+    </string-array>
+    <string-array name="services">
+        <item> Software Services private ltd</item>
+        <item> Hari Prahlad Technologies</item>
+        <item> Hari Prahlad Technologies</item>
+        <item> Ceo of HariPrahlad Technologies</item>
+        <item> Hari Prahlad Technologies</item>
+        <item> Hari Prahlad Technologies</item>
+        <item>Hari Prahlad Technologies</item>
+        <item> Hari Prahlad Technologies</item>
+        <item> Hari Prahlad Technologies</item>
+        <item>Hari Prahlad Technologies</item>
+        <item> Hari Prahlad Technologies</item>
+    </string-array>
+    <string-array name="startup">
+        <item>Pyaaridulhan</item>
+        <item>Get My Books</item>
+        <item> Glossy Trends</item>
+
+    </string-array>
+    <string-array name="startuplocation">
+        <item>India</item>
+        <item>India</item>
+        <item> India</item>
+
+    </string-array>
+    <string-array name="serviceproviders">
+        <item> Samguru And Associates</item>
+        <item> Vipan Technologiespvt. Ltd</item>
+        <item> Mturk Solutions</item>
+        <item> Harsh Solution</item>
+        <item> Door Training and Consulting India (p) Ltd.</item>
+        <item>Adman Advertising</item>
+        <item>Dhruv Jain and Associates </item>
+        <item> Sulwyn Fintech Solutions India Pvt. Ltd. </item>
+        <item> Dream N Dazzle Consultancy </item>
+        <item>Harish Garg and Associates</item>
+        <item> H K ASSOCIATES</item>
+    </string-array>
+    <string-array name="splocation">
+        <item>India</item>
+        <item>India</item>
+        <item> India</item>
+        <item>India</item>
+        <item>India</item>
+        <item> India</item>
+        <item>India</item>
+        <item>India</item>
+        <item> India</item>
+        <item>India</item>
+        <item>India</item>
+    </string-array>
+    <string name="register"> <u>Do not have an Account? REGISTER HERE</u></string>
+    <string name="title_activity_more">LeaderBoard</string>
+    <string-array name="lbspinner">
+        <item>Event 1</item>
+        <item>Event 2</item>
+        <item>Event 3</item>
+        <item>Event 4</item>
+        <item>Event 5</item>
+        <item>Event 6</item>
+        <item>Event 7</item>
+        <item>Event 8</item>
+        <item>Event 9</item>
+    </string-array>
+    <string-array name="lbranks">
+        <item>3001</item>
+        <item>2001</item>
+        <item>1002</item>
+        <item>3001</item>
+        <item>2001</item>
+        <item>1002</item>
+        <item>3001</item>
+        <item>2001</item>
+        <item>1002</item>
+        <item>3001</item>
+        <item>2001</item>
+    </string-array>
+    <string-array name="lbideanames">
+        <item>Pyaaridulhan</item>
+        <item>Glossy Trends</item>
+        <item>KVIC</item>
+        <item>Get MyBooks</item>
+        <item>WalletBaba</item>
+        <item>Geo Mitra</item>
+        <item>Ligth Pendrive</item>
+        <item>TouchableComputer</item>
+        <item>Vanya Mitra</item>
+        <item>Pyaaridulhan</item>
+        <item>Get Mybooks</item>
+    </string-array>
+    <string-array name="ideadesc">
+        <item></item>
+    </string-array>
+    <string name="title_activity_my_profile">MyProfileActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_myideas">MyideasActivity</string>
+</resources>

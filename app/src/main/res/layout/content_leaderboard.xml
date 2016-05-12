@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/TextColorHint"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="leaderboard.LeaderBoardActivity"
+    tools:showIn="@layout/activity_leaderboard">
+
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerlb"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:entries="@array/lbspinner"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:spinnerMode="dialog" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="@color/Tabbackgroundcolor"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/spinnerlb"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout3">
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Rank"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/TextColorHint"
+            android:textStyle="bold"
+            android:id="@+id/ranks"
+            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Idea Name"
+            android:textColor="@color/TextColorHint"
+            android:textStyle="bold"
+            android:id="@+id/ideaname"
+            android:layout_gravity="center_vertical"
+            android:layout_alignTop="@+id/ranks"
+            android:layout_centerHorizontal="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Marks"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/TextColorHint"
+            android:textStyle="bold"
+            android:id="@+id/marks"
+            android:layout_gravity="center_vertical"
+            android:layout_alignTop="@+id/ideaname"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/TextColorHint"
+        android:id="@+id/lblist"
+        android:layout_below="@+id/linearLayout3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
