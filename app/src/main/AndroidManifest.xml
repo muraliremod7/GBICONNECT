@@ -17,8 +17,6 @@
         android:allowBackup="true"
         android:icon="@drawable/gbisquare"
         android:label="@string/AppName"
-        android:screenOrientation="portrait"
-        android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="stateAlwaysHidden">
         <activity

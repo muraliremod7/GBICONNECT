@@ -12,7 +12,7 @@
             android:layout_height="fill_parent"
             android:layout_width="wrap_content">
             <TabWidget
-                android:background="#0097A7"
+                android:background="@color/colorPrimaryDark"
                 android:id="@android:id/tabs"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

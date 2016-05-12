@@ -59,7 +59,6 @@ public class PersonalInfromationFragment extends Fragment {
     private ProgressDialog pDialog;
     private String KEY_IMAGE = "uploadfile";
     private String UPLOAD_URL ="http://www.gbiconnect.com/walletbabaservices/uploadFile";
-    AlertDialogManager alert;
     public  PersonalInfromationFragment(){
 
     }
@@ -127,7 +126,7 @@ public class PersonalInfromationFragment extends Fragment {
     private void selectImage() {
         final CharSequence[] items = {"Take Photo", "Choose from Library", "Cancel"};
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.MyAlertDialogStyle);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
@@ -151,15 +150,6 @@ public class PersonalInfromationFragment extends Fragment {
         });
         builder.show();
 
-    }
-    // validating email id
-    public static boolean isValidEmail(String email) {
-        String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-
-        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-        Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
     }
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

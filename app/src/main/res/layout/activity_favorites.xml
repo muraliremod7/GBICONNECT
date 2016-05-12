@@ -17,8 +17,8 @@
         <android.support.design.widget.TabLayout
             android:id="@+id/favtabs"
             style="@style/MyCustomTabLayout"
-            app:tabIndicatorColor="@color/colorAcent"
-            android:background="@color/colorPrimary"
+            app:tabIndicatorColor="@color/textColorPrimary"
+            android:background="@color/colorAcent"
             app:tabTextAppearance="@style/MyCustomTabTextAppearance"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

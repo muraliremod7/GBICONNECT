@@ -10,8 +10,8 @@ import android.widget.EditText;
 import com.brain.revanth.sampleapplication2.R;
 
 public class QuestionFour extends Fragment {
-    EditText qu16,qu17,qu18,qu19,qu20;
-    String Q6,Q7,Q8,Q9,Q10;
+    public static EditText qu16,qu17,qu18,qu19,qu20;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

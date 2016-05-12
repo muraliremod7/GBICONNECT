@@ -131,10 +131,10 @@ public class LoginActivity extends AppCompatActivity {
                     alert.showAlertDialog(LoginActivity.this,"Enter corect Phone Number",false);
                 }
                 else if(pin.length() == 0){
-                    alert.showAlertDialog(LoginActivity.this,"Enter Must be Pin Number",false);
+                    alert.showAlertDialog(LoginActivity.this,"Enter Must be PinNum Number",false);
                 }
                 else if(pin.length()>4|| phone.length()<4){
-                    alert.showAlertDialog(LoginActivity.this,"Enter Correct Pin Number",false);
+                    alert.showAlertDialog(LoginActivity.this,"Enter Correct PinNum Number",false);
                 }
                 else if(!cd.isNetworkOn(getApplicationContext())){
                     alert.showAlertDialog(LoginActivity.this,"There is Network error",false);

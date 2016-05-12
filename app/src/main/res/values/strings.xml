@@ -72,6 +72,7 @@
     <string name="register"> <u>Do not have an Account? REGISTER HERE</u></string>
     <string name="title_activity_more">LeaderBoard</string>
     <string-array name="lbspinner">
+        <item>Select Event</item>
         <item>Event 1</item>
         <item>Event 2</item>
         <item>Event 3</item>
