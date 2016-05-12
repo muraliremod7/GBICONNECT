@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.provider.Settings;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -144,6 +145,12 @@ public class LoginActivity extends AppCompatActivity {
                     login(phone,pin);
 
                 }
+            }
+        });
+        Getpin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }
