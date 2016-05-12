@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/TextColorHint"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.brain.revanth.sampleapplication2.MyProfileActivity"
+    tools:showIn="@layout/activity_my_profile">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/editprofileLayout"
+        android:background="@color/colorPrimary"
+        android:visibility="gone"
+        >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="10dp"
+            android:background="@color/colorPrimary">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView6"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            >
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:layout_marginTop="10dp"
+                android:hint="Enter New Name"
+                android:ems="10"
+                android:id="@+id/epnewname"
+                android:layout_alignTop="@+id/closeForgot"
+                android:layout_centerHorizontal="true" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:ems="10"
+                android:layout_marginTop="5dp"
+                android:hint="Enter New Number"
+                android:id="@+id/epnewnum"
+                android:layout_gravity="center_horizontal" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:layout_marginTop="5dp"
+                android:hint="Enter New Email"
+                android:id="@+id/epnewemail"
+                android:layout_gravity="center_horizontal" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/epcompany"
+                android:layout_marginTop="5dp"
+                android:hint="Company Name"
+                android:layout_gravity="center_horizontal" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/epposition"
+                android:layout_marginTop="5dp"
+                android:hint="Position"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Interests"
+                android:textColor="@color/TextColorHint"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:layout_marginTop="10dp"
+                android:id="@+id/textView27"
+                android:layout_gravity="center_horizontal" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <CheckBox
+                    android:background="@drawable/selectcheckbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Advertising"
+                    android:id="@+id/advertising" />
+
+                <CheckBox
+                    android:background="@drawable/selectcheckbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BigData"
+                    android:id="@+id/bigdata" />
+
+                <CheckBox
+                    android:background="@drawable/selectcheckbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Design"
+                    android:id="@+id/design" />
+
+                <CheckBox
+                    android:background="@drawable/selectcheckbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VR"
+                    android:id="@+id/vr" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+            <CheckBox
+                android:background="@drawable/selectcheckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gaming"
+                android:id="@+id/gaming" />
+
+                <CheckBox
+                    android:background="@drawable/selectcheckbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hardware"
+                    android:id="@+id/hardware" />
+
+                <CheckBox
+                    android:background="@drawable/selectcheckbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entrepreneurship"
+                    android:id="@+id/entrepreneurship" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:background="@drawable/selectcheckbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Marketing"
+                    android:id="@+id/marketing" />
+
+                <CheckBox
+                    android:background="@drawable/selectcheckbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="UI"
+                    android:id="@+id/ui" />
+
+                <CheckBox
+                    android:background="@drawable/selectcheckbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="UX"
+                    android:id="@+id/ux" />
+
+                <CheckBox
+                    android:background="@drawable/selectcheckbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Open Source"
+                    android:id="@+id/opensource" />
+            </LinearLayout>
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Submit"
+                android:background="@color/colorAcent"
+                android:id="@+id/profileiupdate"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/profilelayout">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Name"
+        android:id="@+id/textView28"
+        android:layout_below="@+id/editprofileLayout"
+        android:layout_toRightOf="@+id/editprofileLayout"
+        android:layout_toEndOf="@+id/editprofileLayout"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="40dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Srinivas"
+        android:id="@+id/epname"
+        android:layout_alignBottom="@+id/textView28"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Phone"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:id="@+id/textView29"
+        android:layout_below="@+id/textView28"
+        android:layout_alignLeft="@+id/textView28"
+        android:layout_alignStart="@+id/textView28" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="8142752123"
+        android:id="@+id/epphone"
+        android:layout_above="@+id/textView30"
+        android:layout_alignLeft="@+id/epname"
+        android:layout_alignStart="@+id/epname" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Email"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:id="@+id/textView30"
+        android:layout_below="@+id/textView29"
+        android:layout_alignLeft="@+id/textView29"
+        android:layout_alignStart="@+id/textView29" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="srinivaskvit@gmail.com"
+        android:id="@+id/textView31"
+        android:layout_alignTop="@+id/textView30"
+        android:layout_alignLeft="@+id/epphone"
+        android:layout_alignStart="@+id/epphone" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Company"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:id="@+id/textView32"
+        android:layout_below="@+id/textView30"
+        android:layout_alignLeft="@+id/textView30"
+        android:layout_alignStart="@+id/textView30" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/textView33"
+        android:layout_alignTop="@+id/textView32"
+        android:layout_alignLeft="@+id/textView31"
+        android:layout_alignStart="@+id/textView31" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Position"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:id="@+id/textView34"
+        android:layout_below="@+id/textView32"
+        android:layout_alignLeft="@+id/textView32"
+        android:layout_alignStart="@+id/textView32" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/textView35"
+        android:layout_alignTop="@+id/textView34"
+        android:layout_alignLeft="@+id/textView33"
+        android:layout_alignStart="@+id/textView33" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Interests"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:id="@+id/textView36"
+        android:layout_below="@+id/textView34"
+        android:layout_alignLeft="@+id/textView34"
+        android:layout_alignStart="@+id/textView34" />
+</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#5ec5c5c5"
+        android:visibility="gone"
+        android:id="@+id/leaderboardLayout">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:indeterminateOnly="true"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/colorPrimaryDark"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,8 +1,0 @@
-For hiding softinput keypad in application we need to give in manifest file.......
-
-android:windowSoftInputMode="stateAlwaysHidden"
-
-
-Splashscreen with shared preference:
-
-http://stackoverflow.com/questions/11042302/splashscreen-first-time-with-shared-preferences

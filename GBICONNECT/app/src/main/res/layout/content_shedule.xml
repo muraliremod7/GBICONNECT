@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/TextColorHint"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_shedule">
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/myshedule"
+        android:background="@color/Tabbackgroundcolor"
+        android:src="@drawable/ic_date_range_white_18dp"
+        android:layout_marginTop="22dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Events"
+        android:textStyle="bold"
+        android:id="@+id/textView"
+        android:layout_below="@+id/myshedule"
+        android:layout_centerHorizontal="true" />
+   <LinearLayout
+       android:layout_width="fill_parent"
+       android:layout_height="70dp"
+       android:layout_below="@+id/textView"
+       android:id="@+id/linearLayout2">
+<RelativeLayout
+    android:layout_width="150dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/Tabbackgroundcolor"
+        android:src="@drawable/ic_date_range_white_18dp"
+        android:id="@+id/recommendedtalks"
+
+        android:layout_gravity="top"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Recommended Talks"
+        android:textStyle="bold"
+        android:id="@+id/textView26"
+        android:layout_below="@+id/recommendedtalks"
+        android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout
+    android:layout_width="150dp"
+    android:layout_alignParentLeft="true"
+    android:layout_height="match_parent"
+    android:layout_weight="1">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/Tabbackgroundcolor"
+        android:src="@drawable/ic_date_range_white_18dp"
+        android:id="@+id/allstages"
+        android:layout_gravity="top"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="All Stages"
+        android:textStyle="bold"
+        android:id="@+id/allstagess"
+        android:layout_below="@+id/allstages"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
+
+   </LinearLayout>
+
+</RelativeLayout>
