@@ -10,7 +10,6 @@ import android.os.Handler;
 import android.provider.Settings;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,9 +34,9 @@ import Services.SessionManager;
 
 public class LoginActivity extends AppCompatActivity {
     ImageView closebutton;
-    Button login;
+    Button login, Getpin;
     private ProgressDialog pDialog;
-    public static TextInputLayout phoneNumber,pinNumber;
+    public static TextInputLayout phoneNumber,pinNumber,forgotPin;
     TextView register;
     String phone,pin;
     AlertDialogManager alert = new AlertDialogManager();
@@ -55,15 +54,17 @@ public class LoginActivity extends AppCompatActivity {
         cd = new ConnectionDetector(getApplicationContext());
         closebutton = (ImageView)findViewById(R.id.closeForgot);
         register = (TextView)findViewById(R.id.accountcreate);
-        phoneNumber = (TextInputLayout)findViewById(R.id.usernameWrapper);
-        pinNumber = (TextInputLayout)findViewById(R.id.passwordWrapper);
+        phoneNumber = (TextInputLayout)findViewById(R.id.PhoneNum);
+        pinNumber = (TextInputLayout)findViewById(R.id.PinNum);
+        forgotPin = (TextInputLayout)findViewById(R.id.forgotpin);
         login = (Button)findViewById(R.id.signin);
+        Getpin = (Button)findViewById(R.id.request);
         if (!cd.isNetworkOn(getApplicationContext())) {
             // Internet Connection is Present
             // make HTTP requests
             showAlertDialog1(LoginActivity.this, "No Internet Connection","You don't have internet connection.", false);
         }
-        //This IS For FofgotLayout....
+                //After Clicking Register Button Navigating Register Activity....
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-
+                //This IS For FofgotLayout....
                 findViewById(R.id.forgotpassword).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

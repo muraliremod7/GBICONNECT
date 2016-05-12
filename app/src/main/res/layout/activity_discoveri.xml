@@ -16,6 +16,7 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
+            android:elevation="6dp"
             style="@style/MyCustomTabLayout"
             android:background="@color/Tabbackgroundcolor"
             app:tabIndicatorColor="@color/TextColorHint"
