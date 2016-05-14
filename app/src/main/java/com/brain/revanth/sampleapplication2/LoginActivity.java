@@ -238,7 +238,6 @@ public class LoginActivity extends AppCompatActivity {
                                             String error = j.getString("message");
                                             if(pDialog.isShowing())
                                                 pDialog.dismiss();
-                                            Toast.makeText(LoginActivity.this,error,Toast.LENGTH_SHORT).show();
                                             alert.showAlertDialog(LoginActivity.this,error,false);
                                         }
                                     } catch (Exception ex) {

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="shedule.EventsActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/myteamtoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/eventslistView"
+        android:layout_below="@+id/myteamtoolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/myteamtoolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+    </FrameLayout>
+</RelativeLayout>

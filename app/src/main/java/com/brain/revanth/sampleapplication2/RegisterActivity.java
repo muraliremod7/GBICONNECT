@@ -142,12 +142,15 @@ public class RegisterActivity extends AppCompatActivity {
                     if( Name.length() == 0) {
                         alert.showAlertDialog(RegisterActivity.this,"Enter Your Name",false);
                     }
-                    else if(PhoneNumber.length() == 0||PhoneNumber.length()>10||PhoneNumber.length()<10){
+                    else if(PhoneNumber.length() == 0){
+                        alert.showAlertDialog(RegisterActivity.this,"Enter Must be a Phone Number",false);
+                    }
+                    else if(PhoneNumber.length()>10||PhoneNumber.length()<10){
                         alert.showAlertDialog(RegisterActivity.this,"Enter Correct Phone Number",false);
                     }
                     else if(Email.toString().length() == 0) {
 
-                        alert.showAlertDialog(RegisterActivity.this,"Enter Must Be Email Id",false);
+                        alert.showAlertDialog(RegisterActivity.this,"Enter Must be a Email Id",false);
                     }
                     else if(Email.matches(emailPattern)){
                         viewPager.setCurrentItem(viewPager.getCurrentItem()+1);

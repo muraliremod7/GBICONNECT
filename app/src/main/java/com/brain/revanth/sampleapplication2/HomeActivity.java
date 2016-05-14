@@ -24,19 +24,19 @@ import leaderboard.LeaderBoardActivity;
 import shedule.SheduleActivity;
 
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity{
 
     // Session Manager Class
     SessionManager session;
     private Toolbar toolbar;
     LocalActivityManager localActivityManager;
     public static TabHost tabHost;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
         setSupportActionBar(toolbar);
         localActivityManager = new LocalActivityManager(this,false);
         localActivityManager.dispatchCreate(savedInstanceState);
@@ -141,6 +141,10 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.myideas:
                 Intent myideas = new Intent(HomeActivity.this,MyideasActivity.class);
                 startActivity(myideas);
+                return true;
+            case R.id.complaints:
+                Intent Complaints = new Intent(HomeActivity.this,ComplaintsActivity.class);
+                startActivity(Complaints);
                 return true;
             default:
                 // If we got here, the user's action was not recognized.

@@ -22,7 +22,7 @@ public class DiscoveriActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_discoveri);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
         setSupportActionBar(toolbar);
         disviewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(disviewPager);
@@ -61,6 +61,14 @@ public class DiscoveriActivity extends AppCompatActivity {
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
 
+        }
+    }
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
         }
     }
 }

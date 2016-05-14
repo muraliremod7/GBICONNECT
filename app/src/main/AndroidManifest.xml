@@ -80,12 +80,34 @@
         <activity
             android:name=".MyideasActivity"
             android:label="@string/title_activity_myideas"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".HomeActivity">
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomeActivity" />
         </activity>
+        <activity
+            android:name="shedule.EventsActivity"
+            android:parentActivityName="shedule.SheduleActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="shedule.SheduleActivity" />
+        </activity>
+        <activity
+            android:name=".ComplaintsActivity"
+            android:parentActivityName=".HomeActivity"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" />
+        </activity>
+        <activity android:name="shedule.MyteamActivity"
+            android:parentActivityName="shedule.SheduleActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="shedule.SheduleActivity" /></activity>
     </application>
 
 </manifest>

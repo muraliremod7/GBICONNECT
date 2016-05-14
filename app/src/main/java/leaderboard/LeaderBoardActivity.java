@@ -17,7 +17,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
         setSupportActionBar(toolbar);
         listView = (ListView)findViewById(R.id.lblist);
         lbideanames = getResources().getStringArray(R.array.lbideanames);

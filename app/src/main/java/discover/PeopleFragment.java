@@ -10,18 +10,22 @@ import android.widget.ListView;
 
 import com.brain.revanth.sampleapplication2.R;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class PeopleFragment extends Fragment{
 ListView listView;
 
     String[] names;
     String[] service;
-
+    ArrayList<HashMap<String, String>> contactList;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_people, container, false);
         // Inflate the layout for this fragment
         listView = (ListView)view.findViewById(R.id.list);
+        contactList = new ArrayList<HashMap<String, String>>();
         Integer[] imageId = {
                 R.drawable.ic_account_circle_black_36dp,
                 R.drawable.ic_account_circle_black_36dp,

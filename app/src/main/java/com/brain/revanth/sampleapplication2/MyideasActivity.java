@@ -1,12 +1,8 @@
 package com.brain.revanth.sampleapplication2;
 
-import android.app.SearchManager;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,8 +10,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ListView;
-
-import leaderboard.LbListRow;
 
 public class MyideasActivity extends AppCompatActivity {
     ListView idealistview;
@@ -26,7 +20,7 @@ public class MyideasActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myideas);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         idealistview = (ListView)findViewById(R.id.ideaslistview);

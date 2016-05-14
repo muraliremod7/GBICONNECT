@@ -7,8 +7,13 @@
         android:title="My Profile"
         app:showAsAction="never" />
     <item
-        android:id="@+id/myideas"
-        android:title="My Ideas"
+    android:id="@+id/myideas"
+    android:title="My Ideas"
+    app:showAsAction="never" />
+
+    <item
+        android:id="@+id/complaints"
+        android:title="Complaints"
         app:showAsAction="never" />
     <item
         android:id="@+id/logout"

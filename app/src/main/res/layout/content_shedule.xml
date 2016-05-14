@@ -8,79 +8,51 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_shedule">
 
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
         android:id="@+id/myshedule"
+        android:text="Events"
         android:background="@color/Tabbackgroundcolor"
-        android:src="@drawable/ic_date_range_white_18dp"
-        android:layout_marginTop="22dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="My Events"
-        android:textStyle="bold"
-        android:id="@+id/textView"
-        android:layout_below="@+id/myshedule"
-        android:layout_centerHorizontal="true" />
-   <LinearLayout
-       android:layout_width="fill_parent"
-       android:layout_height="70dp"
-       android:layout_below="@+id/textView"
-       android:id="@+id/linearLayout2">
-<RelativeLayout
-    android:layout_width="150dp"
-    android:layout_height="match_parent"
-    android:layout_weight="1">
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/ic_date_range_white_18dp"
+        android:layout_marginTop="20dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:drawableTop="@drawable/ic_date_range_white_18dp"
         android:background="@color/Tabbackgroundcolor"
+        android:text="Recommended talks"
         android:src="@drawable/ic_date_range_white_18dp"
         android:id="@+id/recommendedtalks"
-
         android:layout_gravity="top"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/myshedule"
+        android:layout_alignLeft="@+id/myshedule"
+        android:layout_alignStart="@+id/myshedule" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Recommended Talks"
-        android:textStyle="bold"
-        android:id="@+id/textView26"
-        android:layout_below="@+id/recommendedtalks"
-        android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-    <RelativeLayout
-    android:layout_width="150dp"
-    android:layout_alignParentLeft="true"
-    android:layout_height="match_parent"
-    android:layout_weight="1">
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
         android:background="@color/Tabbackgroundcolor"
-        android:src="@drawable/ic_date_range_white_18dp"
+        android:drawableTop="@drawable/ic_date_range_white_18dp"
         android:id="@+id/allstages"
+        android:text="AllStages"
+        android:layout_marginTop="5dp"
         android:layout_gravity="top"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/recommendedtalks"
+        android:layout_alignLeft="@+id/recommendedtalks"
+        android:layout_alignStart="@+id/recommendedtalks" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="All Stages"
-        android:textStyle="bold"
-        android:id="@+id/allstagess"
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/myteam"
+        android:text="My Team"
+        android:layout_marginTop="5dp"
+        android:drawableTop="@drawable/ic_date_range_white_18dp"
+        android:background="@color/colorAcent"
         android:layout_below="@+id/allstages"
-        android:layout_centerHorizontal="true" />
-</RelativeLayout>
-
-   </LinearLayout>
-
+        android:layout_alignLeft="@+id/allstages"
+        android:layout_alignStart="@+id/allstages" />
 </RelativeLayout>
