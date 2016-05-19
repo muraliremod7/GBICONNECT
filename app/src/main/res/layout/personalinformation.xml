@@ -45,7 +45,7 @@
     </EditText>
 
     <EditText
-        android:id="@+id/phonenumber"
+        android:id="@+id/phonenumberr"
         android:textColorHint="@color/textColorPrimary"
         android:background="@drawable/edittextstyle"
         android:layout_width="match_parent"
@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/phonenumber"
+        android:layout_below="@+id/phonenumberr"
         android:ems="10"
         android:hint="Enter Email"
         android:layout_marginTop="5dp"
@@ -101,5 +101,18 @@
         android:layout_marginTop="5dp"
         android:hint="Enter Idea Description"
         android:inputType="textMultiLine" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:textColorHint="@color/textColorPrimary"
+        android:background="@drawable/edittextstyle"
+        android:id="@+id/teammembers"
+        android:hint="Enter team members with , Seperated"
+        android:layout_below="@+id/ideadescription"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
 </ScrollView>

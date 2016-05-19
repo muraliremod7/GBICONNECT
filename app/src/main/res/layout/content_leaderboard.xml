@@ -21,7 +21,9 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:spinnerMode="dialog" />
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:orientation="horizontal"
         android:background="@color/Tabbackgroundcolor"
@@ -70,13 +72,13 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
     </LinearLayout>
-
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/TextColorHint"
         android:id="@+id/lblist"
+        style="@style/ListView"
         android:layout_below="@+id/linearLayout3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+</RelativeLayout>
 </RelativeLayout>

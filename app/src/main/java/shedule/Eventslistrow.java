@@ -1,46 +1,58 @@
 package shedule;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.brain.revanth.sampleapplication2.R;
+
+import java.util.List;
 
 
 /**
  * Created by Hari Prahlad on 07-05-2016.
  */
-public class Eventslistrow extends ArrayAdapter<String> {
-    TextView eventname,fromdate,todate,location,desc;
-    private final Activity context;
-    private final String[] Eventname;
-    private final String[] Fromdate;
-    private final String[] Todate;
-
-
-    public Eventslistrow(Activity context, String[] Eventname, String[] Fromdate, String[] Todate) {
-        super(context, R.layout.eventslistrow,Eventname);
-        this.context = context;
-        this.Eventname = Eventname;
-        this.Fromdate = Fromdate;
-        this.Todate = Todate;
-
-
+public class Eventslistrow extends BaseAdapter {
+    TextView eventname,date,eventLocation;
+    private final Activity activity;
+    public List<EventCommonClass> eventslist;
+    public Eventslistrow(Activity activity, List<EventCommonClass> eventslist) {
+        this.activity = activity;
+        this.eventslist = eventslist;
     }
     @Override
-    public View getView(int position, View view, ViewGroup parent) {
-        LayoutInflater inflater = context.getLayoutInflater();
-        View rowView= inflater.inflate(R.layout.eventslistrow, null, true);
-        eventname = (TextView) rowView.findViewById(R.id.eventname);
-        fromdate = (TextView) rowView.findViewById(R.id.fromdate);
-        todate = (TextView) rowView.findViewById(R.id.todate);
-        eventname.setText(Eventname[position]);
-        fromdate.setText(Fromdate[position]);
-        todate.setText(Todate[position]);
-        return rowView;
+    public int getCount() {
+        return eventslist.size();
+    }
+
+    @Override
+    public Object getItem(int location  ) {
+        return eventslist.get(location);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertview, ViewGroup parent) {
+        LayoutInflater inflater = activity.getLayoutInflater();
+        if (inflater == null)
+            inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        convertview= inflater.inflate(R.layout.eventslistrow, null, true);
+        eventname = (TextView) convertview.findViewById(R.id.eventname);
+        date = (TextView) convertview.findViewById(R.id.eventdate);
+        eventLocation = (TextView)convertview.findViewById(R.id.eventLocation);
+
+        EventCommonClass eventCommonClass = (EventCommonClass) getItem(position);
+        eventname.setText(eventCommonClass.getEventName());
+        date.setText(eventCommonClass.getEventDate());
+        eventLocation.setText(eventCommonClass.getEventLocation());
+        return convertview;
     }
 }

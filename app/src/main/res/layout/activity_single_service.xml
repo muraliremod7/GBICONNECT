@@ -1,0 +1,98 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/TextColorHint"
+    >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/servicetoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="OwnerName :"
+        android:id="@+id/textView41"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/servicetoolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Ownername"
+        android:id="@+id/ownerNAme"
+        android:layout_alignTop="@+id/textView41"
+        android:layout_toRightOf="@+id/textView41"
+        android:layout_toEndOf="@+id/textView41" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="ServiceName :"
+        android:id="@+id/textView45"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/textView41"
+        android:layout_alignLeft="@+id/textView41"
+        android:layout_alignStart="@+id/textView41" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="servicename"
+        android:id="@+id/serviceNAme"
+        android:layout_alignTop="@+id/textView45"
+        android:layout_alignLeft="@+id/ownerNAme"
+        android:layout_alignStart="@+id/ownerNAme" />
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Phone Number :"
+        android:layout_marginTop="5dp"
+        android:id="@+id/textView42"
+        android:layout_below="@+id/textView45"
+        android:layout_toLeftOf="@+id/serviceNAme"
+        android:layout_toStartOf="@+id/serviceNAme" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Phonenumber"
+        android:id="@+id/ownerphonenumber"
+        android:layout_alignTop="@+id/textView42"
+        android:layout_toRightOf="@+id/textView42"
+        android:layout_toEndOf="@+id/textView42" />
+
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="ServiceDescription:"
+        android:layout_marginTop="10dp"
+        android:id="@+id/textView43"
+        android:layout_below="@+id/textView42"
+        android:layout_alignLeft="@+id/textView42"
+        android:layout_alignStart="@+id/textView42" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Working For Hari Prahlad technologies"
+        android:id="@+id/serviceDesc"
+        android:layout_alignTop="@+id/textView43"
+        android:layout_toRightOf="@+id/textView43"
+        android:layout_toEndOf="@+id/textView43" />
+</RelativeLayout>

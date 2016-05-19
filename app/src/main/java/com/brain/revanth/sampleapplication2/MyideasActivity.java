@@ -9,13 +9,29 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+import shedule.EventCommonClass;
 
 public class MyideasActivity extends AppCompatActivity {
     ListView idealistview;
-
+    EditText Ideaname,IdeaDescription;
+    Button submitidea;
     String[] ideanamess;
     String[] ideadescc;
+    ArrayList<String> ideanameslist = new ArrayList<String>();
+    ArrayList<String> ideadesclist = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,11 +39,50 @@ public class MyideasActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Ideaname = (EditText)findViewById(R.id.newidea);
+        IdeaDescription = (EditText)findViewById(R.id.newideadesc);
+        submitidea = (Button)findViewById(R.id.newideasubmit);
+
         idealistview = (ListView)findViewById(R.id.ideaslistview);
-        ideanamess = getResources().getStringArray(R.array.lbideanames);
-        ideadescc = getResources().getStringArray(R.array.lbideanames);
-        IdeaListRow ideaListRow = new IdeaListRow(MyideasActivity.this,ideanamess,ideadescc);
-        idealistview.setAdapter(ideaListRow);
+
+        Ion.with(getApplicationContext())
+                .load("http://www.gbiconnect.com/walletbabaservices/GetIdeas")
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+                        try {
+                            JSONObject jSONObject = new JSONObject(result);
+                                JSONArray array = jSONObject.getJSONArray("ideas");
+                                for(int i =0;i<array.length();i++){
+                                    JSONObject j = array.getJSONObject(i);
+                                    String Ideaname = j.getString("ideaName");
+                                    String IdeaDesc = j.getString("ideaDesc");
+                                    ideanameslist.add(Ideaname);
+                                    ideadesclist.add(IdeaDesc);
+                                    ideanamess = ideanameslist.toArray(new String[ideanameslist.size()]);
+                                    ideadescc = ideadesclist.toArray(new String[ideadesclist.size()]);
+                                }
+
+
+                        } catch (JSONException e1) {
+                            e1.printStackTrace();
+                        }
+                        IdeaListRow ideaListRow = new IdeaListRow(MyideasActivity.this,ideanamess,ideadescc);
+                        idealistview.setAdapter(ideaListRow);
+
+                    }
+                });
+        submitidea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String NewIdea = Ideaname.getText().toString();
+                String NewIdeaDesc = IdeaDescription.getText().toString();
+                updateIdea();
+            }
+        });
+
         findViewById(R.id.newideasubmit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,6 +98,11 @@ public class MyideasActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void updateIdea() {
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

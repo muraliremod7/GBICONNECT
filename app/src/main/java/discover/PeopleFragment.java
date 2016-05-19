@@ -1,50 +1,106 @@
 package discover;
 
-import android.content.res.TypedArray;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.brain.revanth.sampleapplication2.R;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 
-public class PeopleFragment extends Fragment{
-ListView listView;
-
-    String[] names;
-    String[] service;
-    ArrayList<HashMap<String, String>> contactList;
+public class PeopleFragment extends Fragment {
+    ListView listView;
+    private List<PeopleCommonClass> arrayList = new ArrayList<PeopleCommonClass>();
+    PeopleCommonClass peopleCommonClass;
+    PeoplesListRow peoplesListRow;
+    String Profilename,IdeaName,IdeaDesc,PhoneNum;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_people, container, false);
+        peopleCommonClass =new PeopleCommonClass();
         // Inflate the layout for this fragment
-        listView = (ListView)view.findViewById(R.id.list);
-        contactList = new ArrayList<HashMap<String, String>>();
-        Integer[] imageId = {
-                R.drawable.ic_account_circle_black_36dp,
-                R.drawable.ic_account_circle_black_36dp,
-                R.drawable.ic_account_circle_black_36dp,
-                R.drawable.ic_account_circle_black_36dp,
-                R.drawable.ic_account_circle_black_36dp,
-                R.drawable.ic_account_circle_black_36dp,
-                R.drawable.ic_account_circle_black_36dp,
-                R.drawable.ic_account_circle_black_36dp,
-                R.drawable.ic_account_circle_black_36dp,
-                R.drawable.ic_account_circle_black_36dp,
-                R.drawable.ic_account_circle_black_36dp
-
-        };
-        names = getResources().getStringArray(R.array.listview);
-        service = getResources().getStringArray(R.array.services);
-        ListRow listRow = new ListRow(getActivity(),names,service,imageId);
-        listView.setAdapter(listRow);
+        peoples();
+        listView = (ListView) view.findViewById(R.id.list);
+        peoplesListRow = new PeoplesListRow(getActivity(),arrayList);
         return view;
     }
+    private void peoples() {
+        Ion.with(getContext())
+                .load("http://www.gbiconnect.com/walletbabaservices/getTeams")
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+
+                        try {
+                            JSONObject jSONObject = new JSONObject(result);
+                            int status = jSONObject.getInt("status");
+                            if (status == 1) {
+                                JSONArray array = jSONObject.getJSONArray("teams");
+                                for(int i =0;i<array.length();i++){
+                                    JSONObject j = array.getJSONObject(i);
+                                    PeopleCommonClass peopleCommonClass = new PeopleCommonClass();
+                                    if(j.has("leadName")){
+                                        peopleCommonClass.setName(j.getString("leadName"));
+                                    }
+                                    if(j.has("ideaName")){
+                                        peopleCommonClass.setIdeaName(j.getString("ideaName").toString());
+                                    }
+                                    if(j.has("ideaDescription")){
+                                        peopleCommonClass.setIdeaDescription(j.getString("ideaDescription").toString());
+                                    }
+                                    if(j.has("profile")||!j.isNull("profile")){
+                                        peopleCommonClass.setImage(j.getString("profile"));
+                                    }
+                                    if(j.has("phone")){
+                                        peopleCommonClass.setPhoneNumber(j.getString("phone"));
+                                    }
+                                    arrayList.add(peopleCommonClass);
+                                }
+                                    listView.setAdapter(peoplesListRow);
+                            } else {
+
+                            }
+                        } catch (JSONException e1) {
+                            e1.printStackTrace();
+                        }
+                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Profilename = ((TextView)view.findViewById(R.id.ProfileName)).getText().toString();
+                            IdeaName = ((TextView)view.findViewById(R.id.IdeaName)).getText().toString();
+                            IdeaDesc = ((TextView)view.findViewById(R.id.Ideadesc)).getText().toString();
+                            PhoneNum = ((TextView)view.findViewById(R.id.phonenumber)).getText().toString();
+                                Intent singlpeople = new Intent(getActivity(), SinglePeopleActivity.class);
+                                Bundle peoplessbundle = new Bundle();
+                                peoplessbundle.putString("ProfileName", Profilename);
+                                peoplessbundle.putString("IdeaName", IdeaName);
+                                peoplessbundle.putString("IdeaDesc", IdeaDesc);
+                                peoplessbundle.putString("PhoneNumber",PhoneNum);
+                                singlpeople.putExtras(peoplessbundle);
+                                startActivity(singlpeople);
+                            }
+                        });
+                    }
+
+                });
+                }
 
 }
+
+
+

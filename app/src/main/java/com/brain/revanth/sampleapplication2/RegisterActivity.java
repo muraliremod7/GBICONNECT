@@ -10,6 +10,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -34,9 +41,9 @@ public class RegisterActivity extends AppCompatActivity {
     QuestionFour qfour;
     QuestionFive qfive;
     Button Prev,Next,Submit;
-    public static String Name,PhoneNumber,Email,IdeaName,IdeaDescription,PinNum,ConPinNum;
-    public static ArrayList<String> Questions = new ArrayList<String>();;
+    public String Name,PhoneNumber,Email,IdeaName,IdeaDescription,PinNum,ConPinNum,Teammembers;
     public static String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    ArrayList<String> Questions = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,7 +139,7 @@ public class RegisterActivity extends AppCompatActivity {
             Email = PI.EM.getText().toString();
             IdeaName = PI.IN.getText().toString();
             IdeaDescription = PI.ID.getText().toString();
-
+            Teammembers = PI.TM.getText().toString();
 
             switch(v.getId()) {
                 case R.id.previous:
@@ -160,6 +167,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     break;
                 case R.id.submit:
+
                     Questions.add(qone.qu1.getText().toString());
                     Questions.add(qone.qu2.getText().toString());
                     Questions.add(qone.qu3.getText().toString());
@@ -196,19 +204,49 @@ public class RegisterActivity extends AppCompatActivity {
 
                         alert.showAlertDialog(RegisterActivity.this,"Enter Correct PinNum Number",false);
                     }
-                    else if(PinNum.matches(ConPinNum)){
-                         Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
-                         startActivity(intent);
-                         finish();
-                    }
                     else {
-                         alert.showAlertDialog(RegisterActivity.this,"Confirmation PinNum Doesn't Match With PinNum Number ",false);
 
+                         registeruser(Name,PhoneNumber,Email,IdeaName,IdeaDescription,PinNum,Teammembers);
                      }
             }
 
         }
     };
+    private void registeruser(String leadName, String phone, String email, String ideaName, String ideaDescription, String pinNum, String teammembers) {
+        Ion.with(getApplicationContext())
+                .load("GET","http://www.gbiconnect.com/walletbabaservices/createTeam?leadName="+leadName+"&phone="+phone+"&ideaName="+ideaName+"&description="+ideaDescription+"&email="+email+"&pin="+pinNum+"&teamMenbers="+teammembers)
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+                        if (e != null) {
+
+                        }else {
+
+                            try {
+                                JSONObject jSONObject = new JSONObject(result);
+                                int status = jSONObject.getInt("status");
+                                if (status == 1) {
+                                    Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                    Toast.makeText(getApplicationContext(), "registered Successfull", Toast.LENGTH_LONG).show();
+
+                                } else {
+                                    JSONArray array = jSONObject.getJSONArray("errors");
+                                    JSONObject j = array.getJSONObject(0);
+                                    String error = j.getString("message");
+
+                                    alert.showAlertDialog(RegisterActivity.this,error,false);
+                                }
+                            } catch (Exception ex) {
+                                ex.printStackTrace();
+                            }
+                        }
+                    }
+                });
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -13,7 +13,7 @@ import android.widget.EditText;
 
 public class MyProfileActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    EditText pname,pphone;
+    EditText epname,epphone,epemail,epcompany,epposition;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +21,11 @@ public class MyProfileActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        epname = (EditText)findViewById(R.id.epnewname);
+        epphone = (EditText)findViewById(R.id.epnewnum);
+        epemail = (EditText)findViewById(R.id.epnewemail);
+        epcompany = (EditText)findViewById(R.id.epcompany);
+        epposition = (EditText)findViewById(R.id.epposition);
         findViewById(R.id.profileiupdate).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -28,7 +28,7 @@ public class StartupsFragment extends Fragment{
                 };
                 names = getResources().getStringArray(R.array.startup);
                 service = getResources().getStringArray(R.array.startuplocation);
-                ListRow listRow = new ListRow(getActivity(), names, service, imageId);
+                ListRow listRow = new ListRow(getActivity(), names, service);
                 listView.setAdapter(listRow);
                 return view;
     }

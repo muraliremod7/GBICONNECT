@@ -7,21 +7,17 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,28 +25,12 @@ import android.widget.Toast;
 import com.brain.revanth.sampleapplication2.R;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
-import com.koushikdutta.async.http.BasicNameValuePair;
-import com.koushikdutta.async.http.NameValuePair;
 import com.koushikdutta.ion.Ion;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.util.ArrayList;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import Model.AlertDialogManager;
 
 public class PersonalInfromationFragment extends Fragment {
-    public static EditText LN, PN, EM, IN, ID;
+    public static EditText LN, PN, EM, IN, ID,TM;
     ImageView iView;
     TextView upimage;
     Cursor cursor;
@@ -68,10 +48,11 @@ public class PersonalInfromationFragment extends Fragment {
         // TODO Auto-generated method stub
         View view = inflater.inflate(R.layout.personalinformation, container, false);
         LN = (EditText) view.findViewById(R.id.leadname);
-        PN = (EditText) view.findViewById(R.id.phonenumber);
+        PN = (EditText) view.findViewById(R.id.phonenumberr);
         EM = (EditText) view.findViewById(R.id.email);
         IN = (EditText) view.findViewById(R.id.ideaname);
         ID = (EditText) view.findViewById(R.id.ideadescription);
+        TM = (EditText) view.findViewById(R.id.teammembers);
         iView = (ImageView) view.findViewById(R.id.UploadImage);
         upimage = (TextView) view.findViewById(R.id.uploadimage);
         iView.setOnClickListener(new OnClickListener() {

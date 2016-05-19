@@ -22,31 +22,22 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Fromdate"
-        android:id="@+id/fromdate"
+        android:id="@+id/eventdate"
         android:layout_gravity="center_horizontal"
         android:layout_below="@+id/eventname"
         android:layout_alignLeft="@+id/eventname"
         android:layout_alignStart="@+id/eventname" />
 
     <TextView
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="To"
-        android:id="@+id/textView40"
-        android:layout_below="@+id/eventname"
-        android:layout_toRightOf="@+id/fromdate"
-        android:layout_toEndOf="@+id/fromdate" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Todate"
-        android:id="@+id/todate"
-        android:layout_alignTop="@+id/textView40"
-        android:layout_toRightOf="@+id/textView40"
-        android:layout_toEndOf="@+id/textView40" />
+        android:text=""
+        android:id="@+id/eventLocation"
+        android:layout_alignBottom="@+id/eventdate"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:visibility="invisible"/>
 
 
 </RelativeLayout>

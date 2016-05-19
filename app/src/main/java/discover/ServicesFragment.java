@@ -1,8 +1,8 @@
 package discover;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,55 +11,99 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.brain.revanth.sampleapplication2.R;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ServicesFragment extends Fragment{
 
     ListView serviceslistview;
-    private static FragmentManager fragmentManager;
-    private static SingleServiceFragment singleServiceFragment;
-    String[] names = {"Karthik","Abhi","Raghuveer","Murali"};
-    String[] service = {"8801021219","7799334202","7207382240","8801344507"};
+    private List<ServicesCommonClass> arrayList = new ArrayList<ServicesCommonClass>();
+    ServicesCommonClass service;
+    ServicesLisrow servicesLisrow;
+    String ServiceName,ServiceDesc,OwnerName,Phone,Pin;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_services, container, false);
-        // Inflate the layout for this fragment
-        fragmentManager = getFragmentManager();
+        service = new ServicesCommonClass();
         serviceslistview = (ListView) view.findViewById(R.id.serviceslist);
-
-        Integer[] imageId = {
-                R.drawable.ic_account_circle_black_36dp,
-                R.drawable.ic_account_circle_black_36dp,
-                R.drawable.ic_account_circle_black_36dp,
-                R.drawable.ic_account_circle_black_36dp,
-                R.drawable.ic_account_circle_black_36dp,
-                R.drawable.ic_account_circle_black_36dp,
-                R.drawable.ic_account_circle_black_36dp,
-                R.drawable.ic_account_circle_black_36dp,
-                R.drawable.ic_account_circle_black_36dp,
-                R.drawable.ic_account_circle_black_36dp,
-                R.drawable.ic_account_circle_black_36dp
-
-        };
-        ListRow listRow = new ListRow(getActivity(), names, service, imageId);
-        serviceslistview.setAdapter(listRow);
-
-        serviceslistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View servicesview, int i, long l) {
-                String OwnerName = ((TextView)servicesview.findViewById(R.id.listtext)).getText().toString();
-                String PhoneNumber = ((TextView)servicesview.findViewById(R.id.listtextdate)).getText().toString();
-                Bundle servicesbundle = new Bundle();
-                servicesbundle.putString("OwnerName", OwnerName);
-                servicesbundle.putString("PhoneNumber", PhoneNumber);
-                singleServiceFragment = new SingleServiceFragment();
-                singleServiceFragment.setArguments(servicesbundle);
-                fragmentManager.beginTransaction().replace(R.id.servicescontainer, singleServiceFragment).addToBackStack(null).commit();
-            }
-        });
+            getservices();
+        servicesLisrow = new ServicesLisrow(getActivity(),arrayList);
 
         return view;
     }
 
-}
+    private void getservices() {
+        Ion.with(getContext())
+                .load("http://www.gbiconnect.com/walletbabaservices/getServiceProviders")
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+
+                        try {
+                            JSONObject jSONObject = new JSONObject(result);
+                            int status = jSONObject.getInt("status");
+                            if (status == 1) {
+                                JSONArray array = jSONObject.getJSONArray("serviceProviderList");
+                                for(int i =0;i<array.length();i++){
+                                    JSONObject j = array.getJSONObject(i);
+                                    ServicesCommonClass servicesCommonClass = new ServicesCommonClass();
+                                    if(j.has("id")){
+                                        servicesCommonClass.setId(j.getString("id"));
+                                    }
+                                    if(j.has("serviceName")){
+                                        servicesCommonClass.setServiceName(j.getString("serviceName"));
+                                    }
+                                    if(j.has("ownerName")){
+                                        servicesCommonClass.setOwnerName(j.getString("ownerName").toString());
+                                    }
+                                    if(j.has("serviceDesc")||!j.isNull("serviceDesc")){
+
+                                        servicesCommonClass.setServiceDesk(j.getString("serviceDesc"));
+                                    }
+                                    if(j.has("phone")){
+                                        servicesCommonClass.setPhone(j.getString("phone"));
+                                    }
+                                    if(j.has("pin")) {
+                                        servicesCommonClass.setPhone(j.getString("pin"));
+                                    }
+                                arrayList.add(servicesCommonClass);
+                                }
+                                serviceslistview.setAdapter(servicesLisrow);
+                            } else {
+
+                            }
+                        } catch (JSONException e1) {
+                            e1.printStackTrace();
+                        }
+                        serviceslistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View servicesview, int i, long l) {
+                                ServiceName = ((TextView)servicesview.findViewById(R.id.servicename)).getText().toString();
+                                OwnerName = ((TextView)servicesview.findViewById(R.id.ownername)).getText().toString();
+                                ServiceDesc = ((TextView)servicesview.findViewById(R.id.servicedesc)).getText().toString();
+                                Phone = ((TextView)servicesview.findViewById(R.id.phone)).getText().toString();
+                                 Intent singleservice = new Intent(getContext(), SingleServiceActivity.class);
+                                Bundle servicesbundle = new Bundle();
+                                servicesbundle.putString("ServiceName",ServiceName);
+                                servicesbundle.putString("OwnerName", OwnerName);
+                                servicesbundle.putString("ServiceDesc",ServiceDesc);
+                                servicesbundle.putString("PhoneNumber", Phone);
+                                singleservice.putExtras(servicesbundle);
+                                startActivity(singleservice);
+                            }
+                        });
+                    }
+
+                });
+    }
+    }

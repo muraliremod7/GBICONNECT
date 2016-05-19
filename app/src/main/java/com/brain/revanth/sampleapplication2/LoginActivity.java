@@ -150,9 +150,45 @@ public class LoginActivity extends AppCompatActivity {
         Getpin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String Forgot = forgotPin.getEditText().getText().toString();
+
+                forgotPin(Forgot);
 
             }
         });
+    }
+
+    private void forgotPin(String phone) {
+        Ion.with(getApplicationContext())
+                .load("http://www.gbiconnect.com/walletbabaservices/forgotpassword?phone="+phone)
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+                        if(e!= null){
+
+                        }else {
+
+                            try {
+                                JSONObject jSONObject = new JSONObject(result);
+                                int status = jSONObject.getInt("status");
+                                if (status == 1) {
+
+                                    alert.showAlertDialog(LoginActivity.this,"Your Pin Has Been Changed",false);
+                                } else {
+                                    JSONArray array = jSONObject.getJSONArray("errors");
+                                    JSONObject j = array.getJSONObject(0);
+                                    String error = j.getString("message");
+                                    if(pDialog.isShowing())
+                                        pDialog.dismiss();
+                                    alert.showAlertDialog(LoginActivity.this,error,false);
+                                }
+                            } catch (Exception ex) {
+                                ex.printStackTrace();
+                            }
+                        }
+                    }
+                });
     }
 
     public void showAlertDialog1(Context context, String title, String message, final Boolean status) {

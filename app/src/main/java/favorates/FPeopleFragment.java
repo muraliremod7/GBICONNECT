@@ -37,7 +37,7 @@ public class FPeopleFragment extends Fragment{
             };
             names = getResources().getStringArray(R.array.listview);
             service = getResources().getStringArray(R.array.services);
-            ListRow listRow = new ListRow(getActivity(), names, service, imageId);
+            ListRow listRow = new ListRow(getActivity(), names, service);
             listView.setAdapter(listRow);
             return view;
     }

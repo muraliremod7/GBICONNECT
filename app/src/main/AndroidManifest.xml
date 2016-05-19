@@ -96,18 +96,38 @@
         </activity>
         <activity
             android:name=".ComplaintsActivity"
-            android:parentActivityName=".HomeActivity"
-            >
+            android:parentActivityName=".HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomeActivity" />
         </activity>
-        <activity android:name="shedule.MyteamActivity"
+        <activity
+            android:name="shedule.MyteamActivity"
             android:parentActivityName="shedule.SheduleActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="shedule.SheduleActivity" /></activity>
+                android:value="shedule.SheduleActivity" />
+        </activity>
+        <activity
+            android:name="discover.SinglePeopleActivity"
+            android:parentActivityName="discover.DiscoveriActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="discover.DiscoveriActivity" />
+        </activity>
+        <activity
+            android:name="shedule.SingleEventActivity"
+            android:parentActivityName="shedule.EventsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="shedule.EventsActivity" />
+        </activity>
+        <activity android:name="discover.SingleServiceActivity"
+            android:parentActivityName=".HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" /></activity>
     </application>
 
 </manifest>

@@ -4,8 +4,9 @@
     <color name="colorPrimaryDark">#262451</color>
     <color name="TIPColor">#FFFFFF</color>
     <color name="textColorPrimary">#FFFFFF</color>
-    <color name="windowBackground">#FFFFFF</color>
+    <color name="windowBackground">#CCCCCC</color>
     <color name="colorAcent">#F2744A</color>
     <color name="TextColorHint">#FFFFFF</color>
     <color name="Tabbackgroundcolor">#F2744A</color>
+    <color name="light_grey">#cccccc</color>
 </resources>

@@ -3,26 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/TextColorHint"
-    tools:context="discover.SingleServiceFragment">
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:id="@+id/singleevent">
     <android.support.v7.widget.Toolbar
         android:id="@+id/myteamtoolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         app:layout_scrollFlags="scroll|enterAlways"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/backbutton"
-            android:src="@drawable/ic_keyboard_backspace_white_24dp"/>
-    </android.support.v7.widget.Toolbar>
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
     <TextView
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="OwnerName :"
+        android:text="EventName :"
         android:layout_marginTop="10dp"
         android:id="@+id/textView41"
         android:layout_marginLeft="30dp"
@@ -35,8 +30,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Ownername"
-        android:id="@+id/ownername"
+        android:text="eventname"
+        android:id="@+id/eventname"
         android:layout_alignTop="@+id/textView41"
         android:layout_toRightOf="@+id/textView41"
         android:layout_toEndOf="@+id/textView41" />
@@ -45,7 +40,7 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Phone Number :"
+        android:text="Location :"
         android:layout_marginTop="10dp"
         android:id="@+id/textView42"
         android:layout_below="@+id/textView41"
@@ -56,8 +51,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Phonenumber"
-        android:id="@+id/ownerphone"
+        android:text="India"
+        android:id="@+id/eventlocation"
         android:layout_alignTop="@+id/textView42"
         android:layout_toRightOf="@+id/textView42"
         android:layout_toEndOf="@+id/textView42" />
@@ -66,7 +61,7 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Service Details:"
+        android:text="Date :"
         android:layout_marginTop="10dp"
         android:id="@+id/textView43"
         android:layout_below="@+id/textView42"
@@ -77,10 +72,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Working For Hari Prahlad technologies"
-        android:id="@+id/oservice"
+        android:text="efrom"
+        android:id="@+id/eventdate"
         android:layout_alignTop="@+id/textView43"
         android:layout_toRightOf="@+id/textView43"
         android:layout_toEndOf="@+id/textView43" />
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="+ Join Event"
+        android:textStyle="bold"
+        android:layout_marginTop="51dp"
+        android:id="@+id/JointEvent"
+        android:layout_below="@+id/eventdate"
+        android:layout_toRightOf="@+id/eventlocation"
+        android:layout_toEndOf="@+id/eventlocation" />
 </RelativeLayout>

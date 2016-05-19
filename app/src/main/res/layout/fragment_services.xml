@@ -2,21 +2,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeActivity"
+    android:background="@color/TextColorHint"
     android:id="@+id/serviceslayout">
-
     <ListView
         android:id="@+id/serviceslist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:focusable="false"
-        android:clickable="false"/>
+        android:clickable="false"
+        android:layout_alignTop="@+id/servicescontainer" />
     <FrameLayout
         android:id="@+id/servicescontainer"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_alignParentTop="true"
-        >
+        android:layout_below="@+id/myteamtoolbar">
 
         </FrameLayout>
 </RelativeLayout>
