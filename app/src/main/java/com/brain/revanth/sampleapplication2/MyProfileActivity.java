@@ -62,9 +62,6 @@ public class MyProfileActivity extends AppCompatActivity {
                             return true;
                         }
                     });
-                    findViewById(R.id.myprofile).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
                             View editprofileLayout = findViewById(R.id.editprofileLayout);
                             editprofileLayout.setAnimation(AnimationUtils.makeInChildBottomAnimation(getApplicationContext()));
                             editprofileLayout.setVisibility(View.VISIBLE);
@@ -74,8 +71,6 @@ public class MyProfileActivity extends AppCompatActivity {
                                     findViewById(R.id.profilelayout).setVisibility(View.GONE);
                                 }
                             }, 500);
-                        }
-                    });
 
 
                 }catch (NullPointerException e){

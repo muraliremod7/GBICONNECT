@@ -1,4 +1,4 @@
-package discover;
+package Model;
 
 /**
  * Created by Hari Prahlad on 15-05-2016.

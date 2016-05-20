@@ -22,8 +22,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import shedule.EventCommonClass;
-
 public class MyideasActivity extends AppCompatActivity {
     ListView idealistview;
     EditText Ideaname,IdeaDescription;
@@ -123,9 +121,6 @@ public class MyideasActivity extends AppCompatActivity {
                             return true;
                         }
                     });
-                    findViewById(R.id.myidea).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
                             View editprofileLayout = findViewById(R.id.updateideadlayout);
                             editprofileLayout.setAnimation(AnimationUtils.makeInChildBottomAnimation(getApplicationContext()));
                             editprofileLayout.setVisibility(View.VISIBLE);
@@ -135,9 +130,6 @@ public class MyideasActivity extends AppCompatActivity {
                                     findViewById(R.id.newideaslayout).setVisibility(View.GONE);
                                 }
                             }, 500);
-                        }
-                    });
-
 
                 }catch (NullPointerException e){
 

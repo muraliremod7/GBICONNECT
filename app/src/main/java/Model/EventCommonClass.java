@@ -1,4 +1,4 @@
-package shedule;
+package Model;
 
 /**
  * Created by Hari Prahlad on 17-05-2016.

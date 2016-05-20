@@ -13,6 +13,8 @@ import com.brain.revanth.sampleapplication2.R;
 
 import java.util.List;
 
+import Model.ServicesCommonClass;
+
 
 /**
  * Created by Hari Prahlad on 07-05-2016.

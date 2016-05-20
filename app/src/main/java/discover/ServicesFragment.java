@@ -21,6 +21,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import Model.ServicesCommonClass;
+
 
 public class ServicesFragment extends Fragment{
 
