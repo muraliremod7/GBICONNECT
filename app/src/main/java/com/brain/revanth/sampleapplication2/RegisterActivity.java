@@ -147,7 +147,7 @@ public class RegisterActivity extends AppCompatActivity {
                     break;
                 case R.id.next:
                     if( Name.length() == 0) {
-                        alert.showAlertDialog(RegisterActivity.this,"Enter Your Name",false);
+                        alert.showAlertDialog(RegisterActivity.this,"Enter Lead  Name",false);
                     }
                     else if(PhoneNumber.length() == 0){
                         alert.showAlertDialog(RegisterActivity.this,"Enter Must be a Phone Number",false);

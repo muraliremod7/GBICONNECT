@@ -76,7 +76,7 @@ public class ServicesFragment extends Fragment{
                                         servicesCommonClass.setPhone(j.getString("phone"));
                                     }
                                     if(j.has("pin")) {
-                                        servicesCommonClass.setPhone(j.getString("pin"));
+                                        servicesCommonClass.setPin(j.getString("pin"));
                                     }
                                 arrayList.add(servicesCommonClass);
                                 }

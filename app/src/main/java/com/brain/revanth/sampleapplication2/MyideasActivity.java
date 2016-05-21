@@ -1,5 +1,6 @@
 package com.brain.revanth.sampleapplication2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -38,10 +39,6 @@ public class MyideasActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Ideaname = (EditText)findViewById(R.id.newidea);
-        IdeaDescription = (EditText)findViewById(R.id.newideadesc);
-        submitidea = (Button)findViewById(R.id.newideasubmit);
-
         idealistview = (ListView)findViewById(R.id.ideaslistview);
 
         Ion.with(getApplicationContext())
@@ -72,33 +69,6 @@ public class MyideasActivity extends AppCompatActivity {
 
                     }
                 });
-        submitidea.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String NewIdea = Ideaname.getText().toString();
-                String NewIdeaDesc = IdeaDescription.getText().toString();
-                updateIdea();
-            }
-        });
-
-        findViewById(R.id.newideasubmit).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                View forgotLayout = findViewById(R.id.updateideadlayout);
-                //forgotLayout.setAnimation(AnimationUtils.makeInChildBottomAnimation(getApplicationContext()));
-                forgotLayout.setVisibility(View.GONE);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        findViewById(R.id.newideaslayout).setVisibility(View.VISIBLE);
-                    }
-                }, 200);
-            }
-        });
-    }
-
-    private void updateIdea() {
-
     }
 
     @Override
@@ -114,26 +84,8 @@ public class MyideasActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.myidea:
-                try{
-                    findViewById(R.id.myideasprogresslayout).setOnTouchListener(new View.OnTouchListener() {
-                        @Override
-                        public boolean onTouch(View v, MotionEvent event) {
-                            return true;
-                        }
-                    });
-                            View editprofileLayout = findViewById(R.id.updateideadlayout);
-                            editprofileLayout.setAnimation(AnimationUtils.makeInChildBottomAnimation(getApplicationContext()));
-                            editprofileLayout.setVisibility(View.VISIBLE);
-                            new Handler().postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    findViewById(R.id.newideaslayout).setVisibility(View.GONE);
-                                }
-                            }, 500);
-
-                }catch (NullPointerException e){
-
-                }
+                    Intent newideaintent = new Intent(MyideasActivity.this,NewIdeaActivity.class);
+                    startActivity(newideaintent);
                 return true;
             default:
                 // If we got here, the user's action was not recognized.

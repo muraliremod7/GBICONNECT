@@ -16,13 +16,14 @@ public class SingleServiceActivity extends AppCompatActivity {
     private Toolbar toolbar;
     TextView ownername,servicename, ownerphone,servicedesc;
     public Bundle getBundle;
-
+    ServicesFragment servicesFragment = new ServicesFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_service);
-        toolbar = (Toolbar) findViewById(R.id.servicetoolbar);
+        toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
         setSupportActionBar(toolbar);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         servicename = (TextView)findViewById(R.id.serviceNAme);
         ownername = (TextView)findViewById(R.id.ownerNAme);

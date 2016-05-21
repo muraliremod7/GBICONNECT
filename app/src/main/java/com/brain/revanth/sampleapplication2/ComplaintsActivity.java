@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import Model.AlertDialogManager;
+
 public class ComplaintsActivity extends AppCompatActivity {
     private Toolbar toolbar;
     Spinner comspinner;
@@ -29,6 +31,7 @@ public class ComplaintsActivity extends AppCompatActivity {
     String memberCom,comdesc;
     JSONObject jsonobject;
     ArrayList<String> arrayList = new ArrayList<String>();
+    AlertDialogManager dialogManager = new AlertDialogManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,14 +90,29 @@ public class ComplaintsActivity extends AppCompatActivity {
                 });
     }
 
-    public void createComplaint(String memberCom,String comdesc) {
+    public void createComplaint(String toTeam,String Message) {
         Ion.with(getApplicationContext())
-                .load(" http://www.gbiconnect.com/walletbabaservices/createComplaint")
+                .load("http://www.gbiconnect.com/walletbabaservices/createComplaint?toTeam"+toTeam+"&Message="+Message)
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
+                        try {
+                            JSONObject jSONObject = new JSONObject(result);
+                            int status = jSONObject.getInt("status");
+                            if (status == 1) {
+                                JSONObject object = jSONObject.getJSONObject("complaint");
 
+                                    String Status = object.getString("status");
+
+                        dialogManager.showAlertDialog(ComplaintsActivity.this,Status,false);
+
+                            } else {
+
+                            }
+                        } catch (JSONException e1) {
+                            e1.printStackTrace();
+                        }
 
 
                     }

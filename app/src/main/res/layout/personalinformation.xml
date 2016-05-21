@@ -39,7 +39,7 @@
         android:layout_below="@+id/uploadimage"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:hint="Enter Your Name"
+        android:hint="Enter Lead Name"
         android:layout_marginTop="10dp"
         android:inputType="textPersonName" >
     </EditText>

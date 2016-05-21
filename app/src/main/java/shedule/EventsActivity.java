@@ -78,6 +78,9 @@ public class EventsActivity extends AppCompatActivity {
         String EventLocationn = neweventlocation.getText().toString();
         String EventDatee = neweventdate.getText().toString();
         String EventDayss = neweventdays.getSelectedItem().toString();
+        if(EventDatee==null||EventLocationn==null||EventNamee==null){
+            alert.showAlertDialog(EventsActivity.this,"Please Enter The Fields",false);
+        }
         Ion.with(EventsActivity.this)
                 .load("http://www.gbiconnect.com/walletbabaservices/createEvent?eventName="+EventNamee+"&eventLocation="+EventLocationn+"&eventDate="+EventDatee+"&noOfDays="+EventDayss)
                 .asString()
