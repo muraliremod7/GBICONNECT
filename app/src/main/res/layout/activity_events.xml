@@ -26,20 +26,23 @@
         android:layout_height="match_parent"
         android:id="@+id/neweventlayout"
         android:background="@color/colorPrimary"
-        android:visibility="gone">
+        android:layout_below="@+id/appbar"
+        android:visibility="gone"
+        >
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="10dp"
+            android:layout_height="50dp"
             android:background="@color/colorPrimary">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageView6"
+                android:id="@+id/closeForgotinevents"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="5dp" />
+                android:layout_marginRight="5dp"
+                />
 
         </RelativeLayout>
 
@@ -110,7 +113,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/eventlayout"
-        android:layout_below="@+id/appbar">
+        android:layout_below="@+id/appbar"
+        >
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

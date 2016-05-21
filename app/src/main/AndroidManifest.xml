@@ -127,8 +127,14 @@
             android:parentActivityName=".HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeActivity" /></activity>
-        <activity android:name=".NewIdeaActivity"></activity>
+                android:value=".HomeActivity" />
+        </activity>
+        <activity android:name=".NewIdeaActivity"
+            android:parentActivityName=".MyideasActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MyideasActivity" />
+        </activity>
     </application>
 
 </manifest>

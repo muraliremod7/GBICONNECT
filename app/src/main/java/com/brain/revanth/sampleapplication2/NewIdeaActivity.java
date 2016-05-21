@@ -38,9 +38,9 @@ public class NewIdeaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_idea);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ni = new NewIdeaFragment();
         nqone = new NewIdeaQuestionOne();
         nqtwo = new NewIdeaQuestionTwo();

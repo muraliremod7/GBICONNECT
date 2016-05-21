@@ -26,7 +26,8 @@ public class MyProfileActivity extends AppCompatActivity {
         epemail = (EditText)findViewById(R.id.epnewemail);
         epcompany = (EditText)findViewById(R.id.epcompany);
         epposition = (EditText)findViewById(R.id.epposition);
-        findViewById(R.id.profileiupdate).setOnClickListener(new View.OnClickListener() {
+
+        findViewById(R.id.closeForgotinmyprofile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 View forgotLayout = findViewById(R.id.editprofileLayout);
@@ -35,7 +36,8 @@ public class MyProfileActivity extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        findViewById(R.id.profilelayout).setVisibility(View.VISIBLE);
+                        findViewById(R.id.myprofilelayout).setVisibility(View.VISIBLE);
+                        findViewById(R.id.imagelayout).setVisibility(View.VISIBLE);
                     }
                 }, 200);
             }
@@ -56,19 +58,16 @@ public class MyProfileActivity extends AppCompatActivity {
             case R.id.myprofile:
 
                 try{
-                    findViewById(R.id.leaderboardLayout).setOnTouchListener(new View.OnTouchListener() {
-                        @Override
-                        public boolean onTouch(View v, MotionEvent event) {
-                            return true;
-                        }
-                    });
                             View editprofileLayout = findViewById(R.id.editprofileLayout);
                             editprofileLayout.setAnimation(AnimationUtils.makeInChildBottomAnimation(getApplicationContext()));
                             editprofileLayout.setVisibility(View.VISIBLE);
+                            View imagelayout = findViewById(R.id.imagelayout);
+                            imagelayout.setAnimation(AnimationUtils.makeInChildBottomAnimation(getApplicationContext()));
+                            imagelayout.setVisibility(View.INVISIBLE);
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    findViewById(R.id.profilelayout).setVisibility(View.GONE);
+                                    findViewById(R.id.myprofilelayout).setVisibility(View.GONE);
                                 }
                             }, 500);
 

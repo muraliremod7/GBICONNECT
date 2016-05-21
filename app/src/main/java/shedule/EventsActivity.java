@@ -70,6 +70,20 @@ public class EventsActivity extends AppCompatActivity {
 //
 //            }
 //        });
+        findViewById(R.id.closeForgotinevents).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                View forgotLayout = findViewById(R.id.neweventlayout);
+                //forgotLayout.setAnimation(AnimationUtils.makeInChildBottomAnimation(getApplicationContext()));
+                forgotLayout.setVisibility(View.GONE);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        findViewById(R.id.eventlayout).setVisibility(View.VISIBLE);
+                    }
+                }, 200);
+            }
+        });
         getEvents();
     }
 
