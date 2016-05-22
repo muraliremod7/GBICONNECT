@@ -127,13 +127,13 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 if( phone.length() == 0) {
-                    alert.showAlertDialog(LoginActivity.this,"Enter Must be Phone Number",false);
+                    alert.showAlertDialog(LoginActivity.this,"Enter Phone Number",false);
                 }
                 else if(phone.length()>10|| phone.length()<10){
                     alert.showAlertDialog(LoginActivity.this,"Enter corect Phone Number",false);
                 }
                 else if(pin.length() == 0){
-                    alert.showAlertDialog(LoginActivity.this,"Enter Must be PinNum Number",false);
+                    alert.showAlertDialog(LoginActivity.this,"Enter PinNum Number",false);
                 }
                 else if(pin.length()>4|| phone.length()<4){
                     alert.showAlertDialog(LoginActivity.this,"Enter Correct PinNum Number",false);

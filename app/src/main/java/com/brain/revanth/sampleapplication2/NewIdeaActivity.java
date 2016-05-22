@@ -33,7 +33,7 @@ public class NewIdeaActivity extends AppCompatActivity {
     Button Prev, Next, Submit;
     ArrayList<String> Questions = new ArrayList<String>();
     public String IdeaName, IdeaDescription;
-
+    String Questionsarraylist = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -166,15 +166,19 @@ public class NewIdeaActivity extends AppCompatActivity {
                     Questions.add(nqfive.qu24.getText().toString());
                     Questions.add(nqfive.qu25.getText().toString());
 
-                    CeateNewIdea(IdeaName,IdeaDescription,Questions);
+                    for (String s : Questions)
+                    {
+                        Questionsarraylist += s + "\t";
+                    }
+                    CeateNewIdea(IdeaName,IdeaDescription,Questionsarraylist);
 
             }
 
         }
     };
-    public void CeateNewIdea(String ideaName, String ideaDescription, ArrayList<String> questions){
+    public void CeateNewIdea(String ideaName, String ideaDescription, String questions){
         Ion.with(getApplicationContext())
-                .load("http://www.gbiconnect.com/walletbabaservices/createIdea?ideaname="+ideaName+"&ideadesc="+ideaDescription+"&answers=")
+                .load("http://www.gbiconnect.com/walletbabaservices/createIdea?ideaname="+ideaName+"&ideadesc="+ideaDescription+"&answers="+questions)
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override

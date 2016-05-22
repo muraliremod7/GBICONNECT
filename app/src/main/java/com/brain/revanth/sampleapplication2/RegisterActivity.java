@@ -44,6 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
     public String Name,PhoneNumber,Email,IdeaName,IdeaDescription,PinNum,ConPinNum,Teammembers;
     public static String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     ArrayList<String> Questions = new ArrayList<String>();
+    String Questionsarraylist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +68,11 @@ public class RegisterActivity extends AppCompatActivity {
         Submit.setVisibility(View.INVISIBLE);
         Next.setVisibility(View.VISIBLE);
 
+        //Coverting Array List To String Object........
+        for (String s : Questions)
+        {
+            Questionsarraylist += s + "\t";
+        }
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
@@ -206,15 +212,15 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                     else {
 
-                         registeruser(Name,PhoneNumber,Email,IdeaName,IdeaDescription,PinNum,Teammembers);
+                         registeruser(Name,PhoneNumber,Email,IdeaName,IdeaDescription,PinNum,Teammembers,Questionsarraylist);
                      }
             }
 
         }
     };
-    private void registeruser(String leadName, String phone, String email, String ideaName, String ideaDescription, String pinNum, String teammembers) {
+    private void registeruser(String leadName, String phone, String email, String ideaName, String ideaDescription, String pinNum, String teammembers,String answers) {
         Ion.with(getApplicationContext())
-                .load("GET","http://www.gbiconnect.com/walletbabaservices/createTeam?leadName="+leadName+"&phone="+phone+"&ideaName="+ideaName+"&description="+ideaDescription+"&email="+email+"&pin="+pinNum+"&teamMenbers="+teammembers)
+                .load("http://www.gbiconnect.com/walletbabaservices/createTeam?leadName="+leadName+"&phone="+phone+"&ideaName="+ideaName+"&description="+ideaDescription+"&email="+email+"&pin="+pinNum+"&teamMenbers="+teammembers+"&answers="+answers)
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
