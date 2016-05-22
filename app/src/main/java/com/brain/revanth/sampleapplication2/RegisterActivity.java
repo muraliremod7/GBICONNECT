@@ -156,14 +156,14 @@ public class RegisterActivity extends AppCompatActivity {
                         alert.showAlertDialog(RegisterActivity.this,"Enter Lead  Name",false);
                     }
                     else if(PhoneNumber.length() == 0){
-                        alert.showAlertDialog(RegisterActivity.this,"Enter Must be a Phone Number",false);
+                        alert.showAlertDialog(RegisterActivity.this,"Enter Phone Number",false);
                     }
                     else if(PhoneNumber.length()>10||PhoneNumber.length()<10){
                         alert.showAlertDialog(RegisterActivity.this,"Enter Correct Phone Number",false);
                     }
                     else if(Email.toString().length() == 0) {
 
-                        alert.showAlertDialog(RegisterActivity.this,"Enter Must be a Email Id",false);
+                        alert.showAlertDialog(RegisterActivity.this,"Enter a Email Id",false);
                     }
                     else if(Email.matches(emailPattern)){
                         viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
@@ -204,11 +204,11 @@ public class RegisterActivity extends AppCompatActivity {
 
                      if(PinNum.length()==0 || ConPinNum.length()==0 ){
 
-                        alert.showAlertDialog(RegisterActivity.this,"Enter Must be a PinNum Number",false);
+                        alert.showAlertDialog(RegisterActivity.this,"Enter PinNum Number",false);
                     }
                     else if(PinNum.length() >4 || PinNum.length() <4){
 
-                        alert.showAlertDialog(RegisterActivity.this,"Enter Correct PinNum Number",false);
+                        alert.showAlertDialog(RegisterActivity.this,"Enter 4 digit PinNum Number",false);
                     }
                     else {
 

@@ -97,19 +97,6 @@
         <item>Event 8</item>
         <item>Event 9</item>
     </string-array>
-    <string-array name="lbranks">
-        <item>3001</item>
-        <item>2001</item>
-        <item>1002</item>
-        <item>3001</item>
-        <item>2001</item>
-        <item>1002</item>
-        <item>3001</item>
-        <item>2001</item>
-        <item>1002</item>
-        <item>3001</item>
-        <item>2001</item>
-    </string-array>
     <string-array name="lbideanames">
         <item>Pyaaridulhan</item>
         <item>Glossy Trends</item>

@@ -29,7 +29,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.ledarboardtoolbar);
         setSupportActionBar(toolbar);
         listView = (ListView)findViewById(R.id.lblist);
 
