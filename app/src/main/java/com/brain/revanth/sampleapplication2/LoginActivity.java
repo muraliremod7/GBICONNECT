@@ -45,6 +45,8 @@ public class LoginActivity extends AppCompatActivity {
     ConnectionDetector cd;
     // Session Manager Class
     SessionManager session;
+    public static String registerationId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +62,8 @@ public class LoginActivity extends AppCompatActivity {
         forgotPin = (TextInputLayout)findViewById(R.id.forgotpin);
         login = (Button)findViewById(R.id.signin);
         Getpin = (Button)findViewById(R.id.request);
+
+
         if (!cd.isNetworkOn(getApplicationContext())) {
             // Internet Connection is Present
             // make HTTP requests
@@ -261,6 +265,8 @@ public class LoginActivity extends AppCompatActivity {
                                             if(pDialog.isShowing())
                                                 pDialog.dismiss();
                                             session.createLoginSession(phone,pin);
+                                            JSONObject object = jSONObject.getJSONObject("team");
+                                            registerationId = object.getString("id");
                                             Toast.makeText(getApplicationContext(), "Welcome To GBI Connect", Toast.LENGTH_LONG).show();
                                             Intent i = new Intent(LoginActivity.this, HomeActivity.class);
                                             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

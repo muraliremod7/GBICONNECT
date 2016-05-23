@@ -5,11 +5,24 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.brain.revanth.sampleapplication2.LoginActivity;
 import com.brain.revanth.sampleapplication2.R;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class NewMessageActivity extends AppCompatActivity {
     private Toolbar toolbar;
+    public Bundle getBundle;
+    EditText creatingmess;
+    String Id,Leadname;
+    LoginActivity loginActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,7 +30,50 @@ public class NewMessageActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        loginActivity = new LoginActivity();
+        creatingmess = (EditText)findViewById(R.id.chatting);
+
+        getBundle = this.getIntent().getExtras();
+        Id = getBundle.getString("ID");
+        Leadname = getBundle.getString("LEADNAME");
     }
+    public void createmessage(View view){
+        String FromId = loginActivity.registerationId;
+        String Message = creatingmess.getText().toString();
+        String Toid = Id;
+        CreateMessage(FromId,Message,Toid);
+    }
+
+    private void CreateMessage(String fromId, String message, String toid) {
+        Ion.with(getApplicationContext())
+                .load("GET","http://www.gbiconnect.com/walletbabaservices/sentMsgtoteam?fromId=" +fromId+ "&toId=" +toid+ "&message=" +message)
+//                     http://www.gbiconnect.com/walletbabaservices/sentMsgtoteam?fromId=15&toId=16&message=hii
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+                        if (e != null) {
+
+                        } else {
+
+                            try {
+                                JSONObject jsonObject = new JSONObject(result);
+                                int status = jsonObject.getInt("status");
+                                if (status == 1) {
+                                    JSONObject object = jsonObject.getJSONObject("message");
+                                    String Message = object.getString("meaasge");
+                                    Toast.makeText(NewMessageActivity.this, Message, Toast.LENGTH_LONG).show();
+                                } else {
+
+                                }
+                            } catch (JSONException ex) {
+                                ex.printStackTrace();
+                            }
+                        }
+                    }
+                });
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

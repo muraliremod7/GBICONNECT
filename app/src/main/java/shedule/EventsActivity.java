@@ -40,7 +40,6 @@ public class EventsActivity extends AppCompatActivity {
     private Toolbar toolbar;
     EditText neweventname,neweventlocation,neweventdate;
     String EventName,EventLocation,EventDate;
-    EventCommonClass eventCommonClass = new EventCommonClass();
     ArrayList<String> eventname = new ArrayList<>();
     private List<EventCommonClass> arrayList = new ArrayList<EventCommonClass>();
     Eventslistrow eventslist;

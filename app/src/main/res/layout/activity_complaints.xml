@@ -6,22 +6,30 @@
     android:background="@color/colorPrimary"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.brain.revanth.sampleapplication2.ComplaintsActivity">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:id="@+id/view2">
     <android.support.v7.widget.Toolbar
         android:id="@+id/myteamtoolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
+        android:background="@color/colorPrimary"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    </android.support.design.widget.AppBarLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="About User :"
+        android:text="About User  :"
         android:textColor="@color/TextColorHint"
         android:id="@+id/textView46"
-        android:layout_below="@+id/myteamtoolbar"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_below="@+id/view2"
+        android:layout_marginTop="30dp"
+        android:layout_alignLeft="@+id/complaintsmessage"
+        android:layout_alignStart="@+id/complaintsmessage" />
 
     <Spinner
         android:layout_width="fill_parent"
@@ -54,8 +62,9 @@
         android:background="@drawable/edittextstyle"
         android:id="@+id/complaintsmessage"
         android:layout_below="@+id/textView47"
-        android:layout_alignLeft="@+id/textView47"
-        android:layout_alignStart="@+id/textView47" />
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+     />
 
     <Button
         style="?android:attr/buttonStyleSmall"

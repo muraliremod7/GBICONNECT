@@ -45,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
     public static String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     ArrayList<String> Questions = new ArrayList<String>();
     String Questionsarraylist;
+    public static String registerationId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -233,6 +234,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 JSONObject jSONObject = new JSONObject(result);
                                 int status = jSONObject.getInt("status");
                                 if (status == 1) {
+                                    JSONObject object = jSONObject.getJSONObject("team");
+                                    registerationId = object.getString("id");
                                     Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
                                     startActivity(intent);
                                     finish();

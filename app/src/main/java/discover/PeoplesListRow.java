@@ -71,7 +71,7 @@ public class PeoplesListRow extends BaseAdapter {
         ideadesc.setText(peopleCommonClass.getIdeaDescription());
         phonenumber.setText(peopleCommonClass.getPhoneNumber());
 //        profilepict.setImageUrl(peopleCommonClass.getImage(), imageloader);
-       profilepic.setImageResource(R.drawable.ic_account_circle_black_36dp);
+       profilepic.setImageResource(R.drawable.user);
         return convertview;
     }
 }

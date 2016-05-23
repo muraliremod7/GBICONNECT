@@ -5,24 +5,24 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="chat.NewMessageActivity">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
     <android.support.v7.widget.Toolbar
         android:id="@+id/myteamtoolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorPrimary"
         app:layout_scrollFlags="scroll|enterAlways"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+</android.support.design.widget.AppBarLayout>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:id="@+id/chatting"
         android:paddingLeft="10dp"
-        android:textSize="25sp"
-        android:layout_marginBottom="5dp"
+        android:onClick="createmessage"
         android:background="@color/colorAcent"
         android:drawableRight="@drawable/arrow"
         android:layout_alignParentBottom="true"
