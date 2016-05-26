@@ -1,7 +1,9 @@
 package com.brain.revanth.sampleapplication2;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -29,8 +31,8 @@ public class MyProfileActivity extends AppCompatActivity {
     EditText epname,epphone,epemail,epcompany,epposition;
     AlertDialogManager alert;
     ArrayList<String> arrayList = new ArrayList<>();
-    LoginActivity loginActivity = new LoginActivity();
     TextView leadname,Phonenumb,IdeaName,IdeaDesc,teamMembers;
+    SharedPreferences teamID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +72,8 @@ public class MyProfileActivity extends AppCompatActivity {
     }
 
     private void getTeamProfile() {
-        String Id = loginActivity.registerationId;
+        teamID = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String Id = teamID.getString("teamid","0");
         Ion.with(getApplicationContext())
                 .load("http://www.gbiconnect.com/walletbabaservices/getTeamforProfile?teamId="+Id)
                 .asString()

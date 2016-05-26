@@ -5,8 +5,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -43,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     AlertDialogManager alert = new AlertDialogManager();
     // Connection detector class
     ConnectionDetector cd;
+    SharedPreferences.Editor editor;
     // Session Manager Class
     SessionManager session;
     public static String registerationId;
@@ -230,6 +233,7 @@ public class LoginActivity extends AppCompatActivity {
         // Showing Alert Message
         alertDialog.show();
     }
+
     public void timerDelayRemoveDialog(long time, final AlertDialog d){
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -267,6 +271,10 @@ public class LoginActivity extends AppCompatActivity {
                                             session.createLoginSession(phone,pin);
                                             JSONObject object = jSONObject.getJSONObject("team");
                                             registerationId = object.getString("id");
+                                            SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                                            editor = settings.edit();
+                                            editor.putString("teamid", registerationId);
+                                            editor.commit();
                                             Toast.makeText(getApplicationContext(), "Welcome To GBI Connect", Toast.LENGTH_LONG).show();
                                             Intent i = new Intent(LoginActivity.this, HomeActivity.class);
                                             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -14,6 +14,7 @@ import com.brain.revanth.sampleapplication2.R;
 
 public class SingleServiceActivity extends AppCompatActivity {
     private Toolbar toolbar;
+    String ServiceId;
     TextView ownername,servicename, ownerphone,servicedesc;
     public Bundle getBundle;
     ServicesFragment servicesFragment = new ServicesFragment();
@@ -30,6 +31,7 @@ public class SingleServiceActivity extends AppCompatActivity {
         ownerphone = (TextView)findViewById(R.id.ownerphonenumber);
         servicedesc = (TextView)findViewById(R.id.serviceDesc);
         getBundle = this.getIntent().getExtras();
+        ServiceId = getBundle.getString("Serviceid");
         String ServiceNamee = getBundle.getString("ServiceName");
         String OwnerName = getBundle.getString("OwnerName");
         String ServiceDescc = getBundle.getString("ServiceDesc");

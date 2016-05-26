@@ -127,8 +127,8 @@ public class NewIdeaActivity extends AppCompatActivity {
     public View.OnClickListener btnListener = new View.OnClickListener() {
         public void onClick(View v) {
 
-            IdeaName = ni.IN.getText().toString();
-            IdeaDescription = ni.ID.getText().toString();
+            IdeaName = ni.IN.getText().toString().replace(" ", "%20");
+            IdeaDescription = ni.ID.getText().toString().replace(" ", "%20");
 
 
             switch (v.getId()) {
@@ -140,31 +140,31 @@ public class NewIdeaActivity extends AppCompatActivity {
                     break;
                 case R.id.createnewIdea:
 
-                    Questions.add(nqone.qu1.getText().toString());
-                    Questions.add(nqone.qu2.getText().toString());
-                    Questions.add(nqone.qu3.getText().toString());
-                    Questions.add(nqone.qu4.getText().toString());
-                    Questions.add(nqone.qu5.getText().toString());
-                    Questions.add(nqtwo.qu6.getText().toString());
-                    Questions.add(nqtwo.qu7.getText().toString());
-                    Questions.add(nqtwo.qu8.getText().toString());
-                    Questions.add(nqtwo.qu9.getText().toString());
-                    Questions.add(nqtwo.qu10.getText().toString());
-                    Questions.add(nqthree.qu11.getText().toString());
-                    Questions.add(nqthree.qu12.getText().toString());
-                    Questions.add(nqthree.qu13.getText().toString());
-                    Questions.add(nqthree.qu14.getText().toString());
-                    Questions.add(nqthree.qu15.getText().toString());
-                    Questions.add(nqfour.qu16.getText().toString());
-                    Questions.add(nqfour.qu17.getText().toString());
-                    Questions.add(nqfour.qu18.getText().toString());
-                    Questions.add(nqfour.qu19.getText().toString());
-                    Questions.add(nqfour.qu20.getText().toString());
-                    Questions.add(nqfive.qu21.getText().toString());
-                    Questions.add(nqfive.qu22.getText().toString());
-                    Questions.add(nqfive.qu23.getText().toString());
-                    Questions.add(nqfive.qu24.getText().toString());
-                    Questions.add(nqfive.qu25.getText().toString());
+                    Questions.add(nqone.qu1.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqone.qu2.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqone.qu3.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqone.qu4.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqone.qu5.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqtwo.qu6.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqtwo.qu7.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqtwo.qu8.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqtwo.qu9.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqtwo.qu10.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqthree.qu11.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqthree.qu12.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqthree.qu13.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqthree.qu14.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqthree.qu15.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqfour.qu16.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqfour.qu17.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqfour.qu18.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqfour.qu19.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqfour.qu20.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqfive.qu21.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqfive.qu22.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqfive.qu23.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqfive.qu24.getText().toString().replace(" ", "%20"));
+                    Questions.add(nqfive.qu25.getText().toString().replace(" ", "%20"));
 
                     for (String s : Questions)
                     {

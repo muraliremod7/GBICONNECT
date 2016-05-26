@@ -31,6 +31,7 @@ public class HomeActivity extends AppCompatActivity{
     private Toolbar toolbar;
     LocalActivityManager localActivityManager;
     public static TabHost tabHost;
+    LoginActivity loginActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,7 @@ public class HomeActivity extends AppCompatActivity{
         localActivityManager = new LocalActivityManager(this,false);
         localActivityManager.dispatchCreate(savedInstanceState);
         session = new SessionManager(getApplicationContext());
+        loginActivity = new LoginActivity();
         if(session.checkLogin())
             finish();
         tabHost = (TabHost)findViewById(android.R.id.tabhost);

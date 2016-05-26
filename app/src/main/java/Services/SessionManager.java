@@ -34,14 +34,14 @@ public class SessionManager {
 	
 	// Email address (make variable public to access from outside)
 	public static final String KEY_PIN = "pin";
-	
+	public static String teamID;
 	// Constructor
 	public SessionManager(Context context){
 		this._context = context;
 		pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
 		editor = pref.edit();
 	}
-	
+
 	/**
 	 * Create login session
 	 * */

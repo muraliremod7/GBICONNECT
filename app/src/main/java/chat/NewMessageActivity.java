@@ -1,5 +1,8 @@
 package chat;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -9,7 +12,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.brain.revanth.sampleapplication2.LoginActivity;
 import com.brain.revanth.sampleapplication2.R;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
@@ -22,7 +24,7 @@ public class NewMessageActivity extends AppCompatActivity {
     public Bundle getBundle;
     EditText creatingmess;
     String Id,Leadname;
-    LoginActivity loginActivity;
+    SharedPreferences teamID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +32,6 @@ public class NewMessageActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        loginActivity = new LoginActivity();
         creatingmess = (EditText)findViewById(R.id.chatting);
 
         getBundle = this.getIntent().getExtras();
@@ -38,15 +39,12 @@ public class NewMessageActivity extends AppCompatActivity {
         Leadname = getBundle.getString("LEADNAME");
     }
     public void createmessage(View view){
-        String FromId = loginActivity.registerationId;
-        String Message = creatingmess.getText().toString();
+         teamID = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String FromId = teamID.getString("teamid","0");
+        String Message = creatingmess.getText().toString().replace(" ", "%20");
         String Toid = Id;
-        CreateMessage(FromId,Message,Toid);
-    }
-
-    private void CreateMessage(String fromId, String message, String toid) {
         Ion.with(getApplicationContext())
-                .load("GET","http://www.gbiconnect.com/walletbabaservices/sentMsgtoteam?fromId=" +fromId+ "&toId=" +toid+ "&message=" +message)
+                .load("GET","http://www.gbiconnect.com/walletbabaservices/sentMsgtoteam?fromId=" +FromId+ "&toId=" +Toid+ "&message=" +Message)
 //                     http://www.gbiconnect.com/walletbabaservices/sentMsgtoteam?fromId=15&toId=16&message=hii
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -72,6 +70,10 @@ public class NewMessageActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    private void CreateMessage(String fromId, String message, String toid) {
+
     }
 
     @Override

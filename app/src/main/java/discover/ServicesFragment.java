@@ -30,7 +30,7 @@ public class ServicesFragment extends Fragment{
     private List<ServicesCommonClass> arrayList = new ArrayList<ServicesCommonClass>();
     ServicesCommonClass service;
     ServicesLisrow servicesLisrow;
-    String ServiceName,ServiceDesc,OwnerName,Phone,Pin;
+    String ServiceId,ServiceName,ServiceDesc,OwnerName,Phone,Pin;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -90,12 +90,14 @@ public class ServicesFragment extends Fragment{
                         serviceslistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View servicesview, int i, long l) {
+                                ServiceId = ((TextView)servicesview.findViewById(R.id.serviceid)).getText().toString();
                                 ServiceName = ((TextView)servicesview.findViewById(R.id.servicename)).getText().toString();
                                 OwnerName = ((TextView)servicesview.findViewById(R.id.ownername)).getText().toString();
                                 ServiceDesc = ((TextView)servicesview.findViewById(R.id.servicedesc)).getText().toString();
                                 Phone = ((TextView)servicesview.findViewById(R.id.phone)).getText().toString();
                                  Intent singleservice = new Intent(getContext(), SingleServiceActivity.class);
                                 Bundle servicesbundle = new Bundle();
+                                servicesbundle.putString("Serviceid",ServiceId);
                                 servicesbundle.putString("ServiceName",ServiceName);
                                 servicesbundle.putString("OwnerName", OwnerName);
                                 servicesbundle.putString("ServiceDesc",ServiceDesc);

@@ -44,7 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
     public String Name,PhoneNumber,Email,IdeaName,IdeaDescription,PinNum,ConPinNum,Teammembers;
     public static String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     ArrayList<String> Questions = new ArrayList<String>();
-    String Questionsarraylist;
+    String Questionsarraylist = "";
     public static String registerationId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,12 +141,12 @@ public class RegisterActivity extends AppCompatActivity {
     }
     public View.OnClickListener btnListener = new View.OnClickListener() {
         public void onClick(View v) {
-            Name = PI.LN.getText().toString();
+            Name = PI.LN.getText().toString().replace(" ", "%20");
             PhoneNumber = PI.PN.getText().toString();
             Email = PI.EM.getText().toString();
-            IdeaName = PI.IN.getText().toString();
-            IdeaDescription = PI.ID.getText().toString();
-            Teammembers = PI.TM.getText().toString();
+            IdeaName = PI.IN.getText().toString().replace(" ", "%20");
+            IdeaDescription = PI.ID.getText().toString().replace(" ", "%20");
+            Teammembers = PI.TM.getText().toString().replace(" ", "%20");
 
             switch(v.getId()) {
                 case R.id.previous:
@@ -175,31 +175,31 @@ public class RegisterActivity extends AppCompatActivity {
                     break;
                 case R.id.submit:
 
-                    Questions.add(qone.qu1.getText().toString());
-                    Questions.add(qone.qu2.getText().toString());
-                    Questions.add(qone.qu3.getText().toString());
-                    Questions.add(qone.qu4.getText().toString());
-                    Questions.add(qone.qu5.getText().toString());
-                    Questions.add(qtwo.qu6.getText().toString());
-                    Questions.add(qtwo.qu7.getText().toString());
-                    Questions.add(qtwo.qu8.getText().toString());
-                    Questions.add(qtwo.qu9.getText().toString());
-                    Questions.add(qtwo.qu10.getText().toString());
-                    Questions.add(qthree.qu11.getText().toString());
-                    Questions.add(qthree.qu12.getText().toString());
-                    Questions.add(qthree.qu13.getText().toString());
-                    Questions.add(qthree.qu14.getText().toString());
-                    Questions.add(qthree.qu15.getText().toString());
-                    Questions.add(qfour.qu16.getText().toString());
-                    Questions.add(qfour.qu17.getText().toString());
-                    Questions.add(qfour.qu18.getText().toString());
-                    Questions.add(qfour.qu19.getText().toString());
-                    Questions.add(qfour.qu20.getText().toString());
-                    Questions.add(qfive.qu21.getText().toString());
-                    Questions.add(qfive.qu22.getText().toString());
-                    Questions.add(qfive.qu23.getText().toString());
-                    Questions.add(qfive.qu24.getText().toString());
-                    Questions.add(qfive.qu25.getText().toString());
+                    Questions.add(qone.qu1.getText().toString().replace(" ", "%20"));
+                    Questions.add(qone.qu2.getText().toString().replace(" ", "%20"));
+                    Questions.add(qone.qu3.getText().toString().replace(" ", "%20"));
+                    Questions.add(qone.qu4.getText().toString().replace(" ", "%20"));
+                    Questions.add(qone.qu5.getText().toString().replace(" ", "%20"));
+                    Questions.add(qtwo.qu6.getText().toString().replace(" ", "%20"));
+                    Questions.add(qtwo.qu7.getText().toString().replace(" ", "%20"));
+                    Questions.add(qtwo.qu8.getText().toString().replace(" ", "%20"));
+                    Questions.add(qtwo.qu9.getText().toString().replace(" ", "%20"));
+                    Questions.add(qtwo.qu10.getText().toString().replace(" ", "%20"));
+                    Questions.add(qthree.qu11.getText().toString().replace(" ", "%20"));
+                    Questions.add(qthree.qu12.getText().toString().replace(" ", "%20"));
+                    Questions.add(qthree.qu13.getText().toString().replace(" ", "%20"));
+                    Questions.add(qthree.qu14.getText().toString().replace(" ", "%20"));
+                    Questions.add(qthree.qu15.getText().toString().replace(" ", "%20"));
+                    Questions.add(qfour.qu16.getText().toString().replace(" ", "%20"));
+                    Questions.add(qfour.qu17.getText().toString().replace(" ", "%20"));
+                    Questions.add(qfour.qu18.getText().toString().replace(" ", "%20"));
+                    Questions.add(qfour.qu19.getText().toString().replace(" ", "%20"));
+                    Questions.add(qfour.qu20.getText().toString().replace(" ", "%20"));
+                    Questions.add(qfive.qu21.getText().toString().replace(" ", "%20"));
+                    Questions.add(qfive.qu22.getText().toString().replace(" ", "%20"));
+                    Questions.add(qfive.qu23.getText().toString().replace(" ", "%20"));
+                    Questions.add(qfive.qu24.getText().toString().replace(" ", "%20"));
+                    Questions.add(qfive.qu25.getText().toString().replace(" ", "%20"));
                     PinNum = qfive.PINNUM.getText().toString();
                     ConPinNum = qfive.COPNUM.getText().toString();
 
