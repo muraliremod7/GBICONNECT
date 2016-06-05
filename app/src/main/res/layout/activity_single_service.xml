@@ -99,4 +99,14 @@
         android:layout_alignTop="@+id/textView43"
         android:layout_toRightOf="@+id/textView43"
         android:layout_toEndOf="@+id/textView43" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="+ Join Request"
+        android:id="@+id/serviceprovidersendrequest"
+        android:layout_below="@+id/serviceDesc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
 </RelativeLayout>

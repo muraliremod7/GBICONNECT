@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:descendantFocusability="blocksDescendants">
-
+    <!-- Thumbnail Image -->
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -11,7 +11,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="17dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,10 +22,12 @@
         android:layout_gravity="center"
         android:text="List Text"
         android:textColor="@color/colorPrimary"
-        android:layout_marginLeft="10dp"
-        android:layout_alignTop="@+id/Profilepicture"
+        android:layout_marginLeft="21dp"
+        android:layout_marginStart="21dp"
+        android:layout_alignBottom="@+id/Profilepicture"
         android:layout_toRightOf="@+id/Profilepicture"
-        android:layout_toEndOf="@+id/Profilepicture" />
+        android:layout_toEndOf="@+id/Profilepicture"
+        android:layout_marginBottom="15dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,11 +46,12 @@
         android:layout_height="40dp"
         android:id="@+id/ratingBar"
         android:numStars="1"
-        android:layout_marginRight="35dp"
-        android:layout_marginEnd="35dp"
-        android:layout_alignBottom="@+id/Profilepicture"
+        android:layout_marginRight="38dp"
+        android:layout_marginEnd="38dp"
+        android:layout_alignTop="@+id/Profilepicture"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/Profilepicture" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -71,5 +75,15 @@
         android:layout_alignTop="@+id/IdeaName"
         android:layout_alignLeft="@+id/IdeaName"
         android:layout_alignStart="@+id/IdeaName"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/ProfileEmail"
+        android:layout_alignBottom="@+id/IdeaName"
+        android:layout_toRightOf="@+id/Ideadesc"
+        android:layout_toEndOf="@+id/Ideadesc"
         android:visibility="invisible"/>
 </RelativeLayout>

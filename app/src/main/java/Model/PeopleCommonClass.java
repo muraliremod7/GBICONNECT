@@ -11,15 +11,18 @@ public class PeopleCommonClass {
     private String IdeaName;
     private String IdeaDescription;
     private String PhoneNumber;
+
+    private String Email;
     public PeopleCommonClass(){
 
     }
-    public PeopleCommonClass(String Name,String Image,String Ideaname,String IdeaDesc,String Phonenumber) {
+    public PeopleCommonClass(String Name,String Image,String Ideaname,String IdeaDesc,String Phonenumber,String Email) {
         this.Name = Name;
         this.Image = Image;
         this.IdeaName = Ideaname;
         this.IdeaDescription = IdeaDesc;
         this.PhoneNumber = Phonenumber;
+        this.Email = Email;
     }
     public  String getName() {
         return Name;
@@ -56,5 +59,13 @@ public class PeopleCommonClass {
     }
     public void setPhoneNumber(String PhoneNumber){
         this.PhoneNumber = PhoneNumber;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
     }
 }

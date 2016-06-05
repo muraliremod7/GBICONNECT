@@ -3,6 +3,9 @@ package discover;
 
 import android.support.design.widget.TabLayout;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +21,7 @@ public class DiscoveriActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager disviewPager;
+    public static int int_items = 3 ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,43 +29,16 @@ public class DiscoveriActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
         setSupportActionBar(toolbar);
         disviewPager = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(disviewPager);
-
         tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(disviewPager);
-    }
 
-    private void setupViewPager(ViewPager viewPager) {
+        disviewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
+        tabLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                tabLayout.setupWithViewPager(disviewPager);
+            }
+        });
 
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new PeopleFragment(), "PEOPLE");
-        adapter.addFragment(new MentorsFragment(), "Mentors");
-        adapter.addFragment(new ServicesFragment(), "Service Providers");
-        viewPager.setAdapter(adapter);
-
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-
-            case R.id.search:
-
-                return true;
-
-            default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
-                return super.onOptionsItemSelected(item);
-
-        }
     }
     @Override
     public void onBackPressed() {
@@ -69,6 +46,52 @@ public class DiscoveriActivity extends AppCompatActivity {
             getFragmentManager().popBackStack();
         } else {
             super.onBackPressed();
+        }
+    }
+    class MyAdapter extends FragmentStatePagerAdapter {
+
+        public MyAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        /**
+         * Return fragment with respect to Position .
+         */
+
+        @Override
+        public Fragment getItem(int position)
+        {
+            switch (position){
+                case 0 : return new PeopleFragment();
+                case 1 : return new MentorsFragment();
+                case 2 : return new ServicesFragment();
+            }
+            return null;
+        }
+
+        @Override
+        public int getCount() {
+
+            return int_items;
+
+        }
+
+        /**
+         * This method returns the title of the tab according to the position.
+         */
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+
+            switch (position){
+                case 0 :
+                    return "Peoples";
+                case 1 :
+                    return "Mentors";
+                case 2 :
+                    return "Service Providers";
+            }
+            return null;
         }
     }
 }

@@ -1,6 +1,7 @@
 package discover;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -28,7 +29,8 @@ public class PeopleFragment extends Fragment {
     private List<PeopleCommonClass> arrayList = new ArrayList<PeopleCommonClass>();
     PeopleCommonClass peopleCommonClass;
     PeoplesListRow peoplesListRow;
-    String Profilename,IdeaName,IdeaDesc,PhoneNum;
+    String Profilename,IdeaName,IdeaDesc,PhoneNum,Email;
+    JSONArray array;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,7 +54,7 @@ public class PeopleFragment extends Fragment {
                             JSONObject jSONObject = new JSONObject(result);
                             int status = jSONObject.getInt("status");
                             if (status == 1) {
-                                JSONArray array = jSONObject.getJSONArray("teams");
+                                array = jSONObject.getJSONArray("teams");
                                 for(int i =0;i<array.length();i++){
                                     JSONObject j = array.getJSONObject(i);
                                     PeopleCommonClass peopleCommonClass = new PeopleCommonClass();
@@ -71,15 +73,22 @@ public class PeopleFragment extends Fragment {
                                     if(j.has("phone")){
                                         peopleCommonClass.setPhoneNumber(j.getString("phone"));
                                     }
+                                    if(j.has("email")){
+                                        peopleCommonClass.setEmail(j.getString("email"));
+                                    }
                                     arrayList.add(peopleCommonClass);
                                 }
                                     listView.setAdapter(peoplesListRow);
+
                             } else {
 
                             }
+
                         } catch (JSONException e1) {
                             e1.printStackTrace();
                         }
+                        peoplesListRow.imageLoader.clearCache();
+                        peoplesListRow.notifyDataSetChanged();
                         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -87,12 +96,14 @@ public class PeopleFragment extends Fragment {
                             IdeaName = ((TextView)view.findViewById(R.id.IdeaName)).getText().toString();
                             IdeaDesc = ((TextView)view.findViewById(R.id.Ideadesc)).getText().toString();
                             PhoneNum = ((TextView)view.findViewById(R.id.phonenumber)).getText().toString();
+                                Email = ((TextView)view.findViewById(R.id.ProfileEmail)).getText().toString();
                                 Intent singlpeople = new Intent(getActivity(), SinglePeopleActivity.class);
                                 Bundle peoplessbundle = new Bundle();
                                 peoplessbundle.putString("ProfileName", Profilename);
                                 peoplessbundle.putString("IdeaName", IdeaName);
                                 peoplessbundle.putString("IdeaDesc", IdeaDesc);
                                 peoplessbundle.putString("PhoneNumber",PhoneNum);
+                                peoplessbundle.putString("Email",Email);
                                 singlpeople.putExtras(peoplessbundle);
                                 startActivity(singlpeople);
                             }

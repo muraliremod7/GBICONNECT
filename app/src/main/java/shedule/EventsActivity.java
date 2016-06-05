@@ -39,7 +39,7 @@ public class EventsActivity extends AppCompatActivity {
     ListView eventlistView;
     private Toolbar toolbar;
     EditText neweventname,neweventlocation,neweventdate;
-    String EventName,EventLocation,EventDate;
+    String EventId,EventName,EventLocation,EventDate;
     ArrayList<String> eventname = new ArrayList<>();
     private List<EventCommonClass> arrayList = new ArrayList<EventCommonClass>();
     Eventslistrow eventslist;
@@ -87,8 +87,8 @@ public class EventsActivity extends AppCompatActivity {
     }
 
     public void createEvent(View view) {
-        String EventNamee = neweventname.getText().toString();
-        String EventLocationn = neweventlocation.getText().toString();
+        String EventNamee = neweventname.getText().toString().replace(" ", "%20");
+        String EventLocationn = neweventlocation.getText().toString().replace(" ", "%20");
         String EventDatee = neweventdate.getText().toString();
         String EventDayss = neweventdays.getSelectedItem().toString();
         if(EventDatee==null||EventLocationn==null||EventNamee==null){
@@ -147,6 +147,7 @@ public class EventsActivity extends AppCompatActivity {
                                     JSONObject j = array.getJSONObject(i);
                                     EventCommonClass event  = new EventCommonClass();
                                     String eventName = j.getString("eventName");
+                                    event.setEventId(j.getString("id"));
                                     event.setEventName(eventName);
                                     event.setEventLocation(j.getString("eventLocation"));
                                     event.setEventDate(j.getString("eventDate"));
@@ -167,11 +168,13 @@ public class EventsActivity extends AppCompatActivity {
         eventlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                EventId = ((TextView)view.findViewById(R.id.eventid)).getText().toString();
                 EventName = ((TextView)view.findViewById(R.id.eventname)).getText().toString();
                 EventDate = ((TextView)view.findViewById(R.id.eventdate)).getText().toString();
                 EventLocation = ((TextView)view.findViewById(R.id.eventLocation)).getText().toString();
                 Intent singlevent = new Intent(getApplicationContext(), SingleEventActivity.class);
                 Bundle servicesbundle = new Bundle();
+                servicesbundle.putString("EventId",EventId);
                 servicesbundle.putString("EventName", EventName);
                 servicesbundle.putString("EventDate", EventDate);
                 servicesbundle.putString("EventLocation", EventLocation);

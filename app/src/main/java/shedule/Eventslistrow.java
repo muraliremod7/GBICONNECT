@@ -19,7 +19,7 @@ import Model.EventCommonClass;
  * Created by Hari Prahlad on 07-05-2016.
  */
 public class Eventslistrow extends BaseAdapter {
-    TextView eventname,date,eventLocation;
+    TextView eventname,date,eventLocation,eventid;
     private final Activity activity;
     public List<EventCommonClass> eventslist;
     public Eventslistrow(Activity activity, List<EventCommonClass> eventslist) {
@@ -47,11 +47,13 @@ public class Eventslistrow extends BaseAdapter {
         if (inflater == null)
             inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertview= inflater.inflate(R.layout.eventslistrow, null, true);
+        eventid = (TextView)convertview.findViewById(R.id.eventid);
         eventname = (TextView) convertview.findViewById(R.id.eventname);
         date = (TextView) convertview.findViewById(R.id.eventdate);
         eventLocation = (TextView)convertview.findViewById(R.id.eventLocation);
 
         EventCommonClass eventCommonClass = (EventCommonClass) getItem(position);
+        eventid.setText(eventCommonClass.getEventId());
         eventname.setText(eventCommonClass.getEventName());
         date.setText(eventCommonClass.getEventDate());
         eventLocation.setText(eventCommonClass.getEventLocation());

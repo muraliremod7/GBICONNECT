@@ -9,14 +9,5 @@
         android:id="@+id/serviceslist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:focusable="false"
-        android:clickable="false"
-        android:layout_alignTop="@+id/servicescontainer" />
-    <FrameLayout
-        android:id="@+id/servicescontainer"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/myteamtoolbar">
-
-        </FrameLayout>
+        />
 </RelativeLayout>

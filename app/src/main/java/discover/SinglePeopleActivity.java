@@ -13,7 +13,7 @@ import org.w3c.dom.Text;
 
 public class SinglePeopleActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    TextView leadname,ideaname,phonenum,ideadesc;
+    TextView leadname,ideaname,phonenum,ideadesc,ProfileEmail;
     public Bundle getBundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,15 +26,18 @@ public class SinglePeopleActivity extends AppCompatActivity {
         ideaname = (TextView)findViewById(R.id.IdeaNamee);
         ideadesc = (TextView)findViewById(R.id.IdeaDescription);
         phonenum = (TextView)findViewById(R.id.Phonenumber);
+        ProfileEmail = (TextView)findViewById(R.id.profileEmail);
         getBundle = this.getIntent().getExtras();
         String Leadname = getBundle.getString("ProfileName");
         String ideaName = getBundle.getString("IdeaName");
         String ideaDesc = getBundle.getString("IdeaDesc");
         String Phone = getBundle.getString("PhoneNumber");
+        String Email = getBundle.getString("Email");
         leadname.setText(Leadname);
         ideaname.setText(ideaName);
         ideadesc.setText(ideaDesc);
         phonenum.setText(Phone);
+        ProfileEmail.setText(Email);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

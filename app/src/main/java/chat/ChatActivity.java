@@ -1,19 +1,25 @@
 package chat;
 
-import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.brain.revanth.sampleapplication2.ComplaintsActivity;
+import com.brain.revanth.sampleapplication2.MyProfileActivity;
+import com.brain.revanth.sampleapplication2.MyideasActivity;
 import com.brain.revanth.sampleapplication2.R;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
@@ -24,9 +30,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import Model.PeopleCommonClass;
-import discover.PeoplesListRow;
-import discover.SinglePeopleActivity;
+import Services.SessionManager;
 
 public class ChatActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -34,6 +38,7 @@ public class ChatActivity extends AppCompatActivity {
     String ID,LEADNAME;
     ArrayList<ChatCommonClass> arrayList = new ArrayList<ChatCommonClass>();
     Chatlistrow chatlistrow;
+    SessionManager sessionManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,10 +94,37 @@ public class ChatActivity extends AppCompatActivity {
 
                 });
     }
+    public void showAlertDialog1(Context context, String message, final Boolean status) {
+        final AlertDialog alertDialog = new AlertDialog.Builder(context,R.style.MyAlertDialogStyle).create();
+        // Setting Dialog Message
+        alertDialog.setMessage("Confirm Logout");
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int id) {
+                sessionManager.logoutUser();
+                finish();
+                return;
+
+            }
+        });
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int id) {
+                alertDialog.cancel();
+                return;
+            }
+        });
+        // Showing Alert Message
+        alertDialog.show();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.search));
+        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         return true;
     }
 
@@ -101,10 +133,21 @@ public class ChatActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
 
-            case R.id.search:
-
+            case R.id.logout:
+                showAlertDialog1(ChatActivity.this,"Confirm Logout",false);
                 return true;
-
+            case R.id.myprofile:
+                Intent myprofile = new Intent(ChatActivity.this,MyProfileActivity.class);
+                startActivity(myprofile);
+                return true;
+            case R.id.myideas:
+                Intent myideas = new Intent(ChatActivity.this,MyideasActivity.class);
+                startActivity(myideas);
+                return true;
+            case R.id.complaints:
+                Intent Complaints = new Intent(ChatActivity.this,ComplaintsActivity.class);
+                startActivity(Complaints);
+                return true;
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.

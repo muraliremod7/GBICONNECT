@@ -5,18 +5,26 @@ package Model;
  */
 public class EventCommonClass {
 
-
-
+    private String EventId;
     private String EventName;
     private String EventLocation;
     private String EventDate;
+
     public EventCommonClass(){
 
     }
-    public EventCommonClass(String EventName,String EventLocation,String EventDate) {
+    public EventCommonClass(String EventName,String EventLocation,String EventDate,String EventId) {
         this.EventName = EventName;
         this.EventLocation = EventLocation;
         this.EventDate = EventDate;
+        this.EventId = EventId;
+    }
+    public String getEventId() {
+        return EventId;
+    }
+
+    public void setEventId(String eventId) {
+        EventId = eventId;
     }
     public  String getEventName() {
         return EventName;

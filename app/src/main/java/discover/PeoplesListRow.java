@@ -10,8 +10,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
 import com.brain.revanth.sampleapplication2.R;
 
 import java.util.List;
@@ -23,17 +21,15 @@ import Model.PeopleCommonClass;
  * Created by Hari Prahlad on 07-05-2016.
  */
 public class PeoplesListRow extends BaseAdapter {
-    TextView names,ideaname,ideadesc,phonenumber;
+    TextView names,ideaname,ideadesc,phonenumber,email;
     ImageView profilepic;
-
+    public ImageLoader imageLoader;
     private final Activity activity;
-    ImageLoader imageloader;
     public List<PeopleCommonClass> peoplelist;
-    NetworkImageView profilepict;
     public PeoplesListRow(Activity activity,List<PeopleCommonClass> peoplelist) {
         this.activity = activity;
         this.peoplelist = peoplelist;
-//        imageloader = AppController.getInstance().getImageLoader();
+        imageLoader = new ImageLoader(activity.getApplicationContext());
     }
 
     @Override
@@ -57,21 +53,20 @@ public class PeoplesListRow extends BaseAdapter {
         if (inflater == null)
             inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertview= inflater.inflate(R.layout.peopleslistrow, null, true);
-//        if (imageloader == null)
-//            imageloader = AppController.getInstance().getImageLoader();
         names = (TextView) convertview.findViewById(R.id.ProfileName);
         profilepic = (ImageView)convertview.findViewById(R.id.Profilepicture);
-//        profilepict = (NetworkImageView) convertview.findViewById(R.id.Profilepicture);
         ideaname = (TextView)convertview.findViewById(R.id.IdeaName);
         ideadesc = (TextView)convertview.findViewById(R.id.Ideadesc);
         phonenumber = (TextView)convertview.findViewById(R.id.phonenumber);
+        email = (TextView)convertview.findViewById(R.id.ProfileEmail);
         PeopleCommonClass peopleCommonClass =(PeopleCommonClass)getItem(position);
         names.setText(peopleCommonClass.getName());
         ideaname.setText(peopleCommonClass.getIdeaName());
         ideadesc.setText(peopleCommonClass.getIdeaDescription());
         phonenumber.setText(peopleCommonClass.getPhoneNumber());
-//        profilepict.setImageUrl(peopleCommonClass.getImage(), imageloader);
-       profilepic.setImageResource(R.drawable.user);
+        email.setText(peopleCommonClass.getEmail());
+//       profilepic.setImageResource(peopleCommonClass.getImage());
+        imageLoader.DisplayImage(peopleCommonClass.getImage(),profilepic);
         return convertview;
     }
 }

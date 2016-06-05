@@ -127,8 +127,8 @@ public class NewIdeaActivity extends AppCompatActivity {
     public View.OnClickListener btnListener = new View.OnClickListener() {
         public void onClick(View v) {
 
-            IdeaName = ni.IN.getText().toString().replace(" ", "%20");
-            IdeaDescription = ni.ID.getText().toString().replace(" ", "%20");
+            IdeaName = ni.IN.getText().toString();
+            IdeaDescription = ni.ID.getText().toString();
 
 
             switch (v.getId()) {
