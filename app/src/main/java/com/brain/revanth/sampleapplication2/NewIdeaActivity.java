@@ -14,13 +14,13 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.ArrayList;
 
-import Model.ViewPagerAdapter;
-import NewIdeaFragments.NewIdeaFragment;
-import NewIdeaFragments.NewIdeaQuestionFive;
-import NewIdeaFragments.NewIdeaQuestionFour;
-import NewIdeaFragments.NewIdeaQuestionOne;
-import NewIdeaFragments.NewIdeaQuestionThree;
-import NewIdeaFragments.NewIdeaQuestionTwo;
+import com.brain.revanth.sampleapplication2.Model.ViewPagerAdapter;
+import com.brain.revanth.sampleapplication2.NewIdeaFragments.NewIdeaFragment;
+import com.brain.revanth.sampleapplication2.NewIdeaFragments.NewIdeaQuestionFive;
+import com.brain.revanth.sampleapplication2.NewIdeaFragments.NewIdeaQuestionFour;
+import com.brain.revanth.sampleapplication2.NewIdeaFragments.NewIdeaQuestionOne;
+import com.brain.revanth.sampleapplication2.NewIdeaFragments.NewIdeaQuestionThree;
+import com.brain.revanth.sampleapplication2.NewIdeaFragments.NewIdeaQuestionTwo;
 
 public class NewIdeaActivity extends AppCompatActivity {
     NewIdeaFragment ni;

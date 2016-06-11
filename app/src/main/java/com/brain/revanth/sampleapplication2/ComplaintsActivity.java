@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.koushikdutta.async.future.FutureCallback;
-import com.koushikdutta.async.util.HashList;
 import com.koushikdutta.ion.Ion;
 
 import org.json.JSONArray;
@@ -18,10 +17,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
-import Model.AlertDialogManager;
+import com.brain.revanth.sampleapplication2.Model.AlertDialogManager;
 
 public class ComplaintsActivity extends AppCompatActivity {
     private Toolbar toolbar;

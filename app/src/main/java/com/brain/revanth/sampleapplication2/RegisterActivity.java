@@ -20,14 +20,14 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import Fragments.PersonalInfromationFragment;
-import Fragments.QuestionFive;
-import Fragments.QuestionFour;
-import Fragments.QuestionOne;
-import Fragments.QuestionThree;
-import Fragments.QuestionTwo;
-import Model.AlertDialogManager;
-import Model.ViewPagerAdapter;
+import com.brain.revanth.sampleapplication2.Fragments.PersonalInfromationFragment;
+import com.brain.revanth.sampleapplication2.Fragments.QuestionFive;
+import com.brain.revanth.sampleapplication2.Fragments.QuestionFour;
+import com.brain.revanth.sampleapplication2.Fragments.QuestionOne;
+import com.brain.revanth.sampleapplication2.Fragments.QuestionThree;
+import com.brain.revanth.sampleapplication2.Fragments.QuestionTwo;
+import com.brain.revanth.sampleapplication2.Model.AlertDialogManager;
+import com.brain.revanth.sampleapplication2.Model.ViewPagerAdapter;
 
 
 public class RegisterActivity extends AppCompatActivity {

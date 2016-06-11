@@ -43,28 +43,28 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="chat.ChatActivity"
+            android:name=".chat.ChatActivity"
             android:label="Coversation" />
         <activity
-            android:name="discover.DiscoveriActivity"
+            android:name=".discover.DiscoveriActivity"
             android:label="Discover" />
         <activity
-            android:name="favorates.FavoritesActivity"
+            android:name=".favorates.FavoritesActivity"
             android:label="Favourites" />
         <activity
-            android:name="shedule.SheduleActivity"
+            android:name=".shedule.SheduleActivity"
             android:label="Events" />
         <activity
-            android:name="chat.NewMessageActivity"
+            android:name=".chat.NewMessageActivity"
             android:label="Conversation"
-            android:parentActivityName="chat.ChatActivity"
+            android:parentActivityName=".chat.ChatActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="chat.ChatActivity" />
+                android:value=".chat.ChatActivity" />
         </activity>
         <activity
-            android:name="leaderboard.LeaderBoardActivity"
+            android:name=".leaderboard.LeaderBoardActivity"
             android:label="@string/title_activity_more"
             android:theme="@style/AppTheme" />
         <activity
@@ -87,12 +87,12 @@
                 android:value=".HomeActivity" />
         </activity>
         <activity
-            android:name="shedule.EventsActivity"
-            android:parentActivityName="shedule.SheduleActivity"
+            android:name=".shedule.EventsActivity"
+            android:parentActivityName=".shedule.SheduleActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="shedule.SheduleActivity" />
+                android:value=".shedule.SheduleActivity" />
         </activity>
         <activity
             android:name=".ComplaintsActivity"
@@ -102,32 +102,28 @@
                 android:value=".HomeActivity" />
         </activity>
         <activity
-            android:name="shedule.MyteamActivity"
-            android:parentActivityName="shedule.SheduleActivity"
+            android:name=".shedule.MyteamActivity"
+            android:parentActivityName=".shedule.SheduleActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="shedule.SheduleActivity" />
+                android:value=".shedule.SheduleActivity" />
         </activity>
         <activity
-            android:name="discover.SinglePeopleActivity"
-            android:parentActivityName="discover.DiscoveriActivity">
+            android:name=".discover.SinglePeopleActivity"
+            android:parentActivityName=".discover.DiscoveriActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="discover.DiscoveriActivity" />
+                android:value=".discover.DiscoveriActivity" />
         </activity>
         <activity
-            android:name="shedule.SingleEventActivity"
-            android:parentActivityName="shedule.EventsActivity">
+            android:name=".shedule.SingleEventActivity"
+            android:parentActivityName=".shedule.EventsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="shedule.EventsActivity" />
+                android:value=".shedule.EventsActivity" />
         </activity>
-        <activity android:name="discover.SingleServiceActivity"
-            android:parentActivityName=".HomeActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeActivity" />
+        <activity android:name=".discover.SingleServiceActivity">
         </activity>
         <activity android:name=".NewIdeaActivity"
             android:parentActivityName=".MyideasActivity">

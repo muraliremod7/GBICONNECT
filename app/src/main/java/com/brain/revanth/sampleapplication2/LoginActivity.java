@@ -1,6 +1,6 @@
 package com.brain.revanth.sampleapplication2;
 
-import android.app.AlertDialog;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,8 +11,8 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,9 +31,9 @@ import com.koushikdutta.ion.Ion;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import Model.AlertDialogManager;
-import Services.ConnectionDetector;
-import Services.SessionManager;
+import com.brain.revanth.sampleapplication2.Model.AlertDialogManager;
+import com.brain.revanth.sampleapplication2.Services.ConnectionDetector;
+import com.brain.revanth.sampleapplication2.Services.SessionManager;
 
 public class LoginActivity extends AppCompatActivity {
     ImageView closebutton;
@@ -234,7 +234,7 @@ public class LoginActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    public void timerDelayRemoveDialog(long time, final AlertDialog d){
+    public void timerDelayRemoveDialog(long time, final ProgressDialog d){
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {

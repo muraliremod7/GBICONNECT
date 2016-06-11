@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeActivity"
-    android:id="@+id/serviceslayout">
+    android:id="@+id/serviceslayout"
+    android:background="@color/textColorPrimary">
     <ListView
         android:id="@+id/serviceslist"
         android:layout_width="match_parent"

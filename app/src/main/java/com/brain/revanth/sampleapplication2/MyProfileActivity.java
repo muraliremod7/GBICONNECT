@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
@@ -22,9 +21,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import Model.AlertDialogManager;
-import Model.MyprofileCommonClass;
-import shedule.MyteamActivity;
+import com.brain.revanth.sampleapplication2.Model.AlertDialogManager;
+import com.brain.revanth.sampleapplication2.Model.MyprofileCommonClass;
 
 public class MyProfileActivity extends AppCompatActivity {
     private Toolbar toolbar;

@@ -9,7 +9,7 @@ import android.preference.PreferenceManager;
 import android.os.Bundle;
 
 
-import Services.SessionManager;
+import com.brain.revanth.sampleapplication2.Services.SessionManager;
 
 public class SplashScreen extends Activity {
     private Handler handler = new Handler()
