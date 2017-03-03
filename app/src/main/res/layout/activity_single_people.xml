@@ -1,126 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".discover.SinglePeopleActivity">
-    <android.support.design.widget.AppBarLayout
+    tools:context=".discover.SinglePeopleActivity"
+    android:padding="10dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="LeadName  :"
+            android:id="@+id/textView"
+            style="@style/CodeFont"
+            android:textColor="@color/TextColorHint"
+            android:layout_below="@+id/appbar" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="leadname"
+            android:textColor="@color/TextColorHint"
+            android:id="@+id/Leadname"
+            style="@style/CodeFont" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/appbar"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="IdeaName  :"
+            android:textColor="@color/TextColorHint"
+            style="@style/CodeFont"
+            android:id="@+id/textView26" />
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/myteamtoolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="ideaname"
+            android:textColor="@color/TextColorHint"
+            style="@style/CodeFont"
+            android:id="@+id/IdeaNamee" />
+    </LinearLayout>
 
-    </android.support.design.widget.AppBarLayout>
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="20dp">
     <TextView
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="LeadName:"
-        android:id="@+id/textView"
-        android:layout_below="@+id/appbar"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="leadname"
-        android:id="@+id/Leadname"
-        android:layout_alignTop="@+id/textView"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView" />
-
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="IdeaName :"
-        android:id="@+id/textView26"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/textView"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="ideaname"
-        android:id="@+id/IdeaNamee"
-        android:layout_alignTop="@+id/textView26"
-        android:layout_toRightOf="@+id/textView26"
-        android:layout_toEndOf="@+id/textView26" />
-
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="PhoneNumber :"
-        android:layout_marginTop="5dp"
+        android:text="PhoneNum  :"
+        android:textColor="@color/TextColorHint"
         android:id="@+id/textView40"
-        android:layout_below="@+id/textView26"
-        android:layout_alignLeft="@+id/textView26"
-        android:layout_alignStart="@+id/textView26" />
+        style="@style/CodeFont"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="phonenum"
-        android:id="@+id/Phonenumber"
-        android:layout_alignTop="@+id/textView40"
-        android:layout_toRightOf="@+id/textView40"
-        android:layout_toEndOf="@+id/textView40" />
-
-    <TextView
-        android:layout_width="120dp"
+        android:textColor="@color/TextColorHint"
+        style="@style/CodeFont"
+        android:id="@+id/Phonenumber" />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="IdeaDescription :"
-        android:id="@+id/textView44"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/textView40"
-        android:layout_alignLeft="@+id/textView40"
-        android:layout_alignStart="@+id/textView40" />
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Email     :"
+            android:textColor="@color/TextColorHint"
+            android:id="@+id/email"
+            style="@style/CodeFont" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="ideadesc"
-        android:id="@+id/IdeaDescription"
-        android:layout_alignTop="@+id/textView44"
-        android:layout_toRightOf="@+id/textView44"
-        android:layout_toEndOf="@+id/textView44" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Email"
+            android:textColor="@color/TextColorHint"
+            style="@style/CodeFont"
+            android:id="@+id/profileEmail" />
+    </LinearLayout>
 
-    <TextView
-        android:layout_width="100dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Email :"
-        android:id="@+id/email"
-        android:layout_below="@+id/textView44"
-        android:layout_alignLeft="@+id/textView44"
-        android:layout_alignStart="@+id/textView44"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="IdeaDesc  :"
+            android:textColor="@color/TextColorHint"
+            android:id="@+id/textView44"
+            style="@style/CodeFont"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Email"
-        android:id="@+id/profileEmail"
-        android:layout_alignTop="@+id/email"
-        android:layout_toRightOf="@+id/email"
-        android:layout_toEndOf="@+id/email" />
-</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="ideadesc"
+            android:textColor="@color/TextColorHint"
+            android:id="@+id/IdeaDescription"
+            style="@style/CodeFont"/>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -3,7 +3,6 @@ package com.brain.revanth.sampleapplication2.discover;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,10 +38,10 @@ public class ServicesFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_services, container, false);
-        service = new ServicesCommonClass();
-        serviceslistview = (ListView) view.findViewById(R.id.serviceslist);
-            getservices();
-        servicesLisrow = new ServicesLisrow(getActivity(),arrayList);
+//        service = new ServicesCommonClass();
+//        serviceslistview = (ListView) view.findViewById(R.id.serviceslist);
+           // getservices();
+        //servicesLisrow = new ServicesLisrow(getActivity(),arrayList);
         return view;
     }
 
@@ -108,7 +107,7 @@ public class ServicesFragment extends Fragment{
                                 servicesbundle.putString("ServiceName",ServiceName);
                                 servicesbundle.putString("OwnerName", OwnerName);
                                 servicesbundle.putString("ServiceDesc",ServiceDesc);
-                                servicesbundle.putString("PhoneNumber", Phone);
+                                servicesbundle.putString("ideaDescription", Phone);
                                 singleservice.putExtras(servicesbundle);
                                 startActivity(singleservice);
                             }

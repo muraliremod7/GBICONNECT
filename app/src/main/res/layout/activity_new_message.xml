@@ -42,7 +42,7 @@
 
         <EditText
             android:id="@+id/chatting"
-            android:layout_width="252dp"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
@@ -50,7 +50,8 @@
             android:layout_toLeftOf="@+id/sendMessageButton"
             android:layout_weight="0.72"
             android:ems="10"
-            android:textColor="@color/colorAcent"
+            android:paddingLeft="10dp"
+            android:textColor="@color/textColorPrimary"
             android:textStyle="bold"
             android:drawableRight="@drawable/send"
             android:background="@drawable/edittextstylee"

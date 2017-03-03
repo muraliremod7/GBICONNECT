@@ -23,13 +23,11 @@ import com.brain.revanth.sampleapplication2.Model.PeopleCommonClass;
 public class PeoplesListRow extends BaseAdapter {
     TextView names,ideaname,ideadesc,phonenumber,email;
     ImageView profilepic;
-    public ImageLoader imageLoader;
     private final Activity activity;
     public List<PeopleCommonClass> peoplelist;
     public PeoplesListRow(Activity activity,List<PeopleCommonClass> peoplelist) {
         this.activity = activity;
         this.peoplelist = peoplelist;
-        imageLoader = new ImageLoader(activity.getApplicationContext());
     }
 
     @Override
@@ -66,7 +64,6 @@ public class PeoplesListRow extends BaseAdapter {
         phonenumber.setText(peopleCommonClass.getPhoneNumber());
         email.setText(peopleCommonClass.getEmail());
 //       profilepic.setImageResource(peopleCommonClass.getImage());
-        imageLoader.DisplayImage(peopleCommonClass.getImage(),profilepic);
         return convertview;
     }
 }

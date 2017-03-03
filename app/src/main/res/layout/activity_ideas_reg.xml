@@ -1,0 +1,55 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.brain.revanth.sampleapplication2.RegisterActivity" >
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:layout_gravity="center">
+    </android.support.v4.view.ViewPager>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:gravity="center">
+        <Button
+            android:id="@+id/previous"
+            android:background="@drawable/buttonstyle"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_keyboard_arrow_left_white_36dp" />
+        <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:background="@drawable/buttonstyle"
+            android:layout_width="180dp"
+            android:textColor="@color/textColorPrimary"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/submit" />
+        <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+        <Button
+            android:id="@+id/next"
+            android:background="@drawable/buttonstyle"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_keyboard_arrow_right_white_36dp" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

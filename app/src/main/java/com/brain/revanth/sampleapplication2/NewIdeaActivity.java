@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -38,8 +39,6 @@ public class NewIdeaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_idea);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ni = new NewIdeaFragment();
         nqone = new NewIdeaQuestionOne();
@@ -178,7 +177,7 @@ public class NewIdeaActivity extends AppCompatActivity {
     };
     public void CeateNewIdea(String ideaName, String ideaDescription, String questions){
         Ion.with(getApplicationContext())
-                .load("http://www.gbiconnect.com/walletbabaservices/createIdea?ideaname="+ideaName+"&ideadesc="+ideaDescription+"&answers="+questions)
+                .load("http://www.gbiconnect.com/walletbabaservices/createIdea?ideaname="+ideaName+"&ideadescr="+ideaDescription+"&answers="+questions)
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
@@ -196,6 +195,21 @@ public class NewIdeaActivity extends AppCompatActivity {
                             }
                         }
                 });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 
 }

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="@color/colorPrimary">
-    <RelativeLayout
+    android:layout_marginBottom="20dp"
+    android:fillViewport="true">
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="800dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        >
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/textView21"
@@ -17,8 +17,6 @@
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
             android:text="21)State one reason why we should consider your idea for investment? (250 words or less)."
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -27,8 +25,6 @@
             android:background="@drawable/edittextstyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView21"
-            android:layout_centerHorizontal="true"
             android:ems="10"
             android:maxLength="250"
             android:lines="3"
@@ -42,8 +38,6 @@
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/question21"
             android:text="22)Explain us the industry sector your idea is getting into along with details of why your idea will succeed in the industry? (500 words or less)."
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -52,21 +46,24 @@
             android:background="@drawable/edittextstyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView22"
-            android:layout_centerHorizontal="true"
             android:ems="10"
             android:maxLength="500"
             android:lines="3"
             android:scrollbars="vertical"
             android:inputType="textMultiLine" />
-
+        <TextView
+            android:id="@+id/textView23"
+            android:textColor="@color/textColorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="23)If we reject the idea what are your next steps? (500 words or less)"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
         <EditText
             android:id="@+id/question23"
             android:background="@drawable/edittextstyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView23"
-            android:layout_centerHorizontal="true"
             android:ems="10"
             android:maxLength="500"
             android:lines="3"
@@ -80,8 +77,6 @@
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/question23"
-            android:layout_alignParentLeft="true"
             android:text="24)Explain in one single sentence who is a entrepreneur? What is that you have to become one? (500 words or less)"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -90,8 +85,6 @@
             android:background="@drawable/edittextstyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView24"
-            android:layout_centerHorizontal="true"
             android:ems="10"
             android:maxLength="500"
             android:lines="3"
@@ -105,8 +98,6 @@
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/question24"
-            android:layout_alignParentLeft="true"
             android:text="25)Explain how do you respond to the following situation? It is 10Pm All the individuals in the building left. You are single struck in a lift with no network connection to your mobile. The emergency alarm in the lift is not working.There is absolutely no chance some body can hear you and respond for help."
             android:textAppearance="?android:attr/textAppearanceSmall" />
         <EditText
@@ -114,8 +105,6 @@
             android:background="@drawable/edittextstyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView25"
-            android:layout_centerHorizontal="true"
             android:ems="10"
             android:maxLength="500"
             android:lines="3"
@@ -128,8 +117,6 @@
             android:background="@drawable/edittextstyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/question25"
-            android:layout_centerHorizontal="true"
             android:ems="10"
             android:hint="Enter Pin Number"
             android:layout_marginTop="10dp"
@@ -141,24 +128,11 @@
             android:background="@drawable/edittextstyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/pinnumber"
             android:ems="10"
             android:hint="Conform Pin Number"
             android:layout_marginTop="10dp"
             android:inputType="numberPassword" >
         </EditText>
 
-        <TextView
-            android:id="@+id/textView23"
-            android:textColor="@color/textColorPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/question22"
-            android:layout_marginTop="14dp"
-            android:text="23)If we reject the idea what are your next steps? (500 words or less)"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    </RelativeLayout>
-</ScrollView>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

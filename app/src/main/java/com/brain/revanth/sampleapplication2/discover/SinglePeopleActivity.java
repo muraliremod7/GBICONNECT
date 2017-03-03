@@ -17,8 +17,6 @@ public class SinglePeopleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_people);
-        toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         leadname = (TextView)findViewById(R.id.Leadname);
         ideaname = (TextView)findViewById(R.id.IdeaNamee);
@@ -29,7 +27,7 @@ public class SinglePeopleActivity extends AppCompatActivity {
         String Leadname = getBundle.getString("ProfileName");
         String ideaName = getBundle.getString("IdeaName");
         String ideaDesc = getBundle.getString("IdeaDesc");
-        String Phone = getBundle.getString("PhoneNumber");
+        String Phone = getBundle.getString("ideaDescription");
         String Email = getBundle.getString("Email");
         leadname.setText(Leadname);
         ideaname.setText(ideaName);
@@ -38,16 +36,11 @@ public class SinglePeopleActivity extends AppCompatActivity {
         ProfileEmail.setText(Email);
     }
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.profileedit, menu);
-        return true;
-    }
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-
+            case android.R.id.home:
+                this.finish();
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.

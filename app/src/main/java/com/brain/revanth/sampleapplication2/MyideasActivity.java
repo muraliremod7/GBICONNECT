@@ -35,8 +35,6 @@ public class MyideasActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myideas);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         idealistview = (ListView)findViewById(R.id.ideaslistview);
@@ -83,6 +81,8 @@ public class MyideasActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
             case R.id.myidea:
                     Intent newideaintent = new Intent(MyideasActivity.this,NewIdeaActivity.class);
                     startActivity(newideaintent);

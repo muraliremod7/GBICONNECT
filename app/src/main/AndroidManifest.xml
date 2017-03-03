@@ -13,14 +13,18 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/gbisquare"
         android:label="@string/AppName"
-        android:theme="@style/AppTheme"
         android:windowSoftInputMode="stateAlwaysHidden">
         <activity
-            android:name=".SplashScreen"
+            android:name=".RegisterActivity"
             android:label="@string/splashactivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
@@ -33,21 +37,23 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/loginactivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppThemee" />
         <activity
-            android:name=".RegisterActivity"
-            android:label="@string/registeractivity" />
+            android:name=".SplashScreen"
+            android:label="@string/registeractivity"
+            android:theme="@style/AppThemee" />
         <activity
             android:name=".HomeActivity"
             android:label="@string/homeactivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppThemeee" />
         <activity
             android:name=".chat.ChatActivity"
             android:label="Coversation" />
         <activity
             android:name=".discover.DiscoveriActivity"
-            android:label="Discover" />
+            android:label="Discover"
+            android:theme="@style/AppThemee" />
         <activity
             android:name=".favorates.FavoritesActivity"
             android:label="Favourites" />
@@ -70,67 +76,33 @@
         <activity
             android:name=".MyProfileActivity"
             android:label="@string/title_activity_my_profile"
-            android:parentActivityName=".HomeActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeActivity" />
-        </activity>
+            android:theme="@style/AppThemee"></activity>
         <activity
             android:name=".MyideasActivity"
             android:label="@string/title_activity_myideas"
-            android:parentActivityName=".HomeActivity"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeActivity" />
-        </activity>
+            android:theme="@style/AppThemee"></activity>
         <activity
             android:name=".shedule.EventsActivity"
-            android:parentActivityName=".shedule.SheduleActivity"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".shedule.SheduleActivity" />
-        </activity>
+            android:theme="@style/AppThemee"></activity>
         <activity
             android:name=".ComplaintsActivity"
-            android:parentActivityName=".HomeActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeActivity" />
-        </activity>
+            android:theme="@style/AppThemee"></activity>
         <activity
             android:name=".shedule.MyteamActivity"
-            android:parentActivityName=".shedule.SheduleActivity"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".shedule.SheduleActivity" />
-        </activity>
+            android:theme="@style/AppThemee"></activity>
         <activity
             android:name=".discover.SinglePeopleActivity"
-            android:parentActivityName=".discover.DiscoveriActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".discover.DiscoveriActivity" />
-        </activity>
+            android:theme="@style/AppThemee"></activity>
         <activity
             android:name=".shedule.SingleEventActivity"
-            android:parentActivityName=".shedule.EventsActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".shedule.EventsActivity" />
-        </activity>
-        <activity android:name=".discover.SingleServiceActivity">
-        </activity>
-        <activity android:name=".NewIdeaActivity"
-            android:parentActivityName=".MyideasActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MyideasActivity" />
-        </activity>
+            android:theme="@style/AppThemee"></activity>
+        <activity android:name=".discover.SingleServiceActivity"></activity>
+        <activity
+            android:name=".NewIdeaActivity"
+            android:theme="@style/AppThemee"></activity>
+        <activity android:name=".IdeasRegActivity"
+            android:theme="@style/AppThemee"></activity>
     </application>
 
 </manifest>

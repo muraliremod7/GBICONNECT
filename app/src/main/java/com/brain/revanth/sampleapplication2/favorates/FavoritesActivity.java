@@ -49,7 +49,6 @@ public class FavoritesActivity extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.search:
-
                 return true;
 
             default:

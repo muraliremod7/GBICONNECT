@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import com.brain.revanth.sampleapplication2.Model.AlertDialogManager;
+import com.brain.revanth.sampleapplication2.Services.AlertDialogManager;
 import com.brain.revanth.sampleapplication2.Model.EventCommonClass;
 
 public class EventsActivity extends AppCompatActivity {
@@ -49,9 +49,6 @@ public class EventsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
-
-        toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         neweventname = (EditText)findViewById(R.id.neweventname);
         neweventlocation = (EditText)findViewById(R.id.neweventlocation);
@@ -214,7 +211,8 @@ public class EventsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-
+            case android.R.id.home:
+                this.finish();
             case R.id.newevent:
 
                 try{

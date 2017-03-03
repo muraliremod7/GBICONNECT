@@ -3,13 +3,14 @@ package com.brain.revanth.sampleapplication2;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
-import android.os.Bundle;
-
+import android.view.Window;
 
 import com.brain.revanth.sampleapplication2.Services.SessionManager;
+
 
 public class SplashScreen extends Activity {
     private Handler handler = new Handler()

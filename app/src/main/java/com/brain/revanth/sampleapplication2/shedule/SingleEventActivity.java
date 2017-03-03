@@ -5,6 +5,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,7 +18,6 @@ import org.json.JSONObject;
 
 public class SingleEventActivity extends AppCompatActivity {
     TextView ename,elocation,edate,JoinEvent;
-    private Toolbar toolbar;
     public Bundle getBundle;
     String EventID;
     SharedPreferences teamID;
@@ -25,8 +25,6 @@ public class SingleEventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_event);
-        toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ename = (TextView)findViewById(R.id.eventname);
         edate = (TextView)findViewById(R.id.eventdate);
@@ -75,5 +73,20 @@ public class SingleEventActivity extends AppCompatActivity {
                     }
                     }
                 });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 }

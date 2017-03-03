@@ -32,8 +32,6 @@ public class SingleServiceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_service);
-        toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         servicename = (TextView)findViewById(R.id.serviceNAme);
         ownername = (TextView)findViewById(R.id.ownerNAme);
@@ -45,7 +43,7 @@ public class SingleServiceActivity extends AppCompatActivity {
         String ServiceNamee = getBundle.getString("ServiceName");
         String OwnerName = getBundle.getString("OwnerName");
         String ServiceDescc = getBundle.getString("ServiceDesc");
-        String OwnerPhone =getBundle.getString("PhoneNumber");
+        String OwnerPhone =getBundle.getString("ideaDescription");
         servicename.setText(ServiceNamee);
         ownername.setText(OwnerName);
         servicedesc.setText(ServiceDescc);

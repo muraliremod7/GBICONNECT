@@ -1,280 +1,216 @@
 package com.brain.revanth.sampleapplication2;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 
+import android.os.Environment;
+import android.os.Handler;
+import android.provider.MediaStore;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-
-import com.brain.revanth.sampleapplication2.Fragments.PersonalInfromationFragment;
-import com.brain.revanth.sampleapplication2.Fragments.QuestionFive;
-import com.brain.revanth.sampleapplication2.Fragments.QuestionFour;
-import com.brain.revanth.sampleapplication2.Fragments.QuestionOne;
-import com.brain.revanth.sampleapplication2.Fragments.QuestionThree;
-import com.brain.revanth.sampleapplication2.Fragments.QuestionTwo;
-import com.brain.revanth.sampleapplication2.Model.AlertDialogManager;
-import com.brain.revanth.sampleapplication2.Model.ViewPagerAdapter;
+import java.io.File;
 
 
-public class RegisterActivity extends AppCompatActivity {
-    ViewPager viewPager;
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
+    private EditText userName,userMobile,userEmail,userCollege,userPin,userConPin,userLocation;
+    private ImageView iView;
+    private Button upimage,regPersInfo;
+    private Cursor cursor;
+    private int REQUEST_CAMERA = 0, SELECT_FILE = 1;
+    private String uploadImagePath = "";
     private ProgressDialog pDialog;
-    AlertDialogManager alert = new AlertDialogManager();
-    PersonalInfromationFragment PI;
-    QuestionOne qone;
-    QuestionTwo qtwo;
-    QuestionThree qthree;
-    QuestionFour qfour;
-    QuestionFive qfive;
-    Button Prev,Next,Submit;
-    public String Name,PhoneNumber,Email,IdeaName,IdeaDescription,PinNum,ConPinNum,Teammembers;
-    public static String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    ArrayList<String> Questions = new ArrayList<String>();
-    String Questionsarraylist = "";
-    public static String registerationId;
+    private String KEY_IMAGE = "uploadfile";
+    private String REG_URL ="http://ec2-52-91-248-133.compute-1.amazonaws.com:8080/register";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-        PI =new PersonalInfromationFragment();
-        qone = new QuestionOne();
-        qtwo = new QuestionTwo();
-        qthree = new QuestionThree();
-        qfour = new QuestionFour();
-        qfive = new QuestionFive();
-        viewPager =(ViewPager)findViewById(R.id.pager);
-        intializepaging();
-        Prev = (Button)findViewById(R.id.previous);
-        Prev.setOnClickListener(btnListener);
-        Next = (Button)findViewById(R.id.next);
-        Next.setOnClickListener(btnListener);
-        Submit = (Button)findViewById(R.id.submit);
-        Submit.setOnClickListener(btnListener);
-        Prev.setVisibility(View.INVISIBLE);
-        Submit.setVisibility(View.INVISIBLE);
-        Next.setVisibility(View.VISIBLE);
-
-        //Coverting Array List To String Object........
-        for (String s : Questions)
-        {
-            Questionsarraylist += s + "\t";
-        }
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageSelected(int arg0) {
-                // TODO Auto-generated method stub
-               switch (arg0){
-                   case 0:
-                       Prev.setVisibility(View.INVISIBLE);
-                       Next.setVisibility(View.VISIBLE);
-                       Submit.setVisibility(View.GONE);
-                       break;
-                   case 1:
-                       Prev.setVisibility(View.VISIBLE);
-                       Next.setVisibility(View.VISIBLE);
-                       Submit.setVisibility(View.GONE);
-                       break;
-                   case 2:
-                       Prev.setVisibility(View.VISIBLE);
-                       Next.setVisibility(View.VISIBLE);
-                       Submit.setVisibility(View.GONE);
-                       break;
-                   case 3:
-                       Prev.setVisibility(View.VISIBLE);
-                       Next.setVisibility(View.VISIBLE);
-                       Submit.setVisibility(View.GONE);
-                       break;
-                   case 4:
-                       Prev.setVisibility(View.VISIBLE);
-                       Next.setVisibility(View.VISIBLE);
-                       Submit.setVisibility(View.GONE);
-                       break;
-                   case 5:
-                       Prev.setVisibility(View.VISIBLE);
-                       Next.setVisibility(View.INVISIBLE);
-                       Submit.setVisibility(View.VISIBLE);
-                       break;
-               }
-            }
-
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int arg0) {
-                // TODO Auto-generated method stub
-
-            }
-        });
+        userName = (EditText)findViewById(R.id.reguserName);
+        userMobile = (EditText)findViewById(R.id.reguserMobile);
+        userEmail = (EditText)findViewById(R.id.reguserEmail);
+        userCollege = (EditText)findViewById(R.id.reguserCollege);
+        userPin = (EditText)findViewById(R.id.reguserPin);
+        userConPin = (EditText)findViewById(R.id.reguserConPin);
+        userLocation = (EditText)findViewById(R.id.reguserLocation);
+        regPersInfo = (Button)findViewById(R.id.regperInfo);
+        iView = (ImageView) findViewById(R.id.UploadImage);
+        upimage = (Button) findViewById(R.id.uploadimage);
+        regPersInfo.setOnClickListener(this);
+        iView.setOnClickListener(this);
+        upimage.setOnClickListener(this);
 
  }
-
-    private void intializepaging() {
-        // TODO Auto-generated method stub
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new PersonalInfromationFragment(), "");
-        adapter.addFragment(new QuestionOne(), "");
-        adapter.addFragment(new QuestionTwo(), "");
-        adapter.addFragment(new QuestionThree(), "");
-        adapter.addFragment(new QuestionFour(), "");
-        adapter.addFragment(new QuestionFive(), "");
-        viewPager.setAdapter(adapter);
-    }
-    public View.OnClickListener btnListener = new View.OnClickListener() {
-        public void onClick(View v) {
-            Name = PI.LN.getText().toString().replace(" ", "%20");
-            PhoneNumber = PI.PN.getText().toString();
-            Email = PI.EM.getText().toString();
-            IdeaName = PI.IN.getText().toString().replace(" ", "%20");
-            IdeaDescription = PI.ID.getText().toString().replace(" ", "%20");
-            Teammembers = PI.TM.getText().toString().replace(" ", "%20");
-
-            switch(v.getId()) {
-                case R.id.previous:
-                    viewPager.setCurrentItem(viewPager.getCurrentItem()-1);
-                    break;
-                case R.id.next:
-                    if( Name.length() == 0) {
-                        alert.showAlertDialog(RegisterActivity.this,"Enter Lead  Name",false);
-                    }
-                    else if(PhoneNumber.length() == 0){
-                        alert.showAlertDialog(RegisterActivity.this,"Enter Phone Number",false);
-                    }
-                    else if(PhoneNumber.length()>10||PhoneNumber.length()<10){
-                        alert.showAlertDialog(RegisterActivity.this,"Enter Correct Phone Number",false);
-                    }
-                    else if(Email.toString().length() == 0) {
-
-                        alert.showAlertDialog(RegisterActivity.this,"Enter a Email Id",false);
-                    }
-                    else if(Email.matches(emailPattern)){
-                        viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
-                        }
-                        else {
-                            alert.showAlertDialog(RegisterActivity.this,"Enter Correct Email Id",false);
-                        }
-                    break;
-                case R.id.submit:
-
-                    Questions.add(qone.qu1.getText().toString().replace(" ", "%20"));
-                    Questions.add(qone.qu2.getText().toString().replace(" ", "%20"));
-                    Questions.add(qone.qu3.getText().toString().replace(" ", "%20"));
-                    Questions.add(qone.qu4.getText().toString().replace(" ", "%20"));
-                    Questions.add(qone.qu5.getText().toString().replace(" ", "%20"));
-                    Questions.add(qtwo.qu6.getText().toString().replace(" ", "%20"));
-                    Questions.add(qtwo.qu7.getText().toString().replace(" ", "%20"));
-                    Questions.add(qtwo.qu8.getText().toString().replace(" ", "%20"));
-                    Questions.add(qtwo.qu9.getText().toString().replace(" ", "%20"));
-                    Questions.add(qtwo.qu10.getText().toString().replace(" ", "%20"));
-                    Questions.add(qthree.qu11.getText().toString().replace(" ", "%20"));
-                    Questions.add(qthree.qu12.getText().toString().replace(" ", "%20"));
-                    Questions.add(qthree.qu13.getText().toString().replace(" ", "%20"));
-                    Questions.add(qthree.qu14.getText().toString().replace(" ", "%20"));
-                    Questions.add(qthree.qu15.getText().toString().replace(" ", "%20"));
-                    Questions.add(qfour.qu16.getText().toString().replace(" ", "%20"));
-                    Questions.add(qfour.qu17.getText().toString().replace(" ", "%20"));
-                    Questions.add(qfour.qu18.getText().toString().replace(" ", "%20"));
-                    Questions.add(qfour.qu19.getText().toString().replace(" ", "%20"));
-                    Questions.add(qfour.qu20.getText().toString().replace(" ", "%20"));
-                    Questions.add(qfive.qu21.getText().toString().replace(" ", "%20"));
-                    Questions.add(qfive.qu22.getText().toString().replace(" ", "%20"));
-                    Questions.add(qfive.qu23.getText().toString().replace(" ", "%20"));
-                    Questions.add(qfive.qu24.getText().toString().replace(" ", "%20"));
-                    Questions.add(qfive.qu25.getText().toString().replace(" ", "%20"));
-                    PinNum = qfive.PINNUM.getText().toString();
-                    ConPinNum = qfive.COPNUM.getText().toString();
-
-                     if(PinNum.length()==0 || ConPinNum.length()==0 ){
-
-                        alert.showAlertDialog(RegisterActivity.this,"Enter PinNum Number",false);
-                    }
-                    else if(PinNum.length() >4 || PinNum.length() <4){
-
-                        alert.showAlertDialog(RegisterActivity.this,"Enter 4 digit PinNum Number",false);
-                    }
-                    else {
-
-                         registeruser(Name,PhoneNumber,Email,IdeaName,IdeaDescription,PinNum,Teammembers,Questionsarraylist);
-                     }
+    public void timerDelayRemoveDialog(long time, final android.app.AlertDialog d){
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                d.dismiss();
             }
+        }, time);
 
+    }
+    private void UploadImage() {
+        final File fileToUpload = new File(uploadImagePath);
+        pDialog = new ProgressDialog(this);
+        pDialog.setMessage("Uploading Image.....");
+        pDialog.setCancelable(false);
+        pDialog.show();
+        timerDelayRemoveDialog(10*1000,pDialog);
+
+    }
+
+    private void selectImage() {
+        final CharSequence[] items = {"Take Photo", "Choose from Library", "Cancel"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                if (items[item].equals("Take Photo")) {
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    File f = new File(Environment
+                            .getExternalStorageDirectory(), "temp.jpg");
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+                    startActivityForResult(intent, REQUEST_CAMERA);
+                } else if (items[item].equals("Choose from Library")) {
+                    Intent intent = new Intent(
+                            Intent.ACTION_PICK,
+                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    intent.setType("image/*");
+                    startActivityForResult(
+                            Intent.createChooser(intent, "Select File"), SELECT_FILE);
+                } else if (items[item].equals("Cancel")) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        builder.show();
+
+    }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == REQUEST_CAMERA) {
+                File f = new File(Environment.getExternalStorageDirectory()
+                        .toString());
+                for (File temp : f.listFiles()) {
+                    if (temp.getName().equals("temp.jpg")) {
+                        f = temp;
+                        break;
+                    }
+                }
+                try {
+
+                    BitmapFactory.Options btmapOptions = new BitmapFactory.Options();
+
+                    Bitmap bm = BitmapFactory.decodeFile(f.getAbsolutePath(), btmapOptions);
+
+                    bm = Bitmap.createScaledBitmap(bm, 70, 70, true);
+                    iView.setImageBitmap(bm);
+                    uploadImagePath = f.getAbsolutePath();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (requestCode == SELECT_FILE) {
+                Uri selectedImageUri = data.getData();
+
+                String tempPath = getPath(selectedImageUri, this);
+
+                BitmapFactory.Options btmapOptions = new BitmapFactory.Options();
+                Bitmap bm = BitmapFactory.decodeFile(tempPath, btmapOptions);
+                iView.setImageBitmap(bm);
+                uploadImagePath = tempPath;
+
+            }
         }
-    };
-    private void registeruser(String leadName, String phone, String email, String ideaName, String ideaDescription, String pinNum, String teammembers,String answers) {
-        Ion.with(getApplicationContext())
-                .load("http://www.gbiconnect.com/walletbabaservices/createTeam?leadName="+leadName+"&phone="+phone+"&ideaName="+ideaName+"&description="+ideaDescription+"&email="+email+"&pin="+pinNum+"&teamMenbers="+teammembers+"&answers="+answers)
+    }
+    @SuppressWarnings("deprecation")
+    public String getPath(Uri uri, Activity activity) {
+        String[] projection = { MediaStore.MediaColumns.DATA };
+        cursor = activity.managedQuery(uri, projection, null, null, null);
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
+    }
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.UploadImage:
+                selectImage();
+                break;
+            case R.id.uploadimage:
+                selectImage();
+                break;
+            case R.id.regperInfo:
+                final File fileToUpload = new File(uploadImagePath);
+                String username = userName.getText().toString().replace("","%20");
+                String mobilenum = userMobile.getText().toString();
+                String email = userEmail.getText().toString();
+                String college = userCollege.getText().toString().replace("","%20");
+                String pin = userPin.getText().toString();
+                String conpin = userConPin.getText().toString();
+                String location = userLocation.getText().toString().replace("","%20");
+                if(pin.equals(conpin)){
+                    registerUser(username,mobilenum,email,college,pin,location);
+                    //Toast.makeText(RegisterActivity.this,"Confirm Doesn't match with Pin",Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(RegisterActivity.this,"Confirm Doesn't match with Pin",Toast.LENGTH_LONG).show();
+                }
+//                Intent personal = new Intent(RegisterActivity.this,IdeasRegActivity.class);
+//                startActivity(personal);
+        }
+    }
+
+    private void registerUser(String username, String mobilenum, String email, String college, String pin, String location) {
+        Ion.with(this)
+                .load("POST", REG_URL)
+                .setBodyParameter("username",username)
+                .setBodyParameter("mobile",mobilenum)
+                .setBodyParameter("email",email)
+                .setBodyParameter("pin",pin)
+                .setBodyParameter("college",college)
+                .setBodyParameter("location",location)
+                .setBodyParameter("description","asasa")
+                .setBodyParameter("status","0")
+                //.setMultipartFile(KEY_IMAGE, "image/jpeg", fileToUpload)
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
                         if (e != null) {
-
-                        }else {
-
-                            try {
-                                JSONObject jSONObject = new JSONObject(result);
-                                int status = jSONObject.getInt("status");
-                                if (status == 1) {
-                                    JSONObject object = jSONObject.getJSONObject("team");
-                                    registerationId = object.getString("id");
-                                    Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                    Toast.makeText(getApplicationContext(), "registered Successfull", Toast.LENGTH_LONG).show();
-
-                                } else {
-                                    JSONArray array = jSONObject.getJSONArray("errors");
-                                    JSONObject j = array.getJSONObject(0);
-                                    String error = j.getString("message");
-
-                                    alert.showAlertDialog(RegisterActivity.this,error,false);
-                                }
-                            } catch (Exception ex) {
-                                ex.printStackTrace();
-                            }
+                            pDialog.dismiss();
+                            Toast.makeText(RegisterActivity.this, "Error uploading file", Toast.LENGTH_LONG).show();
+                            return;
                         }
+                        else{
+                            Toast.makeText(RegisterActivity.this, "Error uploading file", Toast.LENGTH_LONG).show();
+                        }
+
                     }
                 });
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-
-
-            default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
-                return super.onOptionsItemSelected(item);
-
-        }
-    }
 }

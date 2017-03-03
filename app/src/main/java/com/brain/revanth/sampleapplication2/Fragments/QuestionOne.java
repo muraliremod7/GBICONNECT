@@ -1,7 +1,9 @@
 package com.brain.revanth.sampleapplication2.Fragments;
 
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,8 @@ import com.brain.revanth.sampleapplication2.R;
 public class QuestionOne extends Fragment {
 	public  static EditText qu1,qu2,qu3,qu4,qu5;
 	public static String Q1,Q2,Q3,Q4,Q5;
+	ActivityCompat activityCompat;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

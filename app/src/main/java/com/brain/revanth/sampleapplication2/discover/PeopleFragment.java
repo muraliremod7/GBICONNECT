@@ -10,7 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.brain.revanth.sampleapplication2.Model.AlertDialogManager;
+import com.brain.revanth.sampleapplication2.Services.AlertDialogManager;
 import com.brain.revanth.sampleapplication2.R;
 import com.brain.revanth.sampleapplication2.Services.ConnectionDetector;
 import com.koushikdutta.async.future.FutureCallback;
@@ -26,12 +26,11 @@ import java.util.List;
 import com.brain.revanth.sampleapplication2.Model.PeopleCommonClass;
 
 public class PeopleFragment extends Fragment {
-    ListView listView;
+    private ListView listView;
     private List<PeopleCommonClass> arrayList = new ArrayList<PeopleCommonClass>();
     PeopleCommonClass peopleCommonClass;
     PeoplesListRow peoplesListRow;
     String Profilename,IdeaName,IdeaDesc,PhoneNum,Email;
-    JSONArray array;
     AlertDialogManager alert;
     ConnectionDetector cd;
     @Override
@@ -40,10 +39,11 @@ public class PeopleFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_people,null);
         peopleCommonClass =new PeopleCommonClass();
         // Inflate the layout for this fragment
-        peoples();
+        //peoples();
         cd = new ConnectionDetector(getActivity());
         listView = (ListView) view.findViewById(R.id.list);
         peoplesListRow = new PeoplesListRow(getActivity(),arrayList);
+        peoplesListRow.notifyDataSetChanged();
         alert = new AlertDialogManager();
         return view;
     }
@@ -66,26 +66,26 @@ public class PeopleFragment extends Fragment {
                                 JSONObject jSONObject = new JSONObject(result);
                                 int status = jSONObject.getInt("status");
                                 if (status == 1) {
-                                    array = jSONObject.getJSONArray("teams");
+                                    JSONArray array = jSONObject.getJSONArray("teams");
                                     for(int i =0;i<array.length();i++){
                                         JSONObject j = array.getJSONObject(i);
                                         PeopleCommonClass peopleCommonClass = new PeopleCommonClass();
-                                        if(j.has("leadName")){
+                                        if(j.has("leadName")||!j.isNull("leadName")){
                                             peopleCommonClass.setName(j.getString("leadName"));
                                         }
-                                        if(j.has("ideaName")){
+                                        if(j.has("ideaName")||!j.isNull("ideaName")){
                                             peopleCommonClass.setIdeaName(j.getString("ideaName").toString());
                                         }
-                                        if(j.has("ideaDescription")){
+                                        if(j.has("ideaDescription")||!j.isNull("ideaDescription")){
                                             peopleCommonClass.setIdeaDescription(j.getString("ideaDescription").toString());
                                         }
                                         if(j.has("profile")||!j.isNull("profile")){
                                             peopleCommonClass.setImage(j.getString("profile"));
                                         }
-                                        if(j.has("phone")){
+                                        if(j.has("phone")||!j.isNull("phone")){
                                             peopleCommonClass.setPhoneNumber(j.getString("phone"));
                                         }
-                                        if(j.has("email")){
+                                        if(j.has("email")||!j.isNull("email")){
                                             peopleCommonClass.setEmail(j.getString("email"));
                                         }
                                         arrayList.add(peopleCommonClass);
@@ -100,9 +100,6 @@ public class PeopleFragment extends Fragment {
                                 e1.printStackTrace();
                             }
                         }
-
-                        peoplesListRow.imageLoader.clearCache();
-                        peoplesListRow.notifyDataSetChanged();
                         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -116,7 +113,7 @@ public class PeopleFragment extends Fragment {
                                 peoplessbundle.putString("ProfileName", Profilename);
                                 peoplessbundle.putString("IdeaName", IdeaName);
                                 peoplessbundle.putString("IdeaDesc", IdeaDesc);
-                                peoplessbundle.putString("PhoneNumber",PhoneNum);
+                                peoplessbundle.putString("ideaDescription",PhoneNum);
                                 peoplessbundle.putString("Email",Email);
                                 singlpeople.putExtras(peoplessbundle);
                                 if(singlpeople!=null){

@@ -13,13 +13,11 @@
 
     <item
         android:id="@+id/complaints"
-        android:title="Raise Complaint"
-        app:showAsAction="never" />
+        android:title="Raise Complaint" />
     <item
         android:id="@+id/logout"
         android:icon="@drawable/logouticon"
-        android:title="Logout"
-        app:showAsAction="never"/>
+        android:title="Logout" />
     <item
         android:id="@+id/search"
         android:icon="@drawable/ic_search_white_24dp"

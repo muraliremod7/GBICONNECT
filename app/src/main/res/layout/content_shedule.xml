@@ -10,17 +10,25 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:id="@+id/myshedule"
         android:text="Events"
-        android:background="@color/Tabbackgroundcolor"
-        android:drawableTop="@drawable/ic_date_range_white_18dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingLeft="20dp"
+        android:background="@drawable/edittextstylee"
+        android:drawableLeft="@drawable/ic_date_range_white_18dp"
+        android:drawableRight="@drawable/ic_keyboard_arrow_right_white_36dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
     <Button
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:drawableTop="@drawable/ic_date_range_white_18dp"
-        android:background="@color/Tabbackgroundcolor"
+        android:layout_height="50dp"
+        android:paddingLeft="20dp"
+        android:drawableLeft="@drawable/ic_date_range_white_18dp"
+        android:drawableRight="@drawable/ic_keyboard_arrow_right_white_36dp"
+        android:background="@drawable/edittextstylee"
         android:text="Recommended talks"
         android:src="@drawable/ic_date_range_white_18dp"
         android:id="@+id/recommendedtalks"
@@ -28,31 +36,41 @@
         android:layout_marginTop="5dp"
         android:layout_below="@+id/myshedule"
         android:layout_alignLeft="@+id/myshedule"
-        android:layout_alignStart="@+id/myshedule" />
+        android:layout_alignStart="@+id/myshedule"
+        android:layout_alignRight="@+id/myshedule"
+        android:layout_alignEnd="@+id/myshedule" />
 
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@color/Tabbackgroundcolor"
-        android:drawableTop="@drawable/ic_date_range_white_18dp"
+        android:layout_height="50dp"
+        android:background="@drawable/edittextstylee"
+        android:paddingLeft="20dp"
+        android:drawableLeft="@drawable/ic_date_range_white_18dp"
+        android:drawableRight="@drawable/ic_keyboard_arrow_right_white_36dp"
         android:id="@+id/allstages"
         android:text="AllStages"
         android:layout_marginTop="5dp"
         android:layout_gravity="top"
         android:layout_below="@+id/recommendedtalks"
         android:layout_alignLeft="@+id/recommendedtalks"
-        android:layout_alignStart="@+id/recommendedtalks" />
+        android:layout_alignStart="@+id/recommendedtalks"
+        android:layout_alignRight="@+id/recommendedtalks"
+        android:layout_alignEnd="@+id/recommendedtalks" />
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:id="@+id/myteam"
         android:text="My Team"
         android:layout_marginTop="5dp"
-        android:drawableTop="@drawable/ic_date_range_white_18dp"
-        android:background="@color/colorAcent"
+        android:paddingLeft="20dp"
+        android:drawableLeft="@drawable/ic_date_range_white_18dp"
+        android:drawableRight="@drawable/ic_keyboard_arrow_right_white_36dp"
+        android:background="@drawable/edittextstylee"
         android:layout_below="@+id/allstages"
+        android:layout_alignRight="@+id/allstages"
+        android:layout_alignEnd="@+id/allstages"
         android:layout_alignLeft="@+id/allstages"
         android:layout_alignStart="@+id/allstages" />
 </RelativeLayout>

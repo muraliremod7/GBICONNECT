@@ -21,7 +21,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import com.brain.revanth.sampleapplication2.Model.AlertDialogManager;
+import com.brain.revanth.sampleapplication2.Services.AlertDialogManager;
 import com.brain.revanth.sampleapplication2.Model.MyprofileCommonClass;
 
 public class MyProfileActivity extends AppCompatActivity {
@@ -35,8 +35,6 @@ public class MyProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile);
-        toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         leadname = (TextView)findViewById(R.id.myprofilename);
@@ -55,13 +53,13 @@ public class MyProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 View forgotLayout = findViewById(R.id.editprofileLayout);
+                getSupportActionBar().show();
                 //forgotLayout.setAnimation(AnimationUtils.makeInChildBottomAnimation(getApplicationContext()));
                 forgotLayout.setVisibility(View.GONE);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         findViewById(R.id.myprofilelayout).setVisibility(View.VISIBLE);
-                        findViewById(R.id.imagelayout).setVisibility(View.VISIBLE);
                     }
                 }, 200);
             }
@@ -136,16 +134,15 @@ public class MyProfileActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-
+            case android.R.id.home:
+                this.finish();
             case R.id.myprofile:
 
                 try{
                             View editprofileLayout = findViewById(R.id.editprofileLayout);
+                    getSupportActionBar().hide();
                             editprofileLayout.setAnimation(AnimationUtils.makeInChildBottomAnimation(getApplicationContext()));
                             editprofileLayout.setVisibility(View.VISIBLE);
-                            View imagelayout = findViewById(R.id.imagelayout);
-                            imagelayout.setAnimation(AnimationUtils.makeInChildBottomAnimation(getApplicationContext()));
-                            imagelayout.setVisibility(View.INVISIBLE);
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {

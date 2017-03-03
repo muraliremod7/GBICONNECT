@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -9,47 +11,33 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Event Name"
         android:id="@+id/eventname"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="left"
         android:layout_marginTop="15dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="30dp"
          />
-
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="7dp"/>
     <TextView
-        android:layout_width="80dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Fromdate"
         android:id="@+id/eventdate"
-        android:layout_gravity="center_horizontal"
-        android:layout_below="@+id/eventname"
-        android:layout_alignLeft="@+id/eventname"
-        android:layout_alignStart="@+id/eventname" />
+        android:layout_gravity="fill" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text=""
         android:id="@+id/eventLocation"
-        android:layout_alignBottom="@+id/eventdate"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:visibility="invisible"/>
+        android:visibility="gone"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/eventid"
-        android:layout_alignTop="@+id/eventname"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="15dp"
-        android:layout_marginEnd="15dp"
         android:visibility="gone"/>
 
 
-</RelativeLayout>
+</LinearLayout>

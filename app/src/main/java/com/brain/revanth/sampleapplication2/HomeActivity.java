@@ -29,21 +29,15 @@ public class HomeActivity extends AppCompatActivity{
 
     // Session Manager Class
     SessionManager session;
-    private Toolbar toolbar;
     LocalActivityManager localActivityManager;
     public static TabHost tabHost;
-    LoginActivity loginActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
-        setSupportActionBar(toolbar);
         localActivityManager = new LocalActivityManager(this,false);
         localActivityManager.dispatchCreate(savedInstanceState);
         session = new SessionManager(getApplicationContext());
-        loginActivity = new LoginActivity();
         if(session.checkLogin())
             finish();
         tabHost = (TabHost)findViewById(android.R.id.tabhost);
@@ -76,7 +70,6 @@ public class HomeActivity extends AppCompatActivity{
         Intent sheduleintent = new Intent().setClass(this, SheduleActivity.class);
         TabHost.TabSpec shedule = tabHost
                 .newTabSpec("com/brain/revanth/sampleapplication2/shedule")
-
                 .setIndicator("", resources.getDrawable(R.drawable.ic_date_range_white_18dp))
                 .setContent(sheduleintent);
         tabHost.addTab(shedule);

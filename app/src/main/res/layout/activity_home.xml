@@ -11,13 +11,14 @@
             android:layout_height="fill_parent"
             android:layout_width="wrap_content">
             <TabWidget
-                android:background="@color/colorPrimaryDark"
+                android:background="@color/colorPrimary"
                 android:id="@android:id/tabs"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:tabStripLeft="@color/TextColorHint"
                 android:layout_alignParentBottom="true"
                 android:layout_weight="0"
-                android:layout_marginBottom="-4dp"/>
+                />
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="fill_parent"

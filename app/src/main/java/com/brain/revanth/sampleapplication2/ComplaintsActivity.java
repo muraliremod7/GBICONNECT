@@ -3,6 +3,7 @@ package com.brain.revanth.sampleapplication2;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,7 +19,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import com.brain.revanth.sampleapplication2.Model.AlertDialogManager;
+import com.brain.revanth.sampleapplication2.Services.AlertDialogManager;
 
 public class ComplaintsActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -33,8 +34,6 @@ public class ComplaintsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complaints);
-        toolbar = (Toolbar) findViewById(R.id.myteamtoolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         comspinner = (Spinner)findViewById(R.id.complaintsspinner);
         comeditext = (EditText)findViewById(R.id.complaintsmessage);
@@ -114,5 +113,20 @@ public class ComplaintsActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 }
