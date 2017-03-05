@@ -2,6 +2,7 @@ package com.brain.revanth.sampleapplication2;
 
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -72,7 +74,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void forgotPin(String phone) {
         Ion.with(getApplicationContext())
-                .load("http://www.gbiconnect.com/walletbabaservices/forgotpassword?phone="+phone)
+                .load("","http://ec2-52-91-248-133.compute-1.amazonaws.com:8080/")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
@@ -118,7 +120,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         pDialog.show();
         timerDelayRemoveDialog(10*1000,pDialog);
         Ion.with(getApplicationContext())
-                .load("POST", "http://gbiconnect.com/walletbabaservices/Teamlogin?phone=" + phone + "&pin=" + pin)
+                .load("POST","http://ec2-52-91-248-133.compute-1.amazonaws.com:8080/login")
+                .setBodyParameter("mobile",phone)
+                .setBodyParameter("pin",pin)
                         .asString()
                         .setCallback(new FutureCallback<String>() {
                             @Override
@@ -132,13 +136,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                                     try {
                                         JSONObject jSONObject = new JSONObject(result);
-                                        int status = jSONObject.getInt("status");
-                                        if (status == 1) {
+//                                        int status = jSONObject.getInt("status");
+//                                        if (status == 1) {
                                             if(pDialog.isShowing())
                                                 pDialog.dismiss();
                                             session.createLoginSession(phone,pin);
-                                            JSONObject object = jSONObject.getJSONObject("team");
-                                            registerationId = object.getString("id");
+                                            //JSONObject object = jSONObject.getJSONObject("");
+                                            registerationId = jSONObject.getString("user_id");
                                             SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                                             editor = settings.edit();
                                             editor.putString("teamid", registerationId);
@@ -150,14 +154,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                             startActivity(i);
                                             finish();
-                                        } else {
-                                            JSONArray array = jSONObject.getJSONArray("errors");
-                                            JSONObject j = array.getJSONObject(0);
-                                            String error = j.getString("message");
-                                            if(pDialog.isShowing())
-                                                pDialog.dismiss();
-                                            alert.showAlertDialog(LoginActivity.this,error,false);
-                                        }
+//                                        } else {
+//                                            JSONArray array = jSONObject.getJSONArray("errors");
+//                                            JSONObject j = array.getJSONObject(0);
+//                                            String error = j.getString("message");
+//                                            if(pDialog.isShowing())
+//                                                pDialog.dismiss();
+//                                            alert.showAlertDialog(LoginActivity.this,error,false);
+//                                        }
                                     } catch (Exception ex) {
                                         ex.printStackTrace();
                                     }
@@ -221,35 +225,34 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(register);
                 break;
             case R.id.signin:
-                Intent intent= new Intent(LoginActivity.this,HomeActivity.class);
-                startActivity(intent);
-                //                phone =  phoneNumber.getEditText().getText().toString();
-//                pin = pinNumber.getEditText().getText().toString();
-//                view = LoginActivity.this.getCurrentFocus();
-//                if (view != null) {
-//                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-//                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-//                }
-//
-//                if( phone.length() == 0) {
-//                    alert.showAlertDialog(LoginActivity.this,"Enter Phone Number",false);
-//                }
-//                else if(phone.length()>10|| phone.length()<10){
-//                    alert.showAlertDialog(LoginActivity.this,"Enter corect Phone Number",false);
-//                }
-//                else if(pin.length() == 0){
-//                    alert.showAlertDialog(LoginActivity.this,"Enter PinNum Number",false);
-//                }
-//                else if(pin.length()>4|| phone.length()<4){
-//                    alert.showAlertDialog(LoginActivity.this,"Enter Correct PinNum Number",false);
-//                }
-//                else if(!cd.isNetworkOn(getApplicationContext())){
-//                    alert.showAlertDialog(LoginActivity.this,"There is Network error",false);
-//                }
-//                else {
-//                    login(phone,pin);
-//
-//                }
+
+                phone =  phoneNumber.getEditText().getText().toString();
+                pin = pinNumber.getEditText().getText().toString();
+                View view = LoginActivity.this.getCurrentFocus();
+                if (view != null) {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                }
+
+                if( phone.length() == 0) {
+                    alert.showAlertDialog(LoginActivity.this,"Enter Phone Number",false);
+                }
+                else if(phone.length()>10|| phone.length()<10){
+                    alert.showAlertDialog(LoginActivity.this,"Enter corect Phone Number",false);
+                }
+                else if(pin.length() == 0){
+                    alert.showAlertDialog(LoginActivity.this,"Enter PinNum Number",false);
+                }
+                else if(pin.length()>4|| phone.length()<4){
+                    alert.showAlertDialog(LoginActivity.this,"Enter Correct PinNum Number",false);
+                }
+                else if(!cd.isNetworkOn(getApplicationContext())){
+                    alert.showAlertDialog(LoginActivity.this,"There is Network error",false);
+                }
+                else {
+                    login(phone,pin);
+
+                }
                 break;
             case R.id.request:
                 String Forgot = forgotPin.getEditText().getText().toString();

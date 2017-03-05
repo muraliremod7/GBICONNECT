@@ -10,8 +10,8 @@ import android.widget.EditText;
 import com.brain.revanth.sampleapplication2.R;
 
 public class QuestionFive extends Fragment {
-    public static EditText qu21,qu22,qu23,qu24,qu25, PINNUM, COPNUM;
-    public static String Q21,Q22,Q23,Q24,Q25,Pinnum,Conpin;
+    public static EditText qu21,qu22,qu23,qu24,qu25;
+    public static String Q21,Q22,Q23,Q24,Q25;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -22,8 +22,6 @@ public class QuestionFive extends Fragment {
         qu23 = (EditText) Qfive.findViewById(R.id.question23);
         qu24 = (EditText) Qfive.findViewById(R.id.question24);
         qu25 = (EditText) Qfive.findViewById(R.id.question25);
-        PINNUM =   (EditText) Qfive.findViewById(R.id.pinnumber);
-        COPNUM = (EditText) Qfive.findViewById(R.id.conformpin);
         return Qfive;
     }
 

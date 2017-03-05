@@ -143,9 +143,35 @@ public class IdeasRegActivity extends AppCompatActivity {
                     viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
                     break;
                 case R.id.submit:
-                    ideaTitle = pi.ideatitle;
-                    ideaDescription = pi.ideadescr;
-                    ideaRefcode = pi.idearefcode;
+                    ideaTitle = pi.ideaTitle.getText().toString();
+                    ideaDescription = pi.ideaDesc.getText().toString();
+                    ideaRefcode = pi.ideaReferalcode.getText().toString();
+                    String que1 = qone.qu1.getText().toString().replace(" ", "%20");
+                    String que2 = qone.qu2.getText().toString().replace(" ", "%20");
+                    String que3 = qone.qu3.getText().toString().replace(" ", "%20");
+                    String que4 = qone.qu4.getText().toString().replace(" ", "%20");
+                    String que5 = qone.qu5.getText().toString().replace(" ", "%20");
+                    String que6 = qtwo.qu6.getText().toString().replace(" ", "%20");
+                    String que7 = qtwo.qu7.getText().toString().replace(" ", "%20");
+                    String que8 = qtwo.qu8.getText().toString().replace(" ", "%20");
+                    String que9 = qtwo.qu9.getText().toString().replace(" ", "%20");
+                    String que10 = qtwo.qu10.getText().toString().replace(" ", "%20");
+                    String que11 = qthree.qu11.getText().toString().replace(" ", "%20");
+                    String que12 = qthree.qu12.getText().toString().replace(" ", "%20");
+                    String que13 = qthree.qu13.getText().toString().replace(" ", "%20");
+                    String que14 = qthree.qu14.getText().toString().replace(" ", "%20");
+                    String que15 = qthree.qu15.getText().toString().replace(" ", "%20");
+                    String que16 = qfour.qu16.getText().toString().replace(" ", "%20");
+                    String que17 = qfour.qu17.getText().toString().replace(" ", "%20");
+                    String que18 = qfour.qu18.getText().toString().replace(" ", "%20");
+                    String que19 = qfour.qu19.getText().toString().replace(" ", "%20");
+                    String que20 = qfour.qu20.getText().toString().replace(" ", "%20");
+                    String que21 = qfive.qu21.getText().toString().replace(" ", "%20");
+                    String que22 = qfive.qu22.getText().toString().replace(" ", "%20");
+                    String que23 = qfive.qu23.getText().toString().replace(" ", "%20");
+                    String que24 = qfive.qu24.getText().toString().replace(" ", "%20");
+                    String que25 = qfive.qu25.getText().toString().replace(" ", "%20");
+
                     Questions.add(qone.qu1.getText().toString().replace(" ", "%20"));
                     Questions.add(qone.qu2.getText().toString().replace(" ", "%20"));
                     Questions.add(qone.qu3.getText().toString().replace(" ", "%20"));
@@ -172,59 +198,62 @@ public class IdeasRegActivity extends AppCompatActivity {
                     Questions.add(qfive.qu24.getText().toString().replace(" ", "%20"));
                     Questions.add(qfive.qu25.getText().toString().replace(" ", "%20"));
 
-                    Intent homeintent = new Intent(IdeasRegActivity.this,LoginActivity.class);
-                    startActivity(homeintent);
-                    finish();
-                    idearegistration(registerationId,ideaTitle,ideaDescription,ideaRefcode,Questionsarraylist);
-//
-//                   if(PinNum.length() >4 || PinNum.length() <4){
-//
-//                        alert.showAlertDialog(IdeasRegActivity.this,"Enter 4 digit PinNum Number",false);
-//                    }
-//                    else {
-//
-//                        registeruser(ideaTitle, ideaDescription,Email,IdeaName,IdeaDescription,PinNum,Teammembers,Questionsarraylist);
-//                    }
+                    if(ideaTitle.equals("")){
+                        Toast.makeText(IdeasRegActivity.this,"Enter IdeaTitle",Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        idearegistration(registerationId,ideaTitle,ideaDescription,ideaRefcode,que1,que2,que3,que4,que5,que6,que7,que8,que9,que10,que11,que12,que13,que14,que15,que16,que17,que18,que19,que20,que21,que22,que23,que24,que25);
+
+                    }
             }
 
         }
     };
 
-    private void idearegistration(String registerationId, String ideaTitle, String ideaDescription, String ideaRefcode, String questionsarraylist) {
-    }
-
-    private void registeruser(String leadName, String phone, String email, String ideaName, String ideaDescription, String pinNum, String teammembers,String answers) {
+    private void idearegistration(String registerationId, String ideaTitle, String ideaDescription, String ideaRefcode, String que1, String que2, String que3, String que4, String que5, String que6, String que7, String que8, String que9, String que10, String que11, String que12, String que13, String que14, String que15, String que16, String que17, String que18, String que19, String que20, String que21, String que22, String que23, String que24, String que25) {
         Ion.with(getApplicationContext())
-                .load("http://www.gbiconnect.com/walletbabaservices/createTeam?leadName="+leadName+"&phone="+phone+"&ideaName="+ideaName+"&description="+ideaDescription+"&email="+email+"&pin="+pinNum+"&teamMenbers="+teammembers+"&answers="+answers)
+                .load("POST","http://ec2-52-91-248-133.compute-1.amazonaws.com:8080/ideas")
+                .setBodyParameter("ideacode",ideaRefcode)
+                .setBodyParameter("ideatitle",ideaTitle)
+                .setBodyParameter("userid",registerationId)
+                .setBodyParameter("ideadescription",ideaDescription)
+                .setBodyParameter("ideaqu1",que1)
+                .setBodyParameter("ideaqu2",que2)
+                .setBodyParameter("ideaqu3",que3)
+                .setBodyParameter("ideaqu4",que4)
+                .setBodyParameter("ideaqu5",que5)
+                .setBodyParameter("ideaqu6",que6)
+                .setBodyParameter("ideaqu7",que7)
+                .setBodyParameter("ideaqu8",que8)
+                .setBodyParameter("ideaqu9",que9)
+                .setBodyParameter("ideaqu10",que10)
+                .setBodyParameter("ideaqu11",que11)
+                .setBodyParameter("ideaqu12",que12)
+                .setBodyParameter("ideaqu13",que13)
+                .setBodyParameter("ideaqu14",que14)
+                .setBodyParameter("ideaqu15",que15)
+                .setBodyParameter("ideaqu16",que16)
+                .setBodyParameter("ideaqu17",que17)
+                .setBodyParameter("ideaqu18",que18)
+                .setBodyParameter("ideaqu19",que19)
+                .setBodyParameter("ideaqu20",que20)
+                .setBodyParameter("ideaqu21",que21)
+                .setBodyParameter("ideaqu22",que22)
+                .setBodyParameter("ideaqu23",que23)
+                .setBodyParameter("ideaqu24",que24)
+                .setBodyParameter("ideaqu25",que25)
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
-                        if (e != null) {
-
-                        }else {
-
-                            try {
-                                JSONObject jSONObject = new JSONObject(result);
-                                int status = jSONObject.getInt("status");
-                                if (status == 1) {
-                                    JSONObject object = jSONObject.getJSONObject("team");
-                                    registerationId = object.getString("id");
-                                    Intent intent = new Intent(IdeasRegActivity.this,LoginActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                    Toast.makeText(getApplicationContext(), "registered Successfull", Toast.LENGTH_LONG).show();
-
-                                } else {
-                                    JSONArray array = jSONObject.getJSONArray("errors");
-                                    JSONObject j = array.getJSONObject(0);
-                                    String error = j.getString("message");
-
-                                    alert.showAlertDialog(IdeasRegActivity.this,error,false);
-                                }
-                            } catch (Exception ex) {
-                                ex.printStackTrace();
-                            }
+                        if(e!=null){
+                            Toast.makeText(IdeasRegActivity.this,result,Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            Intent homeintent = new Intent(IdeasRegActivity.this,LoginActivity.class);
+                            startActivity(homeintent);
+                            finish();
+                            Toast.makeText(IdeasRegActivity.this,"Idea Registered Successfully",Toast.LENGTH_LONG).show();
                         }
                     }
                 });

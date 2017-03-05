@@ -19,7 +19,7 @@
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:textColorHint">@color/TextColorHint</item>
     </style>
-    <style name="AppThemeee" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppThemeee" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

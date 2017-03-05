@@ -26,6 +26,10 @@ import android.widget.Toast;
 
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.async.http.AsyncHttpClient;
+import com.koushikdutta.async.http.AsyncHttpPost;
+import com.koushikdutta.async.http.AsyncHttpResponse;
+import com.koushikdutta.async.http.body.MultipartFormDataBody;
 import com.koushikdutta.ion.Ion;
 
 import java.io.File;
@@ -164,13 +168,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.regperInfo:
                 final File fileToUpload = new File(uploadImagePath);
-                String username = userName.getText().toString().replace("","%20");
+                String username = userName.getText().toString();
                 String mobilenum = userMobile.getText().toString();
                 String email = userEmail.getText().toString();
-                String college = userCollege.getText().toString().replace("","%20");
+                String college = userCollege.getText().toString();
                 String pin = userPin.getText().toString();
                 String conpin = userConPin.getText().toString();
-                String location = userLocation.getText().toString().replace("","%20");
+                String location = userLocation.getText().toString();
                 if(pin.equals(conpin)){
                     registerUser(username,mobilenum,email,college,pin,location);
                     //Toast.makeText(RegisterActivity.this,"Confirm Doesn't match with Pin",Toast.LENGTH_LONG).show();
@@ -184,6 +188,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void registerUser(String username, String mobilenum, String email, String college, String pin, String location) {
+
         Ion.with(this)
                 .load("POST", REG_URL)
                 .setBodyParameter("username",username)
@@ -193,8 +198,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 .setBodyParameter("college",college)
                 .setBodyParameter("location",location)
                 .setBodyParameter("description","asasa")
-                .setBodyParameter("status","0")
-                //.setMultipartFile(KEY_IMAGE, "image/jpeg", fileToUpload)
+                .setBodyParameter("referalid","")
+                .setBodyParameter("confirmpin",pin)
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
@@ -205,7 +210,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             return;
                         }
                         else{
-                            Toast.makeText(RegisterActivity.this, "Error uploading file", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(RegisterActivity.this,IdeasRegActivity.class);
+                            startActivity(intent);
+                            Toast.makeText(RegisterActivity.this, "Registartion Successfull", Toast.LENGTH_LONG).show();
                         }
 
                     }

@@ -24,7 +24,7 @@
         android:label="@string/AppName"
         android:windowSoftInputMode="stateAlwaysHidden">
         <activity
-            android:name=".RegisterActivity"
+            android:name=".IdeasRegActivity"
             android:label="@string/splashactivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
@@ -35,18 +35,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".RegisterActivity"
             android:label="@string/loginactivity"
             android:theme="@style/AppThemee" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".LoginActivity"
             android:label="@string/registeractivity"
             android:theme="@style/AppThemee" />
         <activity
             android:name=".HomeActivity"
             android:label="@string/homeactivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeee" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".chat.ChatActivity"
             android:label="Coversation" />
@@ -100,8 +100,8 @@
         <activity android:name=".discover.SingleServiceActivity"></activity>
         <activity
             android:name=".NewIdeaActivity"
-            android:theme="@style/AppThemee"></activity>
-        <activity android:name=".IdeasRegActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".SplashScreen"
             android:theme="@style/AppThemee"></activity>
     </application>
 
