@@ -24,7 +24,7 @@
         android:label="@string/AppName"
         android:windowSoftInputMode="stateAlwaysHidden">
         <activity
-            android:name=".IdeasRegActivity"
+            android:name=".HomeActivity"
             android:label="@string/splashactivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
@@ -43,7 +43,7 @@
             android:label="@string/registeractivity"
             android:theme="@style/AppThemee" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".IdeasRegActivity"
             android:label="@string/homeactivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
@@ -52,8 +52,7 @@
             android:label="Coversation" />
         <activity
             android:name=".discover.DiscoveriActivity"
-            android:label="Discover"
-            android:theme="@style/AppThemee" />
+            android:label="Discover" />
         <activity
             android:name=".favorates.FavoritesActivity"
             android:label="Favourites" />
