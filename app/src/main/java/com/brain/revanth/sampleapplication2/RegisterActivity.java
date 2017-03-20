@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 
 import android.os.Environment;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
@@ -24,6 +26,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.brain.revanth.sampleapplication2.Services.AlertDialogManager;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.async.http.AsyncHttpClient;
@@ -31,6 +34,8 @@ import com.koushikdutta.async.http.AsyncHttpPost;
 import com.koushikdutta.async.http.AsyncHttpResponse;
 import com.koushikdutta.async.http.body.MultipartFormDataBody;
 import com.koushikdutta.ion.Ion;
+
+import org.json.JSONObject;
 
 import java.io.File;
 
@@ -44,7 +49,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private String uploadImagePath = "";
     private ProgressDialog pDialog;
     private String KEY_IMAGE = "uploadfile";
-    private String REG_URL ="http://ec2-52-91-248-133.compute-1.amazonaws.com:8080/register";
+    AlertDialogManager dialogManager;
+    private String REG_URL ="http://sample-env.ibqeg2uyqh.us-east-1.elasticbeanstalk.com/register";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +68,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         regPersInfo.setOnClickListener(this);
         iView.setOnClickListener(this);
         upimage.setOnClickListener(this);
+
+        dialogManager = new AlertDialogManager();
 
  }
     public void timerDelayRemoveDialog(long time, final android.app.AlertDialog d){
@@ -149,7 +157,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             }
         }
     }
-    @SuppressWarnings("deprecation")
     public String getPath(Uri uri, Activity activity) {
         String[] projection = { MediaStore.MediaColumns.DATA };
         cursor = activity.managedQuery(uri, projection, null, null, null);
@@ -167,7 +174,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 selectImage();
                 break;
             case R.id.regperInfo:
-                final File fileToUpload = new File(uploadImagePath);
+
                 String username = userName.getText().toString();
                 String mobilenum = userMobile.getText().toString();
                 String email = userEmail.getText().toString();
@@ -176,19 +183,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 String conpin = userConPin.getText().toString();
                 String location = userLocation.getText().toString();
                 if(pin.equals(conpin)){
+                    UploadImage();
                     registerUser(username,mobilenum,email,college,pin,location);
-                    //Toast.makeText(RegisterActivity.this,"Confirm Doesn't match with Pin",Toast.LENGTH_LONG).show();
                 }
                 else {
-                    Toast.makeText(RegisterActivity.this,"Confirm Doesn't match with Pin",Toast.LENGTH_LONG).show();
+                    dialogManager.showAlertDialog(RegisterActivity.this,"Confirm Doesn't match with Pin",false);
                 }
-//                Intent personal = new Intent(RegisterActivity.this,IdeasRegActivity.class);
-//                startActivity(personal);
         }
     }
 
     private void registerUser(String username, String mobilenum, String email, String college, String pin, String location) {
-
         Ion.with(this)
                 .load("POST", REG_URL)
                 .setBodyParameter("username",username)
@@ -200,6 +204,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 .setBodyParameter("description","asasa")
                 .setBodyParameter("referalid","")
                 .setBodyParameter("confirmpin",pin)
+                .setBodyParameter("imgpath",uploadImagePath)
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
@@ -210,9 +215,28 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             return;
                         }
                         else{
-                            Intent intent = new Intent(RegisterActivity.this,IdeasRegActivity.class);
-                            startActivity(intent);
-                            Toast.makeText(RegisterActivity.this, "Registartion Successfull", Toast.LENGTH_LONG).show();
+                            try{
+                                JSONObject j = new JSONObject(result);
+                                int status = j.getInt("status");
+                                if(status==1){
+                                    JSONObject object = j.getJSONObject("data");
+                                    String userid = object.getString("_id");
+                                    SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                                    SharedPreferences.Editor editor = settings.edit();
+                                    editor = settings.edit();
+                                    editor.putString("_id", userid);
+                                    editor.commit();
+                                    Intent intent = new Intent(RegisterActivity.this,IdeasRegActivity.class);
+                                    startActivity(intent);
+                                    Toast.makeText(RegisterActivity.this, "Registartion Successfull", Toast.LENGTH_LONG).show();
+                                }
+                                else {
+                            dialogManager.showAlertDialog(RegisterActivity.this,j.getString("response"),false);
+                                }
+                            }catch (Exception ex){
+
+                            }
+
                         }
 
                     }

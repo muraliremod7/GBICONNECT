@@ -26,11 +26,12 @@ import java.util.List;
 import com.brain.revanth.sampleapplication2.Model.PeopleCommonClass;
 
 public class PeopleFragment extends Fragment {
+
     private ListView listView;
     private List<PeopleCommonClass> arrayList = new ArrayList<PeopleCommonClass>();
     PeopleCommonClass peopleCommonClass;
     PeoplesListRow peoplesListRow;
-    String Profilename,IdeaName,IdeaDesc,PhoneNum,Email;
+    String Profilename, collegeName,IdeaDesc,PhoneNum,Email,location;
     AlertDialogManager alert;
     ConnectionDetector cd;
     @Override
@@ -39,51 +40,48 @@ public class PeopleFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_people,null);
         peopleCommonClass =new PeopleCommonClass();
         // Inflate the layout for this fragment
-        //peoples();
+        peoples();
         cd = new ConnectionDetector(getActivity());
         listView = (ListView) view.findViewById(R.id.list);
         peoplesListRow = new PeoplesListRow(getActivity(),arrayList);
-        peoplesListRow.notifyDataSetChanged();
         alert = new AlertDialogManager();
         return view;
     }
     private void peoples() {
         Ion.with(getContext())
-                .load("http://www.gbiconnect.com/walletbabaservices/getTeams")
+                .load("http://sample-env.ibqeg2uyqh.us-east-1.elasticbeanstalk.com/")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
                         if(e!=null){
-                            if (!cd.isNetworkOn(getActivity())) {
-                                // Internet Connection is Present
-                                // make HTTP requests
-                                alert.showAlertDialog(getActivity(),"Sorry There is Network Problem",false);
-                            }
 
                         }else{
                             try {
                                 JSONObject jSONObject = new JSONObject(result);
-                                int status = jSONObject.getInt("status");
-                                if (status == 1) {
-                                    JSONArray array = jSONObject.getJSONArray("teams");
+
+                                    JSONArray array = jSONObject.getJSONArray("gbis");
                                     for(int i =0;i<array.length();i++){
                                         JSONObject j = array.getJSONObject(i);
                                         PeopleCommonClass peopleCommonClass = new PeopleCommonClass();
-                                        if(j.has("leadName")||!j.isNull("leadName")){
-                                            peopleCommonClass.setName(j.getString("leadName"));
+
+                                        if(j.has("username")||!j.isNull("username")){
+                                            peopleCommonClass.setName(j.getString("username"));
                                         }
-                                        if(j.has("ideaName")||!j.isNull("ideaName")){
-                                            peopleCommonClass.setIdeaName(j.getString("ideaName").toString());
+                                        if(j.has("description")||!j.isNull("description")){
+                                            peopleCommonClass.setIdeaDescription(j.getString("description").toString());
                                         }
-                                        if(j.has("ideaDescription")||!j.isNull("ideaDescription")){
-                                            peopleCommonClass.setIdeaDescription(j.getString("ideaDescription").toString());
+//                                        if(j.has("profile")||!j.isNull("profile")){
+//                                            peopleCommonClass.setImage(j.getString("profile"));
+//                                        }
+                                        if(j.has("mobile")||!j.isNull("mobile")){
+                                            peopleCommonClass.setPhoneNumber(j.getString("mobile"));
                                         }
-                                        if(j.has("profile")||!j.isNull("profile")){
-                                            peopleCommonClass.setImage(j.getString("profile"));
+                                        if(j.has("college")||!j.isNull("college")){
+                                            peopleCommonClass.setCollegename(j.getString("college"));
                                         }
-                                        if(j.has("phone")||!j.isNull("phone")){
-                                            peopleCommonClass.setPhoneNumber(j.getString("phone"));
+                                        if(j.has("location")||!j.isNull("location")){
+                                            peopleCommonClass.setLocation(j.getString("location"));
                                         }
                                         if(j.has("email")||!j.isNull("email")){
                                             peopleCommonClass.setEmail(j.getString("email"));
@@ -91,10 +89,6 @@ public class PeopleFragment extends Fragment {
                                         arrayList.add(peopleCommonClass);
                                     }
                                     listView.setAdapter(peoplesListRow);
-
-                                } else {
-
-                                }
 
                             } catch (JSONException e1) {
                                 e1.printStackTrace();
@@ -104,16 +98,18 @@ public class PeopleFragment extends Fragment {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                             Profilename = ((TextView)view.findViewById(R.id.ProfileName)).getText().toString();
-                            IdeaName = ((TextView)view.findViewById(R.id.IdeaName)).getText().toString();
+                            collegeName = ((TextView)view.findViewById(R.id.Profilecollege)).getText().toString();
                             IdeaDesc = ((TextView)view.findViewById(R.id.Ideadesc)).getText().toString();
                             PhoneNum = ((TextView)view.findViewById(R.id.phonenumber)).getText().toString();
-                                Email = ((TextView)view.findViewById(R.id.ProfileEmail)).getText().toString();
+                            Email = ((TextView)view.findViewById(R.id.ProfileEmail)).getText().toString();
+                            location = ((TextView)view.findViewById(R.id.Profilelocation)).getText().toString();
                                 Intent singlpeople = new Intent(getActivity(), SinglePeopleActivity.class);
                                 Bundle peoplessbundle = new Bundle();
                                 peoplessbundle.putString("ProfileName", Profilename);
-                                peoplessbundle.putString("IdeaName", IdeaName);
+                                peoplessbundle.putString("collegeName", collegeName);
                                 peoplessbundle.putString("IdeaDesc", IdeaDesc);
                                 peoplessbundle.putString("ideaDescription",PhoneNum);
+                                peoplessbundle.putString("location",location);
                                 peoplessbundle.putString("Email",Email);
                                 singlpeople.putExtras(peoplessbundle);
                                 if(singlpeople!=null){
@@ -126,6 +122,17 @@ public class PeopleFragment extends Fragment {
                 });
                 }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+                getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+               // adapter.notifyDataSetChanged();
+                peoplesListRow.notifyDataSetChanged();
+            }
+        });
+    }
 }
 
 

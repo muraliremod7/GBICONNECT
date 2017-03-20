@@ -15,7 +15,16 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     android:weightSum="1">
-
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:textSize="20dp"
+    android:gravity="center_horizontal"
+    android:text="Welcome To Ideas Registration Sholud be attend 25 Questions"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
     <EditText
         android:id="@+id/idearegTitle"
         android:textColorHint="@color/textColorPrimary"
@@ -42,7 +51,7 @@
         android:scrollbars="vertical"
         android:verticalScrollbarPosition="right"
         android:hint="Enter Idea Description"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:inputType="textMultiLine" />
     <View
         android:layout_width="match_parent"
@@ -51,11 +60,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:textColorHint="@color/textColorPrimary"
         android:background="@drawable/edittextstyle"
         android:id="@+id/idearegReferal"
         android:hint="Referal Code" />
+    <Spinner
+        android:id="@+id/eventid"
+        android:spinnerMode="dialog"
+        android:paddingLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:contextClickable="true"
+        android:background="@drawable/spinnerstyle">
+
+    </Spinner>
 </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

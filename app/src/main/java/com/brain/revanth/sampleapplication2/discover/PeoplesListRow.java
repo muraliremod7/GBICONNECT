@@ -21,7 +21,7 @@ import com.brain.revanth.sampleapplication2.Model.PeopleCommonClass;
  * Created by Hari Prahlad on 07-05-2016.
  */
 public class PeoplesListRow extends BaseAdapter {
-    TextView names,ideaname,ideadesc,phonenumber,email;
+    TextView names, college,ideadesc,phonenumber,email,location;
     ImageView profilepic;
     private final Activity activity;
     public List<PeopleCommonClass> peoplelist;
@@ -53,16 +53,19 @@ public class PeoplesListRow extends BaseAdapter {
         convertview= inflater.inflate(R.layout.peopleslistrow, null, true);
         names = (TextView) convertview.findViewById(R.id.ProfileName);
         profilepic = (ImageView)convertview.findViewById(R.id.Profilepicture);
-        ideaname = (TextView)convertview.findViewById(R.id.IdeaName);
+        college = (TextView)convertview.findViewById(R.id.Profilecollege);
         ideadesc = (TextView)convertview.findViewById(R.id.Ideadesc);
         phonenumber = (TextView)convertview.findViewById(R.id.phonenumber);
         email = (TextView)convertview.findViewById(R.id.ProfileEmail);
+        location = (TextView)convertview.findViewById(R.id.Profilelocation);
+
         PeopleCommonClass peopleCommonClass =(PeopleCommonClass)getItem(position);
         names.setText(peopleCommonClass.getName());
-        ideaname.setText(peopleCommonClass.getIdeaName());
+        college.setText(peopleCommonClass.getCollegename());
         ideadesc.setText(peopleCommonClass.getIdeaDescription());
         phonenumber.setText(peopleCommonClass.getPhoneNumber());
         email.setText(peopleCommonClass.getEmail());
+        location.setText(peopleCommonClass.getLocation());
 //       profilepic.setImageResource(peopleCommonClass.getImage());
         return convertview;
     }

@@ -38,8 +38,8 @@ public class HomeActivity extends AppCompatActivity{
         localActivityManager = new LocalActivityManager(this,false);
         localActivityManager.dispatchCreate(savedInstanceState);
         session = new SessionManager(getApplicationContext());
-//        if(session.checkLogin())
-//            finish();
+        if(session.checkLogin())
+            finish();
         tabHost = (TabHost)findViewById(android.R.id.tabhost);
             tabHost.setup(localActivityManager);
         Resources resources = getResources();

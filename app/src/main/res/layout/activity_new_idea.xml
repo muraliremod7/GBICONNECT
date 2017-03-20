@@ -1,47 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:orientation="vertical">
     <android.support.v4.view.ViewPager
-        android:id="@+id/newIdeaviewpager"
+        android:id="@+id/newpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_gravity="center">
+    </android.support.v4.view.ViewPager>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/previous"
-        android:layout_weight="1"
-        android:layout_below="@+id/newideaappbar">
+        android:orientation="horizontal"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:gravity="center">
+        <Button
+            android:id="@+id/newprevious"
+            android:background="@drawable/buttonstyle"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_keyboard_arrow_left_white_36dp" />
+        <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:background="@drawable/buttonstyle"
+            android:layout_width="180dp"
+            android:textColor="@color/textColorPrimary"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/newsubmit" />
+        <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+        <Button
+            android:id="@+id/newnext"
+            android:background="@drawable/buttonstyle"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_keyboard_arrow_right_white_36dp" />
 
-    </android.support.v4.view.ViewPager>
 
-    <Button
-        android:id="@+id/previous"
-        android:background="@drawable/buttonstyle"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/newIdeaviewpager"
-        android:layout_alignTop="@+id/next"
-        android:drawableLeft="@drawable/ic_keyboard_arrow_left_white_36dp" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/next"
-        android:background="@drawable/buttonstyle"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:drawableRight="@drawable/ic_keyboard_arrow_right_white_36dp" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:background="@drawable/buttonstyle"
-        android:layout_width="180dp"
-        android:textColor="@color/textColorPrimary"
-        android:textStyle="bold"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        android:id="@+id/createnewIdea"
-        android:layout_alignBottom="@+id/previous"
-        android:layout_centerHorizontal="true" />
-</RelativeLayout>
+</LinearLayout>

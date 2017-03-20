@@ -15,13 +15,12 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp">
         <TextView
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="LeadName  :"
+            android:text="UserName  :"
             android:id="@+id/textView"
             style="@style/CodeFont"
-            android:textColor="@color/TextColorHint"
             android:layout_below="@+id/appbar" />
 
         <TextView
@@ -29,34 +28,10 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="leadname"
-            android:textColor="@color/TextColorHint"
             android:id="@+id/Leadname"
             style="@style/CodeFont" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp">
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="IdeaName  :"
-            android:textColor="@color/TextColorHint"
-            style="@style/CodeFont"
-            android:id="@+id/textView26" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="ideaname"
-            android:textColor="@color/TextColorHint"
-            style="@style/CodeFont"
-            android:id="@+id/IdeaNamee" />
-    </LinearLayout>
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -64,11 +39,10 @@
     android:layout_marginTop="10dp"
     android:layout_marginLeft="20dp">
     <TextView
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="PhoneNum  :"
-        android:textColor="@color/TextColorHint"
         android:id="@+id/textView40"
         style="@style/CodeFont"/>
 
@@ -77,7 +51,6 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="phonenum"
-        android:textColor="@color/TextColorHint"
         style="@style/CodeFont"
         android:id="@+id/Phonenumber" />
 </LinearLayout>
@@ -87,11 +60,10 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp">
         <TextView
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Email     :"
-            android:textColor="@color/TextColorHint"
             android:id="@+id/email"
             style="@style/CodeFont" />
 
@@ -100,7 +72,6 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Email"
-            android:textColor="@color/TextColorHint"
             style="@style/CodeFont"
             android:id="@+id/profileEmail" />
     </LinearLayout>
@@ -111,11 +82,52 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp">
         <TextView
-            android:layout_width="100dp"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="CollegeName  :"
+            style="@style/CodeFont"
+            android:id="@+id/textView26" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="CollegeName"
+            style="@style/CodeFont"
+            android:id="@+id/collegename" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp">
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Location  :"
+            style="@style/CodeFont"
+            android:id="@+id/textView2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Location"
+            style="@style/CodeFont"
+            android:id="@+id/location" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp">
+        <TextView
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="IdeaDesc  :"
-            android:textColor="@color/TextColorHint"
             android:id="@+id/textView44"
             style="@style/CodeFont"/>
 
@@ -124,7 +136,6 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="ideadesc"
-            android:textColor="@color/TextColorHint"
             android:id="@+id/IdeaDescription"
             style="@style/CodeFont"/>
     </LinearLayout>

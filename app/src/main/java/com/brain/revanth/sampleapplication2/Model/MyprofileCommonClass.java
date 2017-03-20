@@ -1,51 +1,36 @@
 package com.brain.revanth.sampleapplication2.Model;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by Hari Prahlad on 23-05-2016.
  */
 public class MyprofileCommonClass {
 
-    private String leadname;
+    private String userName;
     private String phone;
-    private String ideaname;
-    private String ideaDescription;
-    private String profileImage;
-    private String teamMembers;
+    private String email;
+    private String college;
+    private String location;
+    private Bitmap profilepic;
+        public MyprofileCommonClass(){
 
-    public MyprofileCommonClass() {
-    }
-
-    public MyprofileCommonClass(String leadname, String phone,String ideaname,String ideaDescription,String teamMembers, String profileImage) {
-        this.leadname = leadname;
+        }
+    public MyprofileCommonClass(String userName, String phone, String email, String college, String location, Bitmap profilepic) {
+        this.userName = userName;
         this.phone = phone;
-        this.ideaname = ideaname;
-        this.ideaDescription = ideaDescription;
-        this.teamMembers = teamMembers;
-        this.profileImage = profileImage;
+        this.email = email;
+        this.college = college;
+        this.location = location;
+        this.profilepic = profilepic;
     }
 
-    public String getLeadname() {
-        return leadname;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setLeadname(String leadname) {
-        this.leadname = leadname;
-    }
-
-    public String getIdeaDescription() {
-        return ideaDescription;
-    }
-
-    public void setIdeaDescription(String ideaDescription) {
-        this.ideaDescription = ideaDescription;
-    }
-
-    public String getIdeaname() {
-        return ideaname;
-    }
-
-    public void setIdeaname(String ideaname) {
-        this.ideaname = ideaname;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPhone() {
@@ -56,19 +41,35 @@ public class MyprofileCommonClass {
         this.phone = phone;
     }
 
-    public String getProfileImage() {
-        return profileImage;
+    public String getEmail() {
+        return email;
     }
 
-    public void setProfileImage(String profileImage) {
-        this.profileImage = profileImage;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getTeamMembers() {
-        return teamMembers;
+    public String getCollege() {
+        return college;
     }
 
-    public void setTeamMembers(String teamMembers) {
-        this.teamMembers = teamMembers;
+    public void setCollege(String college) {
+        this.college = college;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Bitmap getProfilepic() {
+        return profilepic;
+    }
+
+    public void setProfilepic(Bitmap profilepic) {
+        this.profilepic = profilepic;
     }
 }

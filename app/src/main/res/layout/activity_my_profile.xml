@@ -10,15 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/editprofileLayout"
-        android:visibility="gone">
+        android:background="@color/colorPrimary"
+        android:visibility="visible">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <RelativeLayout
                 android:layout_width="fill_parent"
-                android:layout_height="60dp"
-                android:background="@color/colorPrimary">
+                android:layout_height="60dp">
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:layout_marginTop="10dp"
-                    android:hint="Enter New Name"
+                    android:hint="Enter New Username"
                     android:ems="10"
                     android:theme="@style/TextLabel"
                     android:id="@+id/epnewname" />
@@ -48,167 +48,50 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="phone"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:theme="@style/TextLabel"
+                    android:layout_marginTop="5dp"
+                    android:hint="Enter College Name"
+                    android:id="@+id/epnewcolle" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:ems="10"
                     android:theme="@style/TextLabel"
                     android:layout_marginTop="5dp"
-                    android:hint="Enter New Number"
-                    android:id="@+id/epnewnum" />
+                    android:hint="Enter New Location"
+                    android:id="@+id/epnewloc" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:ems="10"
+                    android:id="@+id/epdesc"
+                    android:inputType="text"
                     android:theme="@style/TextLabel"
                     android:layout_marginTop="5dp"
-                    android:hint="Enter New Email"
-                    android:id="@+id/epnewemail" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/epcompany"
-                    android:theme="@style/TextLabel"
-                    android:layout_marginTop="5dp"
-                    android:hint="Company Name" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/epposition"
-                    android:theme="@style/TextLabel"
-                    android:layout_marginTop="5dp"
-                    android:hint="Position" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Interests"
-                    android:textColor="@color/TextColorHint"
-                    android:textStyle="bold"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:id="@+id/textView27" />
-
+                    android:hint="Update Description" />
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="center_horizontal">
-
-                    <CheckBox
-                        android:background="@drawable/selectcheckbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Advertising"
-                        android:id="@+id/advertising" />
-                    <View
-                    android:layout_width="5dp"
-                    android:layout_height="wrap_content"/>
-                    <CheckBox
-                        android:background="@drawable/selectcheckbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="BigData"
-                        android:id="@+id/bigdata" />
-                    <View
-                        android:layout_width="5dp"
-                        android:layout_height="wrap_content"/>
-                    <CheckBox
-                        android:background="@drawable/selectcheckbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Design"
-                        android:id="@+id/design" />
-                    <View
-                        android:layout_width="5dp"
-                        android:layout_height="wrap_content"/>
-                    <CheckBox
-                        android:background="@drawable/selectcheckbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="VR"
-                        android:id="@+id/vr" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:layout_gravity="center_horizontal">
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
-                    <CheckBox
-                        android:background="@drawable/selectcheckbox"
-                        android:layout_width="wrap_content"
+                    <Button
+                        android:id="@+id/uploadnewpic"
+                        android:layout_width="150dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/buttonstyle"
+                        android:text="Upload Photo" />
+                    <TextView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Gaming"
-                        android:id="@+id/gaming" />
-                    <View
-                        android:layout_width="5dp"
-                        android:layout_height="wrap_content"/>
-                    <CheckBox
-                        android:background="@drawable/selectcheckbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Hardware"
-                        android:id="@+id/hardware" />
-                    <View
-                        android:layout_width="5dp"
-                        android:layout_height="wrap_content"/>
-                    <CheckBox
-                        android:background="@drawable/selectcheckbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Entrepreneurship"
-                        android:id="@+id/entrepreneurship" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:gravity="center_horizontal"
-                    android:layout_height="wrap_content">
-
-                    <CheckBox
-                        android:background="@drawable/selectcheckbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Marketing"
-                        android:id="@+id/marketing" />
-                    <View
-                        android:layout_width="5dp"
-                        android:layout_height="wrap_content"/>
-                    <CheckBox
-                        android:background="@drawable/selectcheckbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="UI"
-                        android:id="@+id/ui" />
-                    <View
-                        android:layout_width="5dp"
-                        android:layout_height="wrap_content"/>
-                    <CheckBox
-                        android:background="@drawable/selectcheckbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="UX"
-                        android:id="@+id/ux" />
-                    <View
-                        android:layout_width="5dp"
-                        android:layout_height="wrap_content"/>
-                    <CheckBox
-                        android:background="@drawable/selectcheckbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Open Source"
-                        android:id="@+id/opensource" />
+                        android:text="textpath"
+                        android:gravity="center_horizontal"
+                        android:id="@+id/imgPath"/>
                 </LinearLayout>
 
                 <Button
@@ -221,65 +104,199 @@
                     android:background="@color/colorAcent"
                     android:id="@+id/profileiupdate"
                     android:layout_gravity="center_horizontal" />
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+                    <!--android:text="Interests"-->
+                    <!--android:textColor="@color/TextColorHint"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:layout_marginTop="20dp"-->
+                    <!--android:layout_marginBottom="20dp"-->
+                    <!--android:id="@+id/textView27" />-->
+
+                <!--<LinearLayout-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="35dp"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:gravity="center_horizontal">-->
+
+                    <!--<CheckBox-->
+                        <!--android:background="@drawable/selectcheckbox"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Advertising"-->
+                        <!--android:id="@+id/advertising" />-->
+                    <!--<View-->
+                    <!--android:layout_width="5dp"-->
+                    <!--android:layout_height="wrap_content"/>-->
+                    <!--<CheckBox-->
+                        <!--android:background="@drawable/selectcheckbox"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="BigData"-->
+                        <!--android:id="@+id/bigdata" />-->
+                    <!--<View-->
+                        <!--android:layout_width="5dp"-->
+                        <!--android:layout_height="wrap_content"/>-->
+                    <!--<CheckBox-->
+                        <!--android:background="@drawable/selectcheckbox"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Design"-->
+                        <!--android:id="@+id/design" />-->
+                    <!--<View-->
+                        <!--android:layout_width="5dp"-->
+                        <!--android:layout_height="wrap_content"/>-->
+                    <!--<CheckBox-->
+                        <!--android:background="@drawable/selectcheckbox"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="VR"-->
+                        <!--android:id="@+id/vr" />-->
+
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_marginTop="5dp"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:gravity="center_horizontal"-->
+                    <!--android:layout_gravity="center_horizontal">-->
+
+                    <!--<CheckBox-->
+                        <!--android:background="@drawable/selectcheckbox"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Gaming"-->
+                        <!--android:id="@+id/gaming" />-->
+                    <!--<View-->
+                        <!--android:layout_width="5dp"-->
+                        <!--android:layout_height="wrap_content"/>-->
+                    <!--<CheckBox-->
+                        <!--android:background="@drawable/selectcheckbox"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Hardware"-->
+                        <!--android:id="@+id/hardware" />-->
+                    <!--<View-->
+                        <!--android:layout_width="5dp"-->
+                        <!--android:layout_height="wrap_content"/>-->
+                    <!--<CheckBox-->
+                        <!--android:background="@drawable/selectcheckbox"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Entrepreneurship"-->
+                        <!--android:id="@+id/entrepreneurship" />-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_marginTop="5dp"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:gravity="center_horizontal"-->
+                    <!--android:layout_height="wrap_content">-->
+
+                    <!--<CheckBox-->
+                        <!--android:background="@drawable/selectcheckbox"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Marketing"-->
+                        <!--android:id="@+id/marketing" />-->
+                    <!--<View-->
+                        <!--android:layout_width="5dp"-->
+                        <!--android:layout_height="wrap_content"/>-->
+                    <!--<CheckBox-->
+                        <!--android:background="@drawable/selectcheckbox"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="UI"-->
+                        <!--android:id="@+id/ui" />-->
+                    <!--<View-->
+                        <!--android:layout_width="5dp"-->
+                        <!--android:layout_height="wrap_content"/>-->
+                    <!--<CheckBox-->
+                        <!--android:background="@drawable/selectcheckbox"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="UX"-->
+                        <!--android:id="@+id/ux" />-->
+                    <!--<View-->
+                        <!--android:layout_width="5dp"-->
+                        <!--android:layout_height="wrap_content"/>-->
+                    <!--<CheckBox-->
+                        <!--android:background="@drawable/selectcheckbox"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Open Source"-->
+                        <!--android:id="@+id/opensource" />-->
+                <!--</LinearLayout>-->
+
             </LinearLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
+
+
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/myprofilelayout"
-        android:visibility="visible">
+        android:visibility="gone">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="30dp">
             <ImageView
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:id="@+id/myprofileprofilepic"
                 android:src="@drawable/user"
                 android:layout_marginTop="20dp"
-                android:layout_gravity="center_horizontal"
-                />
-            <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal" />
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:layout_marginLeft="20dp"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_width="130dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Lead Name"
+                    android:text="UserName"
+                    android:layout_alignParentLeft="true"
                     style="@style/CodeFont"
-                    android:textColor="@color/TextColorHint"
                     android:id="@+id/textView28"
                     android:textStyle="bold" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="leadname"
+                    android:text="username"
+                    android:layout_alignParentRight="true"
                     style="@style/CodeFont"
-                    android:textColor="@color/TextColorHint"
                     android:id="@+id/myprofilename" />
-            </LinearLayout>
-            <LinearLayout
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPrimary"></View>
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:layout_marginLeft="20dp"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_width="130dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Phone"
+                    android:layout_alignParentLeft="true"
                     style="@style/CodeFont"
-                    android:textColor="@color/TextColorHint"
                     android:textStyle="bold"
                     android:id="@+id/textView29" />
 
@@ -288,94 +305,127 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="phone"
+                    android:layout_alignParentRight="true"
                     style="@style/CodeFont"
-                    android:textColor="@color/TextColorHint"
                     android:id="@+id/myprofilephone" />
-            </LinearLayout>
-            <LinearLayout
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPrimary"></View>
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:layout_marginLeft="20dp"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_width="130dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="IdeaName"
+                    android:text="Email"
+                    android:layout_alignParentLeft="true"
                     style="@style/CodeFont"
-                    android:textColor="@color/TextColorHint"
                     android:textStyle="bold"
                     android:id="@+id/textView30" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="ideaname"
+                    android:text="Email"
+                    android:layout_alignParentRight="true"
                     style="@style/CodeFont"
-                    android:textColor="@color/TextColorHint"
-                    android:id="@+id/myprofileideaname"/>
-            </LinearLayout>
-            <LinearLayout
+                    android:id="@+id/myprofileemail"/>
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPrimary"></View>
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:layout_marginLeft="20dp"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_width="130dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Idea Description"
+                    android:text="College"
+                    android:layout_alignParentLeft="true"
+                    style="@style/CodeFont"
+                    android:textStyle="bold"
+                    android:id="@+id/textView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="College"
+                    android:layout_alignParentRight="true"
+                    style="@style/CodeFont"
+                    android:id="@+id/myprofilcollege"/>
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPrimary"></View>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Location"
+                    android:layout_alignParentLeft="true"
+                    style="@style/CodeFont"
+                    android:textStyle="bold"
+                    android:id="@+id/textView0" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Location"
+                    android:layout_alignParentRight="true"
+                    style="@style/CodeFont"
+                    android:id="@+id/myprofilelocation"/>
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPrimary"></View>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Description"
+                    android:layout_alignParentLeft="true"
                     android:textStyle="bold"
                     style="@style/CodeFont"
-                    android:textColor="@color/TextColorHint"
                     android:id="@+id/textView3" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="ideadescription"
+                    android:text="description"
+                    android:layout_alignParentRight="true"
                     style="@style/CodeFont"
-                    android:textColor="@color/TextColorHint"
                     android:id="@+id/myprofiledesc"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="20dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Team Members"
-                    style="@style/CodeFont"
-                    android:textColor="@color/TextColorHint"
-                    android:textStyle="bold"
-                    android:id="@+id/textView39" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="teamemebres"
-                    style="@style/CodeFont"
-                    android:textColor="@color/TextColorHint"
-                    android:id="@+id/myprofileteammem"/>
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_marginLeft="20dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Interests"
-                android:textStyle="bold"
-                style="@style/CodeFont"
-                android:textColor="@color/TextColorHint"
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
                 android:layout_marginTop="10dp"
-                android:id="@+id/textView36" />
+                android:background="@color/colorPrimary"></View>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

@@ -2,6 +2,8 @@ package com.brain.revanth.sampleapplication2;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +27,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeoutException;
 
 public class IdeasRegActivity extends AppCompatActivity {
     private ViewPager viewPager;
@@ -37,11 +40,12 @@ public class IdeasRegActivity extends AppCompatActivity {
     private QuestionFour qfour;
     private QuestionFive qfive;
     private Button Prev,Next,Submit;
-    public String ideaTitle, ideaDescription,ideaRefcode;
+    public String ideaTitle, ideaDescription,ideaRefcode,eventid;
     public static String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     ArrayList<String> Questions = new ArrayList<String>();
     String Questionsarraylist = "";
     public static String registerationId;
+    public static SharedPreferences regid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +67,8 @@ public class IdeasRegActivity extends AppCompatActivity {
         Prev.setVisibility(View.INVISIBLE);
         Submit.setVisibility(View.INVISIBLE);
         Next.setVisibility(View.VISIBLE);
-
+        regid = PreferenceManager.getDefaultSharedPreferences(this);
+        registerationId = regid.getString("_id","0");
         //Coverting Array List To String Object........
         for (String s : Questions)
         {
@@ -146,6 +151,7 @@ public class IdeasRegActivity extends AppCompatActivity {
                     ideaTitle = pi.ideaTitle.getText().toString();
                     ideaDescription = pi.ideaDesc.getText().toString();
                     ideaRefcode = pi.ideaReferalcode.getText().toString();
+                    eventid = pi.eventname.getSelectedItem().toString();
                     String que1 = qone.qu1.getText().toString().replace(" ", "%20");
                     String que2 = qone.qu2.getText().toString().replace(" ", "%20");
                     String que3 = qone.qu3.getText().toString().replace(" ", "%20");
@@ -202,7 +208,7 @@ public class IdeasRegActivity extends AppCompatActivity {
                         Toast.makeText(IdeasRegActivity.this,"Enter IdeaTitle",Toast.LENGTH_LONG).show();
                     }
                     else {
-                        idearegistration(registerationId,ideaTitle,ideaDescription,ideaRefcode,que1,que2,que3,que4,que5,que6,que7,que8,que9,que10,que11,que12,que13,que14,que15,que16,que17,que18,que19,que20,que21,que22,que23,que24,que25);
+                        idearegistration(registerationId,ideaTitle,eventid,ideaDescription,ideaRefcode,que1,que2,que3,que4,que5,que6,que7,que8,que9,que10,que11,que12,que13,que14,que15,que16,que17,que18,que19,que20,que21,que22,que23,que24,que25);
 
                     }
             }
@@ -210,11 +216,12 @@ public class IdeasRegActivity extends AppCompatActivity {
         }
     };
 
-    private void idearegistration(String registerationId, String ideaTitle, String ideaDescription, String ideaRefcode, String que1, String que2, String que3, String que4, String que5, String que6, String que7, String que8, String que9, String que10, String que11, String que12, String que13, String que14, String que15, String que16, String que17, String que18, String que19, String que20, String que21, String que22, String que23, String que24, String que25) {
+    private void idearegistration(String registerationId, String ideaTitle,String eventId, String ideaDescription, String ideaRefcode, String que1, String que2, String que3, String que4, String que5, String que6, String que7, String que8, String que9, String que10, String que11, String que12, String que13, String que14, String que15, String que16, String que17, String que18, String que19, String que20, String que21, String que22, String que23, String que24, String que25) {
         Ion.with(getApplicationContext())
-                .load("POST","http://ec2-52-91-248-133.compute-1.amazonaws.com:8080/ideas")
+                .load("POST","http://sample-env.ibqeg2uyqh.us-east-1.elasticbeanstalk.com/ideas")
                 .setBodyParameter("ideacode",ideaRefcode)
                 .setBodyParameter("ideatitle",ideaTitle)
+                .setBodyParameter("eventid",eventId)
                 .setBodyParameter("userid",registerationId)
                 .setBodyParameter("ideadescription",ideaDescription)
                 .setBodyParameter("ideaqu1",que1)
@@ -246,15 +253,20 @@ public class IdeasRegActivity extends AppCompatActivity {
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
-                        if(e!=null){
-                            Toast.makeText(IdeasRegActivity.this,result,Toast.LENGTH_LONG).show();
-                        }
-                        else {
-                            Intent homeintent = new Intent(IdeasRegActivity.this,LoginActivity.class);
-                            startActivity(homeintent);
-                            finish();
-                            Toast.makeText(IdeasRegActivity.this,"Idea Registered Successfully",Toast.LENGTH_LONG).show();
-                        }
+                            try{
+                                if(e!=null){
+                                    Toast.makeText(IdeasRegActivity.this,result,Toast.LENGTH_LONG).show();
+                                }
+                                else {
+                                    Intent homeintent = new Intent(IdeasRegActivity.this,LoginActivity.class);
+                                    startActivity(homeintent);
+                                    finish();
+                                    Toast.makeText(IdeasRegActivity.this,"Idea Registered Successfully",Toast.LENGTH_LONG).show();
+                                }
+                            }catch (Exception ex){
+
+                            }
+
                     }
                 });
     }

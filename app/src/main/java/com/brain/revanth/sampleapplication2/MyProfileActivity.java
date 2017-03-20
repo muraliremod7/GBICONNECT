@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -18,18 +19,20 @@ import com.koushikdutta.ion.Ion;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
 import com.brain.revanth.sampleapplication2.Services.AlertDialogManager;
-import com.brain.revanth.sampleapplication2.Model.MyprofileCommonClass;
 
 public class MyProfileActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    EditText epname,epphone,epemail,epcompany,epposition;
+    private EditText epname, epcollege, eplocation, epdesc;
+    private TextView imgPath;
+    private Button uploadImage,submit;
     AlertDialogManager alert;
     ArrayList<String> arrayList = new ArrayList<>();
-    TextView leadname,Phonenumb,IdeaName,IdeaDesc,teamMembers;
+    TextView leadname,Phonenumb,email, collegename,location, descri,teamMembers;
     SharedPreferences teamID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +42,18 @@ public class MyProfileActivity extends AppCompatActivity {
 
         leadname = (TextView)findViewById(R.id.myprofilename);
         Phonenumb = (TextView)findViewById(R.id.myprofilephone);
-        IdeaName = (TextView)findViewById(R.id.myprofileideaname);
-        IdeaDesc = (TextView)findViewById(R.id.myprofiledesc);
-        teamMembers = (TextView)findViewById(R.id.myprofileteammem);
+        email = (TextView)findViewById(R.id.myprofileemail);
+        collegename = (TextView)findViewById(R.id.myprofilcollege);
+        descri = (TextView)findViewById(R.id.myprofiledesc);
+        location = (TextView)findViewById(R.id.myprofilelocation);
+        //teamMembers = (TextView)findViewById(R.id.myprofileteammem);
         epname = (EditText)findViewById(R.id.epnewname);
-        epphone = (EditText)findViewById(R.id.epnewnum);
-        epemail = (EditText)findViewById(R.id.epnewemail);
-        epcompany = (EditText)findViewById(R.id.epcompany);
-        epposition = (EditText)findViewById(R.id.epposition);
+        epcollege = (EditText)findViewById(R.id.epnewcolle);
+        eplocation = (EditText)findViewById(R.id.epnewloc);
+        epdesc = (EditText)findViewById(R.id.epdesc);
+        imgPath = (TextView)findViewById(R.id.imgPath);
+        uploadImage = (Button)findViewById(R.id.uploadnewpic);
+        submit = (Button)findViewById(R.id.profileiupdate);
 
         getTeamProfile();
         findViewById(R.id.closeForgotinmyprofile).setOnClickListener(new View.OnClickListener() {
@@ -69,9 +76,9 @@ public class MyProfileActivity extends AppCompatActivity {
 
     private void getTeamProfile() {
         teamID = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String Id = teamID.getString("teamid","0");
+        String Id = teamID.getString("user_id","0");
         Ion.with(getApplicationContext())
-                .load("http://www.gbiconnect.com/walletbabaservices/getTeamforProfile?teamId="+Id)
+                .load("http://sample-env.ibqeg2uyqh.us-east-1.elasticbeanstalk.com/getuserbyid?userid="+Id)
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
@@ -81,39 +88,15 @@ public class MyProfileActivity extends AppCompatActivity {
                         }else{
                             try {
                                 JSONObject jSONObject = new JSONObject(result);
-                                int status = jSONObject.getInt("status");
-                                if (status == 1) {
-                                    JSONObject j = jSONObject.getJSONObject("team");
-                                    MyprofileCommonClass aClass = new MyprofileCommonClass();
-                                    aClass.setLeadname(j.getString("leadName"));
-                                    aClass.setPhone(j.getString("phone"));
-                                    aClass.setIdeaname(j.getString("ideaName"));
-                                    aClass.setIdeaDescription(j.getString("ideaDescription"));
-                                    JSONArray com = j.getJSONArray("teamMembers");
-                                    for (int n = 0; n < com.length(); n++) {
-                                        JSONObject jsonobject = com.getJSONObject(n);
-                                        String membername = jsonobject.getString("memeberName");
-                                        arrayList.add(membername);
-                                    }
-                                    String MemberName = "";
-                                    for (String s : arrayList)
-                                    {
-                                        MemberName += s + "\t";
-                                    }
-                                    aClass.setTeamMembers(MemberName);
-
-                                    leadname.setText(aClass.getLeadname());
-                                    Phonenumb.setText(aClass.getPhone());
-                                    IdeaName.setText(aClass.getIdeaname());
-                                    IdeaDesc.setText(aClass.getIdeaDescription());
-                                    teamMembers.setText(aClass.getTeamMembers());
-
-                                } else {
-                                    JSONArray array = jSONObject.getJSONArray("errors");
-                                    JSONObject j = array.getJSONObject(0);
-                                    String error = j.getString("message");
-
-                                    alert.showAlertDialog(MyProfileActivity.this,error,false);
+                                    JSONArray j = jSONObject.getJSONArray("user");
+                                for(int i=0;i<=j.length();i++){
+                                    JSONObject jsonObject = j.getJSONObject(i);
+                                    leadname.setText(jsonObject.getString("username"));
+                                    Phonenumb.setText(jsonObject.getString("mobile"));
+                                    email.setText(jsonObject.getString("email"));
+                                    collegename.setText("college");
+                                    location.setText(jsonObject.getString("location"));
+                                    descri.setText(jsonObject.getString("description"));
                                 }
                             } catch (Exception ex) {
                                 ex.printStackTrace();

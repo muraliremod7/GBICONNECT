@@ -34,7 +34,7 @@ public class ListRow extends ArrayAdapter<String> {
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView= inflater.inflate(R.layout.peopleslistrow, null, true);
         namess = (TextView) rowView.findViewById(R.id.ProfileName);
-        description = (TextView) rowView.findViewById(R.id.IdeaName);
+        description = (TextView) rowView.findViewById(R.id.ideadescription);
         ImageView imageView = (ImageView) rowView.findViewById(R.id.Profilepicture);
         namess.setText(names[position]);
         description.setText(services[position]);

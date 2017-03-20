@@ -40,17 +40,17 @@ public class MyideasActivity extends AppCompatActivity {
         idealistview = (ListView)findViewById(R.id.ideaslistview);
 
         Ion.with(getApplicationContext())
-                .load("http://www.gbiconnect.com/walletbabaservices/GetIdeas")
+                .load("http://sample-env.ibqeg2uyqh.us-east-1.elasticbeanstalk.com/allideas")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
                         try {
                             JSONObject jSONObject = new JSONObject(result);
-                                JSONArray array = jSONObject.getJSONArray("ideas");
+                                JSONArray array = jSONObject.getJSONArray("");
                                 for(int i =0;i<array.length();i++){
                                     JSONObject j = array.getJSONObject(i);
-                                    String Ideaname = j.getString("ideaName");
+                                    String Ideaname = j.getString("ideatitle");
                                     String IdeaDesc = j.getString("ideaDesc");
                                     ideanameslist.add(Ideaname);
                                     ideadesclist.add(IdeaDesc);

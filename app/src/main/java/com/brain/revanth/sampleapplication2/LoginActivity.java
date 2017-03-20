@@ -120,32 +120,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         pDialog.show();
         timerDelayRemoveDialog(10*1000,pDialog);
         Ion.with(getApplicationContext())
-                .load("POST","http://ec2-52-91-248-133.compute-1.amazonaws.com:8080/login")
+                .load("POST","http://sample-env.ibqeg2uyqh.us-east-1.elasticbeanstalk.com/login")
                 .setBodyParameter("mobile",phone)
                 .setBodyParameter("pin",pin)
                         .asString()
                         .setCallback(new FutureCallback<String>() {
                             @Override
                             public void onCompleted(Exception e, String result) {
-                                // do stuff with the result or error
-//                        pDialog.cancel();
-                                //stop progress
                                 if (e != null) {
 
                                 } else {
-
                                     try {
                                         JSONObject jSONObject = new JSONObject(result);
-//                                        int status = jSONObject.getInt("status");
-//                                        if (status == 1) {
                                             if(pDialog.isShowing())
                                                 pDialog.dismiss();
                                             session.createLoginSession(phone,pin);
-                                            //JSONObject object = jSONObject.getJSONObject("");
                                             registerationId = jSONObject.getString("user_id");
                                             SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                                             editor = settings.edit();
-                                            editor.putString("teamid", registerationId);
+                                            editor.putString("user_id", registerationId);
                                             editor.commit();
                                             Toast.makeText(getApplicationContext(), "Welcome To GBI Connect", Toast.LENGTH_LONG).show();
                                             Intent i = new Intent(LoginActivity.this, HomeActivity.class);
@@ -154,14 +147,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                             startActivity(i);
                                             finish();
-//                                        } else {
-//                                            JSONArray array = jSONObject.getJSONArray("errors");
-//                                            JSONObject j = array.getJSONObject(0);
-//                                            String error = j.getString("message");
-//                                            if(pDialog.isShowing())
-//                                                pDialog.dismiss();
-//                                            alert.showAlertDialog(LoginActivity.this,error,false);
-//                                        }
+//
                                     } catch (Exception ex) {
                                         ex.printStackTrace();
                                     }

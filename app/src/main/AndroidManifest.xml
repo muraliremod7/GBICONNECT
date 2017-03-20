@@ -24,7 +24,7 @@
         android:label="@string/AppName"
         android:windowSoftInputMode="stateAlwaysHidden">
         <activity
-            android:name=".HomeActivity"
+            android:name=".SplashScreen"
             android:label="@string/splashactivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
@@ -37,11 +37,12 @@
         <activity
             android:name=".RegisterActivity"
             android:label="@string/loginactivity"
-            android:theme="@style/AppThemee" />
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/registeractivity"
-            android:theme="@style/AppThemee" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".IdeasRegActivity"
             android:label="@string/homeactivity"
@@ -80,28 +81,28 @@
         <activity
             android:name=".MyideasActivity"
             android:label="@string/title_activity_myideas"
-            android:theme="@style/AppThemee"></activity>
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".shedule.EventsActivity"
-            android:theme="@style/AppThemee"></activity>
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".ComplaintsActivity"
-            android:theme="@style/AppThemee"></activity>
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".shedule.MyteamActivity"
-            android:theme="@style/AppThemee"></activity>
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".discover.SinglePeopleActivity"
             android:theme="@style/AppThemee"></activity>
         <activity
             android:name=".shedule.SingleEventActivity"
-            android:theme="@style/AppThemee"></activity>
+            android:theme="@style/AppTheme"></activity>
         <activity android:name=".discover.SingleServiceActivity"></activity>
         <activity
             android:name=".NewIdeaActivity"
             android:theme="@style/AppTheme"></activity>
-        <activity android:name=".SplashScreen"
-            android:theme="@style/AppThemee"></activity>
+        <activity android:name=".HomeActivity"
+            android:theme="@style/AppThemeee"></activity>
     </application>
 
 </manifest>

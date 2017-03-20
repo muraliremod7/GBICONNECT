@@ -1,13 +1,12 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:windowBackground">@color/windowBackground</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:textColorHint">@color/TextColorHint</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
         <item name="colorAccent">@android:color/holo_red_light</item>
     </style>
     <style name="AppThemee" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -15,9 +14,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAcent</item>
-        <item name="android:windowBackground">@color/windowBackground</item>
-        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:windowBackground">@color/textColorPrimary</item>
+        <item name="android:textColorPrimary">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textColorHint">@color/TextColorHint</item>
+        <item name="android:typeface">monospace</item>
     </style>
     <style name="AppThemeee" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -26,6 +27,7 @@
         <item name="colorAccent">@color/colorAcent</item>
         <item name="android:windowBackground">@color/textColorPrimary</item>
         <item name="android:textColorPrimary">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textColorHint">@color/TextColorHint</item>
         <item name="android:typeface">monospace</item>
     </style>

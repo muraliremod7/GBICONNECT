@@ -29,8 +29,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/ProfileName"
         android:layout_gravity="center"
-        android:text="List Text"
-        android:textColor="@color/colorPrimary" />
+        android:text="List Text" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -39,14 +38,6 @@
         android:text="listText2"
         android:textColor="@color/colorPrimary"
         android:id="@+id/phonenumber"
-        android:visibility="invisible"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Ideaname"
-        android:textColor="@color/colorPrimary"
-        android:id="@+id/IdeaName"
         android:visibility="invisible"/>
 
     <TextView
@@ -65,6 +56,17 @@
         android:id="@+id/ProfileEmail"
         android:visibility="invisible"/>
 
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/Profilecollege"
+            android:visibility="invisible"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/Profilelocation"
+            android:visibility="invisible"/>
     </LinearLayout>
 </LinearLayout>

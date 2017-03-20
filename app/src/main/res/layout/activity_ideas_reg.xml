@@ -11,10 +11,12 @@
         android:layout_weight="1"
         android:layout_gravity="center">
     </android.support.v4.view.ViewPager>
-    <LinearLayout
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:gravity="center">
         <Button
@@ -23,6 +25,7 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:drawableLeft="@drawable/ic_keyboard_arrow_left_white_36dp" />
         <View
             android:layout_width="20dp"
@@ -35,13 +38,14 @@
             android:textStyle="bold"
             android:layout_height="wrap_content"
             android:text="Submit"
-            android:layout_gravity="center_vertical"
+            android:layout_centerHorizontal="true"
             android:id="@+id/submit" />
         <View
             android:layout_width="20dp"
             android:layout_height="20dp"/>
         <Button
             android:id="@+id/next"
+            android:layout_alignParentRight="true"
             android:background="@drawable/buttonstyle"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="50dp"
@@ -49,7 +53,7 @@
             android:drawableRight="@drawable/ic_keyboard_arrow_right_white_36dp" />
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </LinearLayout>
