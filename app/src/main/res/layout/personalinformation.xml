@@ -67,11 +67,11 @@
         android:id="@+id/idearegReferal"
         android:hint="Referal Code" />
     <Spinner
-        android:id="@+id/eventid"
+        android:id="@+id/speventid"
         android:spinnerMode="dialog"
         android:paddingLeft="10dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:contextClickable="true"
         android:background="@drawable/spinnerstyle">

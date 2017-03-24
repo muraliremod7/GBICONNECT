@@ -37,7 +37,7 @@ public class PersonalInfromationFragment extends Fragment{
         ideaTitle = (EditText)view.findViewById(R.id.idearegTitle);
         ideaDesc = (EditText)view.findViewById(R.id.idearegDesc);
         ideaReferalcode = (EditText)view.findViewById(R.id.idearegReferal);
-        eventname = (Spinner)view.findViewById(R.id.eventid);
+        eventname = (Spinner)view.findViewById(R.id.speventid);
         ideatitle = ideaTitle.getText().toString().replace("","%20");
         ideadescr = ideaDesc.getText().toString().replace("","%20");
         idearefcode = ideaReferalcode.getText().toString().replace("","%20");
@@ -58,39 +58,18 @@ public class PersonalInfromationFragment extends Fragment{
                             try{
                                 JSONObject jSONObject = new JSONObject(result);
                                 JSONArray array = jSONObject.getJSONArray("events");
-                                for(int i=0;i<=jSONObject.length();i++){
+                                for(int i=0;i<array.length();i++){
                                     JSONObject j = array.getJSONObject(i);
-                                    EventCommonClass commonClass = new EventCommonClass();
-//                                    if(j.has("_id")||!j.isNull("_id")){
-//                                        commonClass.setEventId(j.getString("_id"));
-//                                    }
-                                    if(j.has("eventname")||!j.isNull("eventname")){
-                                        commonClass.setEventName(j.getString("eventname"));
+                                    if(j.has("eventname")){
                                         String evename = j.getString("eventname");
                                         arrayList.add(evename);
                                     }
-
-//                                    if(j.has("eventlocation")||!j.isNull("eventlocation")){
-//                                        commonClass.setEventLocation(j.getString("eventlocation"));
-//                                    }
-//                                    if(j.has("ecollege")||!j.isNull("ecollege")){
-//                                        commonClass.setCollegeName(j.getString("ecollege"));
-//                                    }
-//                                    if(j.has("startdate")||!j.isNull("startdate")){
-//                                        commonClass.setStartDate(j.getString("startdate"));
-//                                    }
-//                                    if(j.has("enddate")||!j.isNull("enddate")){
-//                                        commonClass.setEndDate(j.getString("enddate"));
-//                                    }
-//                                    if(j.has("eventdescription")||!j.isNull("eventdescription")){
-//                                        commonClass.setEventDescription(j.getString("eventdescription"));
-//                                    }
                                 }
-                                String[] locationname = arrayList.toArray(new String[arrayList.size()]);
                                 adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinnerstyle);
                                 adapter.add("Choose Event");
-                                adapter.addAll(locationname);
+                                adapter.addAll(arrayList);
                                 eventname.setAdapter(adapter);
+                                adapter.notifyDataSetChanged();
                             }catch (Exception exz){
                                 exz.printStackTrace();
                             }

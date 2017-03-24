@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#494786</color>
+    <color name="colorPrimary">#4c4ab7</color>
     <color name="colorPrimaryDark">#262451</color>
     <color name="TIPColor">#FFFFFF</color>
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="windowBackground">#5a5993</color>
-    <color name="colorAcent">#F2744A</color>
+    <color name="colorAcent">#f28b69</color>
     <color name="TextColorHint">#FFFFFF</color>
-    <color name="Tabbackgroundcolor">#ef835f</color>
     <color name="light_grey">#cccccc</color>
 </resources>

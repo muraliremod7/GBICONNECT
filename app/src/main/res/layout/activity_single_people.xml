@@ -5,31 +5,38 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".discover.SinglePeopleActivity"
-    android:padding="10dp"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp">
-        <TextView
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="UserName  :"
-            android:id="@+id/textView"
-            style="@style/CodeFont"
-            android:layout_below="@+id/appbar" />
-
-        <TextView
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="leadname"
-            android:id="@+id/Leadname"
-            style="@style/CodeFont" />
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="UserName"
+                android:id="@+id/textView"
+                style="@style/CodeFont"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/appbar" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="leadname"
+                android:layout_alignParentRight="true"
+                android:id="@+id/Leadname"
+                style="@style/CodeFont" />
+        </RelativeLayout>
+
     </LinearLayout>
 
 
@@ -37,108 +44,136 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
-    android:layout_marginLeft="20dp">
-    <TextView
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="PhoneNum  :"
-        android:id="@+id/textView40"
-        style="@style/CodeFont"/>
-
-    <TextView
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    >
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="phonenum"
-        style="@style/CodeFont"
-        android:id="@+id/Phonenumber" />
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="PhoneNum"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/textView40" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="phonenum"
+            android:layout_alignParentRight="true"
+            android:id="@+id/Phonenumber" />
+    </RelativeLayout>
+
 </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp">
-        <TextView
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Email     :"
-            android:id="@+id/email"
-            style="@style/CodeFont" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Email"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/email" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Email"
-            style="@style/CodeFont"
-            android:id="@+id/profileEmail" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Email"
+                android:layout_alignParentRight="true"
+                android:id="@+id/profileEmail" />
+        </RelativeLayout>
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp">
-        <TextView
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="CollegeName  :"
-            style="@style/CodeFont"
-            android:id="@+id/textView26" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="CollegeName"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/textView26" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="CollegeName"
-            style="@style/CodeFont"
-            android:id="@+id/collegename" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="CollegeName"
+                android:layout_alignParentRight="true"
+                android:id="@+id/collegename" />
+        </RelativeLayout>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp">
-        <TextView
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Location  :"
-            style="@style/CodeFont"
-            android:id="@+id/textView2" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Location"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/textView2" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Location"
-            style="@style/CodeFont"
-            android:id="@+id/location" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Location"
+                android:layout_alignParentRight="true"
+                android:id="@+id/location" />
+        </RelativeLayout>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp">
-        <TextView
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="IdeaDesc  :"
-            android:id="@+id/textView44"
-            style="@style/CodeFont"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="IdeaDesc"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/textView44" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="ideadesc"
-            android:id="@+id/IdeaDescription"
-            style="@style/CodeFont"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="ideadesc"
+                android:layout_alignParentRight="true"
+                android:id="@+id/IdeaDescription" />
+        </RelativeLayout>
     </LinearLayout>
-
-
 </LinearLayout>

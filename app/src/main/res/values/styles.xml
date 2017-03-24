@@ -18,7 +18,6 @@
         <item name="android:textColorPrimary">@color/colorPrimaryDark</item>
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textColorHint">@color/TextColorHint</item>
-        <item name="android:typeface">monospace</item>
     </style>
     <style name="AppThemeee" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -29,10 +28,8 @@
         <item name="android:textColorPrimary">@color/colorPrimaryDark</item>
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textColorHint">@color/TextColorHint</item>
-        <item name="android:typeface">monospace</item>
     </style>
     <style name="AppTheme.TransNav" parent="AppThemee" />
-
     <style name="CustomTitleTextAppearance">
         <item name="android:textSize">23sp</item>
         <item name="android:textColor">@color/TextColorHint</item>
@@ -44,14 +41,7 @@
         <item name="colorControlActivated">@color/TextColorHint</item>
         <item name="colorControlNormal">@color/TextColorHint</item>
     </style>
-    <style name="ListView" parent="@android:style/Widget.ListView">
-        <item name="android:textColor">@color/colorPrimaryDark</item>
-        <item name="android:typeface">monospace</item>
-        <item name="android:cacheColorHint">@android:color/transparent</item>
-        <item name="android:divider">@android:color/transparent</item>
-        <item name="android:dividerHeight">1dp</item>
 
-    </style>
     <style name="customtheme" parent="@android:style/Theme.Light">
         <item name="android:spinnerItemStyle">@style/SpinnerItem</item>
         <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItem</item>
@@ -69,7 +59,7 @@
         <item name="tabIndicatorHeight">2dp</item>
         <item name="tabPaddingStart">12dp</item>
         <item name="tabPaddingEnd">12dp</item>
-        <item name="tabBackground">@color/Tabbackgroundcolor</item>
+        <item name="tabBackground">@color/colorAcent</item>
         <item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>
         <item name="tabSelectedTextColor">@color/textColorPrimary</item>
     </style>

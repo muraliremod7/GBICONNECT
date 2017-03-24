@@ -46,6 +46,7 @@ public class IdeasRegActivity extends AppCompatActivity {
     String Questionsarraylist = "";
     public static String registerationId;
     public static SharedPreferences regid;
+    private SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +68,8 @@ public class IdeasRegActivity extends AppCompatActivity {
         Prev.setVisibility(View.INVISIBLE);
         Submit.setVisibility(View.INVISIBLE);
         Next.setVisibility(View.VISIBLE);
+
+        alert = new AlertDialogManager();
         regid = PreferenceManager.getDefaultSharedPreferences(this);
         registerationId = regid.getString("_id","0");
         //Coverting Array List To String Object........
@@ -207,16 +210,18 @@ public class IdeasRegActivity extends AppCompatActivity {
                     if(ideaTitle.equals("")){
                         Toast.makeText(IdeasRegActivity.this,"Enter IdeaTitle",Toast.LENGTH_LONG).show();
                     }
+                    else if(eventid.equals("Choose Event")){
+                        alert.showAlertDialog(IdeasRegActivity.this,"Choose Any One Event",false);
+                    }
                     else {
                         idearegistration(registerationId,ideaTitle,eventid,ideaDescription,ideaRefcode,que1,que2,que3,que4,que5,que6,que7,que8,que9,que10,que11,que12,que13,que14,que15,que16,que17,que18,que19,que20,que21,que22,que23,que24,que25);
 
                     }
             }
-
         }
     };
 
-    private void idearegistration(String registerationId, String ideaTitle,String eventId, String ideaDescription, String ideaRefcode, String que1, String que2, String que3, String que4, String que5, String que6, String que7, String que8, String que9, String que10, String que11, String que12, String que13, String que14, String que15, String que16, String que17, String que18, String que19, String que20, String que21, String que22, String que23, String que24, String que25) {
+    private void idearegistration(final String registerationId, String ideaTitle, String eventId, String ideaDescription, String ideaRefcode, String que1, String que2, String que3, String que4, String que5, String que6, String que7, String que8, String que9, String que10, String que11, String que12, String que13, String que14, String que15, String que16, String que17, String que18, String que19, String que20, String que21, String que22, String que23, String que24, String que25) {
         Ion.with(getApplicationContext())
                 .load("POST","http://sample-env.ibqeg2uyqh.us-east-1.elasticbeanstalk.com/ideas")
                 .setBodyParameter("ideacode",ideaRefcode)
@@ -258,10 +263,26 @@ public class IdeasRegActivity extends AppCompatActivity {
                                     Toast.makeText(IdeasRegActivity.this,result,Toast.LENGTH_LONG).show();
                                 }
                                 else {
-                                    Intent homeintent = new Intent(IdeasRegActivity.this,LoginActivity.class);
-                                    startActivity(homeintent);
-                                    finish();
-                                    Toast.makeText(IdeasRegActivity.this,"Idea Registered Successfully",Toast.LENGTH_LONG).show();
+                                    JSONObject object = new JSONObject(result);
+                                    int status = object.getInt("status");
+                                    JSONObject object1 = object.getJSONObject("data");
+                                    String ideaid = object1.getString("_id");
+                                    SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                                    editor = settings.edit();
+                                    editor.putString("ideaId", ideaid);
+                                    editor.commit();
+                                    if(status==1){
+
+                                        Intent homeintent = new Intent(IdeasRegActivity.this,LoginActivity.class);
+                                        startActivity(homeintent);
+                                        finish();
+                                        Toast.makeText(IdeasRegActivity.this,"Idea Registered Successfully",Toast.LENGTH_LONG).show();
+                                    }
+                                    else{
+                                        Toast.makeText(IdeasRegActivity.this,"Something Went Wrong",Toast.LENGTH_LONG).show();
+
+                                    }
+
                                 }
                             }catch (Exception ex){
 

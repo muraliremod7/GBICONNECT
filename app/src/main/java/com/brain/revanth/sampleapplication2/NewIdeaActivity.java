@@ -44,7 +44,7 @@ public class NewIdeaActivity extends AppCompatActivity {
     Button Prev, Next, Submit;
     ArrayList<String> Questions = new ArrayList<String>();
     public String IdeaName, IdeaDescription;
-    public static String registerationId;
+    public static String registerationId,ideaid;
     public static SharedPreferences regid;
     String Questionsarraylist = "";
     @Override
@@ -72,6 +72,7 @@ public class NewIdeaActivity extends AppCompatActivity {
         Next.setVisibility(View.VISIBLE);
         regid = PreferenceManager.getDefaultSharedPreferences(this);
         registerationId = regid.getString("user_id","0");
+        ideaid = regid.getString("ideaId","0");
         //Coverting Array List To String Object........
         for (String s : Questions)
         {
@@ -144,13 +145,13 @@ public class NewIdeaActivity extends AppCompatActivity {
         public void onClick(View v) {
 
             switch(v.getId()) {
-                case R.id.previous:
+                case R.id.newprevious:
                     viewPager.setCurrentItem(viewPager.getCurrentItem()-1);
                     break;
-                case R.id.next:
+                case R.id.newnext:
                     viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
                     break;
-                case R.id.submit:
+                case R.id.newsubmit:
                     ideaTitle = pi.ideaTitle.getText().toString();
                     ideaDescription = pi.ideaDesc.getText().toString();
                     ideaRefcode = pi.ideaReferalcode.getText().toString();
@@ -221,8 +222,8 @@ public class NewIdeaActivity extends AppCompatActivity {
 
     private void idearegistration(String registerationId, String ideaTitle,String eventId, String ideaDescription, String ideaRefcode, String que1, String que2, String que3, String que4, String que5, String que6, String que7, String que8, String que9, String que10, String que11, String que12, String que13, String que14, String que15, String que16, String que17, String que18, String que19, String que20, String que21, String que22, String que23, String que24, String que25) {
         Ion.with(getApplicationContext())
-                .load("POST", "http://gbi-app.wmiqmh97e9.us-east-1.elasticbeanstalk.com/ideas")
-                .setBodyParameter("ideacode", ideaRefcode)
+                .load("POST", "http://sample-env.ibqeg2uyqh.us-east-1.elasticbeanstalk.com/userideaupdate")
+                .setBodyParameter("ideaid",ideaid)
                 .setBodyParameter("ideatitle", ideaTitle)
                 .setBodyParameter("eventid", eventId)
                 .setBodyParameter("userid", registerationId)
@@ -260,7 +261,10 @@ public class NewIdeaActivity extends AppCompatActivity {
                             if (e != null) {
                                 Toast.makeText(NewIdeaActivity.this, result, Toast.LENGTH_LONG).show();
                             } else {
-                                Toast.makeText(NewIdeaActivity.this, "Idea Registered Successfully", Toast.LENGTH_LONG).show();
+                                Toast.makeText(NewIdeaActivity.this, "Idea Updated Successfully", Toast.LENGTH_LONG).show();
+                              Intent intent = new Intent(NewIdeaActivity.this,HomeActivity.class);
+                                startActivity(intent);
+                                finish();
                             }
                         } catch (Exception ex) {
 

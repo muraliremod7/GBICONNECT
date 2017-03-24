@@ -1,15 +1,20 @@
 package com.brain.revanth.sampleapplication2.discover;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.brain.revanth.sampleapplication2.LoginActivity;
 import com.brain.revanth.sampleapplication2.Services.AlertDialogManager;
 import com.brain.revanth.sampleapplication2.R;
 import com.brain.revanth.sampleapplication2.Services.ConnectionDetector;
@@ -22,18 +27,25 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import com.brain.revanth.sampleapplication2.Model.PeopleCommonClass;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PeopleFragment extends Fragment {
 
     private ListView listView;
-    private List<PeopleCommonClass> arrayList = new ArrayList<PeopleCommonClass>();
+    private ArrayList<PeopleCommonClass> arrayList = new ArrayList<PeopleCommonClass>();
     PeopleCommonClass peopleCommonClass;
     PeoplesListRow peoplesListRow;
     String Profilename, collegeName,IdeaDesc,PhoneNum,Email,location;
     AlertDialogManager alert;
     ConnectionDetector cd;
+    private ProgressDialog pDialog;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,7 +59,21 @@ public class PeopleFragment extends Fragment {
         alert = new AlertDialogManager();
         return view;
     }
+    public void timerDelayRemoveDialog(long time, final ProgressDialog d){
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                d.dismiss();
+            }
+        }, time);
+
+    }
     private void peoples() {
+        pDialog = new ProgressDialog(getActivity());
+        pDialog.setMessage("Please Wait");
+        pDialog.setCancelable(false);
+        pDialog.show();
+        timerDelayRemoveDialog(10*1000,pDialog);
         Ion.with(getContext())
                 .load("http://sample-env.ibqeg2uyqh.us-east-1.elasticbeanstalk.com/")
                 .asString()
@@ -59,7 +85,6 @@ public class PeopleFragment extends Fragment {
                         }else{
                             try {
                                 JSONObject jSONObject = new JSONObject(result);
-
                                     JSONArray array = jSONObject.getJSONArray("gbis");
                                     for(int i =0;i<array.length();i++){
                                         JSONObject j = array.getJSONObject(i);
@@ -71,9 +96,28 @@ public class PeopleFragment extends Fragment {
                                         if(j.has("description")||!j.isNull("description")){
                                             peopleCommonClass.setIdeaDescription(j.getString("description").toString());
                                         }
-//                                        if(j.has("profile")||!j.isNull("profile")){
-//                                            peopleCommonClass.setImage(j.getString("profile"));
-//                                        }
+                                        if(j.has("img")||!j.isNull("img")){
+                                            // any other views you want associated with a profile.
+                                            // You're finding the view based from the inflated layout, not the activity layout
+                                            String imgname = j.getString("img");
+                                            String url = "http://sample-env.ibqeg2uyqh.us-east-1.elasticbeanstalk.com/getimage?filename="+imgname;
+                                            try {
+                                                Bitmap image = Ion.with(getActivity())
+                                                        .load(url)
+                                                        .withBitmap()
+                                                        .asBitmap()
+                                                        .get(10, TimeUnit.SECONDS);
+                                                peopleCommonClass.setImage(image);
+                                            } catch (InterruptedException e1) {
+                                                e1.printStackTrace();
+                                            } catch (ExecutionException e1) {
+                                                e1.printStackTrace();
+                                            } catch (TimeoutException e1) {
+                                                e1.printStackTrace();
+                                            }
+
+
+                                        }
                                         if(j.has("mobile")||!j.isNull("mobile")){
                                             peopleCommonClass.setPhoneNumber(j.getString("mobile"));
                                         }
@@ -88,6 +132,8 @@ public class PeopleFragment extends Fragment {
                                         }
                                         arrayList.add(peopleCommonClass);
                                     }
+                                if(pDialog.isShowing())
+                                    pDialog.dismiss();
                                     listView.setAdapter(peoplesListRow);
 
                             } catch (JSONException e1) {

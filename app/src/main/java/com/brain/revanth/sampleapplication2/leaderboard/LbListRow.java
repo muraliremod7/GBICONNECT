@@ -9,32 +9,53 @@ import android.widget.TextView;
 
 import com.brain.revanth.sampleapplication2.R;
 
+import java.util.ArrayList;
+
 /**
  * Created by Hari Prahlad on 08-05-2016.
  */
-public class LbListRow extends ArrayAdapter<String> {
-    TextView rank, ideanamelb,marks;
-    private final Activity context;
-    private final String[] lbrank;
-    private final String[] lbideanames;
-    private final String[] lbmarks;
-    public LbListRow(Activity context, String[] lbrank,String[] lbideanames, String[] lbmarks) {
-        super(context, R.layout.leaderboardlist_row,lbrank);
+public class LbListRow extends ArrayAdapter<LeaderBoardCommonClass> {
+    private TextView lbideaTitle,lbmarks;
+    public final Activity context;
+    ArrayList<LeaderBoardCommonClass> boardCommonClasses;
+    public LbListRow(Activity context,ArrayList<LeaderBoardCommonClass> leaderBoardCommonClasses) {
+        super(context,0,leaderBoardCommonClasses);
         this.context = context;
-        this.lbrank = lbrank;
-        this.lbideanames = lbideanames;
-        this.lbmarks = lbmarks;
+        this.boardCommonClasses = leaderBoardCommonClasses;
+    }
+    @Override
+    public int getCount() {
+        return boardCommonClasses.size();
+    }
+
+    @Override
+    public LeaderBoardCommonClass getItem(int location) {
+        return boardCommonClasses.get(location);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
     @Override
     public View getView(int lbposition, View view, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView= inflater.inflate(R.layout.leaderboardlist_row, null, true);
-        rank = (TextView) rowView.findViewById(R.id.lbrank);
-        ideanamelb = (TextView) rowView.findViewById(R.id.lbideaname);
-        marks = (TextView) rowView.findViewById(R.id.lbmarks);
-        rank.setText(lbrank[lbposition]);
-        ideanamelb.setText(lbideanames[lbposition]);
-        marks.setText(lbmarks[lbposition]);
+        lbideaTitle = (TextView) rowView.findViewById(R.id.lbideaTitle);
+        lbmarks = (TextView) rowView.findViewById(R.id.lbmarks);
+
+        LeaderBoardCommonClass boardCommonClass =(LeaderBoardCommonClass)getItem(lbposition);
+
+        lbideaTitle.setText(boardCommonClass.getIdeaId());
+        lbmarks.setText(boardCommonClass.getMarks());
+
         return rowView;
+    }
+
+    public void updateList(ArrayList<LeaderBoardCommonClass> arrayList) {
+        this.boardCommonClasses= arrayList;
+
+        //and call notifyDataSetChange
+        notifyDataSetChanged();
     }
 }

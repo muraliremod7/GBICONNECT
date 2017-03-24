@@ -11,62 +11,61 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="fill_horizontal"
-        android:padding="20dp"
         android:descendantFocusability="blocksDescendants">
     <!-- Thumbnail Image -->
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:id="@+id/Profilepicture"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="17dp" />
+            android:src="@drawable/gbi"/>
 <View
     android:layout_width="20dp"
     android:layout_height="match_parent"/>
         <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/ProfileName"
-        android:layout_gravity="center"
-        android:text="List Text" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/ProfileName"
+            android:layout_gravity="center"
+            android:text="List Text" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="listText2"
-        android:textColor="@color/colorPrimary"
-        android:id="@+id/phonenumber"
-        android:visibility="invisible"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="listText2"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/phonenumber"
+            android:visibility="gone"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Ideadesc"
-        android:textColor="@color/colorPrimary"
-        android:id="@+id/Ideadesc"
-        android:visibility="gone"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Ideadesc"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/Ideadesc"
+            android:visibility="gone"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/ProfileEmail"
-        android:visibility="invisible"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/ProfileEmail"
+            android:visibility="gone"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:id="@+id/Profilecollege"
-            android:visibility="invisible"/>
+            android:visibility="gone"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:id="@+id/Profilelocation"
-            android:visibility="invisible"/>
+            android:visibility="gone"/>
     </LinearLayout>
 </LinearLayout>

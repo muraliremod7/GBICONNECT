@@ -12,14 +12,11 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TabHost;
 
-import com.brain.revanth.sampleapplication2.chat.ChatActivity;
 import com.brain.revanth.sampleapplication2.discover.DiscoveriActivity;
-import com.brain.revanth.sampleapplication2.favorates.FavoritesActivity;
 import com.brain.revanth.sampleapplication2.Services.SessionManager;
 import com.brain.revanth.sampleapplication2.leaderboard.LeaderBoardActivity;
 import com.brain.revanth.sampleapplication2.shedule.SheduleActivity;
@@ -52,17 +49,17 @@ public class HomeActivity extends AppCompatActivity{
                 .setContent(discoverintent);
         tabHost.addTab(discover);
         // Apple tab
-        Intent chatintent = new Intent().setClass(this, FavoritesActivity.class);
-        TabHost.TabSpec Chat = tabHost
-                .newTabSpec("com/brain/revanth/sampleapplication2/favorates")
-
-                .setIndicator("", resources.getDrawable(R.drawable.ic_star_rate_white_18dp))
-                .setContent(chatintent);
-        tabHost.addTab(Chat);
-
-        Intent favoratesintent = new Intent().setClass(this, ChatActivity.class);
+//        Intent chatintent = new Intent().setClass(this, FavoritesActivity.class);
+//        TabHost.TabSpec Chat = tabHost
+//                .newTabSpec("com/brain/revanth/sampleapplication2/favorates")
+//
+//                .setIndicator("", resources.getDrawable(R.drawable.ic_star_rate_white_18dp))
+//                .setContent(chatintent);
+//        tabHost.addTab(Chat);
+//
+        Intent favoratesintent = new Intent().setClass(this, IdeasActivity.class);
         TabHost.TabSpec favorates = tabHost
-                .newTabSpec("com/brain/revanth/sampleapplication2/chat")
+                .newTabSpec("com/brain/revanth/sampleapplication2/MyideasActivity.java")
                 .setIndicator("", resources.getDrawable(R.drawable.ic_chat_white_18dp))
                 .setContent(favoratesintent);
         tabHost.addTab(favorates);
@@ -135,7 +132,7 @@ public class HomeActivity extends AppCompatActivity{
                 startActivity(myprofile);
                 return true;
             case R.id.myideas:
-                Intent myideas = new Intent(HomeActivity.this,MyideasActivity.class);
+                Intent myideas = new Intent(HomeActivity.this,MyIdeasActivity.class);
                 startActivity(myideas);
                 return true;
             case R.id.complaints:

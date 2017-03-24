@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 import com.brain.revanth.sampleapplication2.ComplaintsActivity;
 import com.brain.revanth.sampleapplication2.MyProfileActivity;
-import com.brain.revanth.sampleapplication2.MyideasActivity;
+import com.brain.revanth.sampleapplication2.IdeasActivity;
 import com.brain.revanth.sampleapplication2.R;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
@@ -141,7 +141,7 @@ public class ChatActivity extends AppCompatActivity {
                 startActivity(myprofile);
                 return true;
             case R.id.myideas:
-                Intent myideas = new Intent(ChatActivity.this,MyideasActivity.class);
+                Intent myideas = new Intent(ChatActivity.this,IdeasActivity.class);
                 startActivity(myideas);
                 return true;
             case R.id.complaints:

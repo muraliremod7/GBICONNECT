@@ -1,10 +1,12 @@
 package com.brain.revanth.sampleapplication2;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,6 +17,8 @@ import android.os.Environment;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -41,15 +45,16 @@ import java.io.File;
 
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
-    private EditText userName,userMobile,userEmail,userCollege,userPin,userConPin,userLocation;
+    private EditText userName,userMobile,userEmail,userCollege,userPin,userConPin,userLocation,userdec;
     private ImageView iView;
     private Button upimage,regPersInfo;
     private Cursor cursor;
-    private int REQUEST_CAMERA = 0, SELECT_FILE = 1;
+    private int REQUEST_CAMERA = 0, SELECT_FILE = 1,MY_PERMISSIONS_REQUEST_READ_CONTACTS = 2;
     private String uploadImagePath = "";
     private ProgressDialog pDialog;
     private String KEY_IMAGE = "uploadfile";
     AlertDialogManager dialogManager;
+    private String filename;
     private String REG_URL ="http://sample-env.ibqeg2uyqh.us-east-1.elasticbeanstalk.com/register";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +67,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         userPin = (EditText)findViewById(R.id.reguserPin);
         userConPin = (EditText)findViewById(R.id.reguserConPin);
         userLocation = (EditText)findViewById(R.id.reguserLocation);
+        userdec = (EditText)findViewById(R.id.reguserdesc);
         regPersInfo = (Button)findViewById(R.id.regperInfo);
         iView = (ImageView) findViewById(R.id.UploadImage);
         upimage = (Button) findViewById(R.id.uploadimage);
@@ -70,31 +76,61 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         upimage.setOnClickListener(this);
 
         dialogManager = new AlertDialogManager();
+        if (ContextCompat.checkSelfPermission(RegisterActivity.this,
+                Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(RegisterActivity.this,
+                    Manifest.permission.CAMERA)) {
+
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+            } else {
+
+                // No explanation needed, we can request the permission.
+
+                ActivityCompat.requestPermissions(RegisterActivity.this,
+                        new String[]{Manifest.permission.CAMERA},
+                        MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        }
 
  }
-    public void timerDelayRemoveDialog(long time, final android.app.AlertDialog d){
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                d.dismiss();
-            }
-        }, time);
-
-    }
     private void UploadImage() {
+
         final File fileToUpload = new File(uploadImagePath);
-        pDialog = new ProgressDialog(this);
-        pDialog.setMessage("Uploading Image.....");
+        pDialog = new ProgressDialog(RegisterActivity.this);
+        pDialog.setMessage("Attempting Login");
         pDialog.setCancelable(false);
         pDialog.show();
-        timerDelayRemoveDialog(10*1000,pDialog);
+        Ion.with(RegisterActivity.this)
+                .load("POST","http://sample-env.ibqeg2uyqh.us-east-1.elasticbeanstalk.com/uploadimage")
+                .setHeader("encType","multipart/form-data")
+                .setMultipartFile("pfimage","image/jpeg", fileToUpload)
+                .asJsonObject()
+                .setCallback(new FutureCallback<JsonObject>() {
+                    @Override
+                    public void onCompleted(Exception e, JsonObject result) {
+                        if(result.equals("Image is uploaded successfully!")){
+                            if(pDialog.isShowing())
+                                pDialog.dismiss();
+                        }
+                    }
+                });
 
     }
 
     private void selectImage() {
         final CharSequence[] items = {"Take Photo", "Choose from Library", "Cancel"};
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.MyAlertDialogStyle);
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
@@ -119,6 +155,30 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         builder.show();
 
     }
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 3: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
+    }
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
@@ -140,7 +200,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     bm = Bitmap.createScaledBitmap(bm, 70, 70, true);
                     iView.setImageBitmap(bm);
                     uploadImagePath = f.getAbsolutePath();
-
+                     filename = uploadImagePath.substring(uploadImagePath.lastIndexOf("/")+1);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -153,6 +213,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 Bitmap bm = BitmapFactory.decodeFile(tempPath, btmapOptions);
                 iView.setImageBitmap(bm);
                 uploadImagePath = tempPath;
+                filename = uploadImagePath.substring(uploadImagePath.lastIndexOf("/")+1);
 
             }
         }
@@ -182,9 +243,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 String pin = userPin.getText().toString();
                 String conpin = userConPin.getText().toString();
                 String location = userLocation.getText().toString();
+                String userDesc = userdec.getText().toString();
                 if(pin.equals(conpin)){
-                    UploadImage();
-                    registerUser(username,mobilenum,email,college,pin,location);
+                    registerUser(username,mobilenum,email,college,pin,location,userDesc);
                 }
                 else {
                     dialogManager.showAlertDialog(RegisterActivity.this,"Confirm Doesn't match with Pin",false);
@@ -192,7 +253,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private void registerUser(String username, String mobilenum, String email, String college, String pin, String location) {
+    private void registerUser(String username, String mobilenum, String email, String college, String pin, String location,String profile) {
         Ion.with(this)
                 .load("POST", REG_URL)
                 .setBodyParameter("username",username)
@@ -201,10 +262,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 .setBodyParameter("pin",pin)
                 .setBodyParameter("college",college)
                 .setBodyParameter("location",location)
-                .setBodyParameter("description","asasa")
+                .setBodyParameter("description",profile)
                 .setBodyParameter("referalid","")
                 .setBodyParameter("confirmpin",pin)
-                .setBodyParameter("imgpath",uploadImagePath)
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override

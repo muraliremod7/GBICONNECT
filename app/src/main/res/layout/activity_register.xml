@@ -14,6 +14,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <ImageView
+                android:visibility="gone"
                 android:id="@+id/UploadImage"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
@@ -21,6 +22,7 @@
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/person" />
             <Button
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SelectImage"
