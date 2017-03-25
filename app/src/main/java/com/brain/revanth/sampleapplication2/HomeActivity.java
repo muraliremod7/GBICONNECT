@@ -135,10 +135,10 @@ public class HomeActivity extends AppCompatActivity{
                 Intent myideas = new Intent(HomeActivity.this,MyIdeasActivity.class);
                 startActivity(myideas);
                 return true;
-            case R.id.complaints:
-                Intent Complaints = new Intent(HomeActivity.this,ComplaintsActivity.class);
-                startActivity(Complaints);
-                return true;
+//            case R.id.complaints:
+//                Intent Complaints = new Intent(HomeActivity.this,ComplaintsActivity.class);
+//                startActivity(Complaints);
+//                return true;
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.

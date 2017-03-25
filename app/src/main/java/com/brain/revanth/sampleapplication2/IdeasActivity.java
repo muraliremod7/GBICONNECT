@@ -75,9 +75,13 @@ public class IdeasActivity extends AppCompatActivity {
                                         ideasCommonClass.setEventName(j.getString("eventid").toString());
                                     }
                                     if(j.has("status")){
+
                                         ideasCommonClass.setStatus(j.getString("status").toString());
                                     }
-                                    arrayList.add(ideasCommonClass);
+                                    String statuss = ideasCommonClass.getStatus().toString();
+                                        if(statuss.equals("Approved")){
+                                            arrayList.add(ideasCommonClass);
+                                        }
                                 }
                                 listView.setAdapter(ideasListRow);
                                 if(pDialog.isShowing())

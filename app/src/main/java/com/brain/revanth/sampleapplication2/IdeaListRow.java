@@ -56,7 +56,7 @@ public class IdeaListRow extends ArrayAdapter<IdeasCommonClass> {
         ideaTitle.setText(commonClass.getIdeaTitle());
         ideaId.setText(commonClass.getId());
         eventName.setText(commonClass.getEventName());
-        status.setText(commonClass.getStatus());
+        //status.setText(commonClass.getStatus());
 
         return convertview;
     }

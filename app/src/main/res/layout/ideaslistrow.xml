@@ -45,6 +45,7 @@
                 android:paddingBottom="5dp"
                 android:text="List Text" />
             <TextView
+                android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
